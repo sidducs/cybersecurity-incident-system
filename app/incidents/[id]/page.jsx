@@ -1,17 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { 
-  Shield, AlertTriangle, User, Calendar, Server, Activity, 
-  ArrowLeft, CheckCircle2, Clock, Plus, Flame, FileText, 
-  Send, AlertCircle, RefreshCw, Layers
+  ArrowLeft, CheckCircle2, Clock, Plus, FileText, 
+  RefreshCw, Shield, User, Activity 
 } from 'lucide-react';
 
 export default function IncidentDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const incidentId = params.id;
 
   const [data, setData] = useState(null);
@@ -19,20 +17,16 @@ export default function IncidentDetailPage() {
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('investigations');
 
-  // Form states for adding items
   const [newStatus, setNewStatus] = useState('');
   const [statusUpdating, setStatusUpdating] = useState(false);
 
-  // Investigation form
   const [findingText, setFindingText] = useState('');
   const [invLoading, setInvLoading] = useState(false);
 
-  // Response action form
   const [actionType, setActionType] = useState('Firewall Rule Drop');
   const [actionDesc, setActionDesc] = useState('');
   const [respLoading, setRespLoading] = useState(false);
 
-  // Atomic assignment modal
   const [showAssignModal, setShowAssignModal] = useState(false);
   const [assignAnalystId, setAssignAnalystId] = useState('2');
   const [assignNotes, setAssignNotes] = useState('');
@@ -42,7 +36,7 @@ export default function IncidentDetailPage() {
   const fetchIncident = async () => {
     try {
       const res = await fetch(`/api/incidents/${incidentId}`);
-      if (!res.ok) throw new Error('Incident not found or database error');
+      if (!res.ok) throw new Error('Incident not found');
       const json = await res.json();
       setData(json);
       setNewStatus(json.incident.status);
@@ -57,7 +51,6 @@ export default function IncidentDetailPage() {
     if (incidentId) fetchIncident();
   }, [incidentId]);
 
-  // Handle status update (fires database trigger)
   const handleStatusChange = async (e) => {
     const selected = e.target.value;
     setNewStatus(selected);
@@ -77,7 +70,6 @@ export default function IncidentDetailPage() {
     }
   };
 
-  // Handle atomic assignment transaction
   const handleAtomicAssign = async (e) => {
     e.preventDefault();
     setAssignLoading(true);
@@ -103,7 +95,6 @@ export default function IncidentDetailPage() {
     }
   };
 
-  // Add investigation finding
   const handleAddInvestigation = async (e) => {
     e.preventDefault();
     if (!findingText.trim()) return;
@@ -124,7 +115,6 @@ export default function IncidentDetailPage() {
     }
   };
 
-  // Add response action
   const handleAddResponse = async (e) => {
     e.preventDefault();
     if (!actionDesc.trim()) return;
@@ -151,10 +141,10 @@ export default function IncidentDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="flex items-center gap-3 text-cyan-400 font-mono text-xs">
-          <Activity className="w-5 h-5 animate-spin" />
-          <span>RECONSTRUCTING FORENSIC INCIDENT RECORD...</span>
+      <div className="min-h-[50vh] flex items-center justify-center">
+        <div className="flex items-center gap-2 text-slate-400 text-xs">
+          <Activity className="w-4 h-4 animate-spin text-blue-500" />
+          <span>Loading incident details...</span>
         </div>
       </div>
     );
@@ -162,40 +152,40 @@ export default function IncidentDetailPage() {
 
   if (error || !data) {
     return (
-      <div className="p-4 rounded-xl bg-red-950/40 border border-red-500/50 text-red-300">
+      <div className="p-3 rounded bg-red-950/50 border border-red-800 text-red-200 text-xs">
         Error: {error || 'Incident not found'}
       </div>
     );
   }
 
-  const { incident, investigations, responseActions, statusHistory, riskAssessments } = data;
+  const { incident, investigations, responseActions, statusHistory } = data;
 
-  let badgeClass = 'cyber-badge-medium';
-  if (incident.severity === 'Critical') badgeClass = 'cyber-badge-critical';
-  if (incident.severity === 'High') badgeClass = 'cyber-badge-high';
-  if (incident.severity === 'Low') badgeClass = 'cyber-badge-low';
+  let badgeClass = 'badge-medium';
+  if (incident.severity === 'Critical') badgeClass = 'badge-critical';
+  if (incident.severity === 'High') badgeClass = 'badge-high';
+  if (incident.severity === 'Low') badgeClass = 'badge-low';
 
   return (
-    <div className="space-y-6">
-      {/* Top Navigation */}
-      <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+    <div className="space-y-5">
+      {/* Top Header */}
+      <div className="flex items-center justify-between pb-3 border-b border-slate-800">
         <Link
           href="/incidents"
-          className="text-xs text-slate-400 hover:text-cyan-400 flex items-center gap-1 font-mono transition-colors"
+          className="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Incident Directory</span>
+          <span>Back to Incidents</span>
         </Link>
 
         <div className="flex items-center gap-2">
-          {/* Status Dropdown (fires trigger) */}
-          <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1">
-            <span className="text-[10px] uppercase font-mono text-slate-400">Status:</span>
+          {/* Status Dropdown */}
+          <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 rounded px-2.5 py-1">
+            <span className="text-[11px] text-slate-400">Status:</span>
             <select
               value={newStatus}
               onChange={handleStatusChange}
               disabled={statusUpdating}
-              className="bg-transparent text-xs font-mono font-bold text-cyan-400 focus:outline-none cursor-pointer"
+              className="bg-transparent text-xs font-semibold text-slate-100 focus:outline-none cursor-pointer"
             >
               <option value="New" className="bg-slate-900 text-slate-200">New</option>
               <option value="Investigating" className="bg-slate-900 text-slate-200">Investigating</option>
@@ -203,178 +193,166 @@ export default function IncidentDetailPage() {
               <option value="Resolved" className="bg-slate-900 text-slate-200">Resolved</option>
               <option value="False Positive" className="bg-slate-900 text-slate-200">False Positive</option>
             </select>
-            {statusUpdating && <RefreshCw className="w-3 h-3 animate-spin text-cyan-400" />}
+            {statusUpdating && <RefreshCw className="w-3 h-3 animate-spin text-slate-400" />}
           </div>
 
-          {/* Atomic Assignment Button */}
+          {/* Assign Button */}
           <button
             onClick={() => setShowAssignModal(true)}
-            className="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
+            className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium flex items-center gap-1.5 transition-colors"
           >
             <User className="w-3.5 h-3.5" />
-            <span>Atomic Assignment</span>
+            <span>Assign Analyst</span>
           </button>
         </div>
       </div>
 
-      {/* Main Incident Card */}
-      <div className="cyber-card p-6 space-y-5">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-          <div className="space-y-2">
+      {/* Main Details Card */}
+      <div className="clean-card p-5 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+          <div className="space-y-1.5">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-mono text-cyan-400 font-bold bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-500/30">
-                INCIDENT #{incident.incident_id}
+              <span className="text-xs font-mono text-slate-400">#{incident.incident_id}</span>
+              <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${badgeClass}`}>
+                {incident.severity}
               </span>
-              <span className={`px-2.5 py-0.5 rounded text-xs font-bold ${badgeClass}`}>
-                {incident.severity} SEVERITY
-              </span>
-              <span className="text-xs font-mono bg-slate-900 text-slate-300 px-2 py-0.5 rounded border border-slate-700">
+              <span className="text-[11px] text-slate-300 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">
                 {incident.classification}
               </span>
-              <span className="text-xs font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
+              <span className="text-[11px] text-slate-300 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">
                 {incident.status}
               </span>
             </div>
 
-            <h1 className="text-xl font-bold text-slate-100">{incident.title}</h1>
-            <p className="text-xs text-slate-300 font-mono leading-relaxed bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+            <h1 className="text-lg font-bold text-slate-100">{incident.title}</h1>
+            <p className="text-xs text-slate-300 leading-relaxed bg-slate-900/50 p-3 rounded border border-slate-700/60">
               {incident.description}
             </p>
           </div>
 
-          {/* Risk Score Pill */}
-          <div className="shrink-0 text-center p-4 rounded-xl bg-slate-900 border border-slate-800 min-w-[130px]">
-            <div className="text-[10px] font-mono uppercase text-slate-400">Risk Score</div>
-            <div className="text-3xl font-bold font-mono text-red-400 mt-0.5">
+          {/* Risk Score */}
+          <div className="shrink-0 text-center p-3 rounded bg-slate-900 border border-slate-700 min-w-[110px]">
+            <div className="text-[10px] text-slate-400 uppercase">Risk Score</div>
+            <div className="text-2xl font-bold font-mono text-slate-100 mt-0.5">
               {incident.risk_score}
             </div>
-            <div className="text-[10px] font-mono text-slate-500 mt-1">out of 100</div>
+            <div className="text-[10px] text-slate-500">out of 100</div>
           </div>
         </div>
 
-        {/* Metadata Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800 text-xs font-mono">
+        {/* Metadata Details */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-slate-700/70 text-xs">
           <div>
-            <span className="text-slate-500 block text-[10px] uppercase">Target IT Asset</span>
-            <span className="font-semibold text-slate-200">{incident.asset_name}</span>
+            <span className="text-slate-400 block text-[10px]">Asset</span>
+            <span className="font-medium text-slate-200">{incident.asset_name}</span>
+            <span className="text-slate-500 block text-[10px]">{incident.ip_address}</span>
+          </div>
+
+          <div>
+            <span className="text-slate-400 block text-[10px]">Assigned Analyst</span>
+            <span className="font-medium text-slate-200">
+              {incident.assigned_to_name || <span className="text-slate-500 italic">Unassigned</span>}
+            </span>
+          </div>
+
+          <div>
+            <span className="text-slate-400 block text-[10px]">Reported By</span>
+            <span className="font-medium text-slate-200">{incident.reported_by_name}</span>
             <span className="text-slate-500 block text-[10px]">
-              {incident.asset_criticality} · {incident.ip_address}
+              {new Date(incident.reported_at).toLocaleDateString()}
             </span>
           </div>
 
           <div>
-            <span className="text-slate-500 block text-[10px] uppercase">Assigned Analyst</span>
-            <span className="font-semibold text-slate-200">
-              {incident.assigned_to_name || <span className="text-amber-400 italic">Unassigned</span>}
-            </span>
-            <span className="text-slate-500 block text-[10px]">{incident.assignee_email || '—'}</span>
-          </div>
-
-          <div>
-            <span className="text-slate-500 block text-[10px] uppercase">Reported By</span>
-            <span className="font-semibold text-slate-200">{incident.reported_by_name}</span>
-            <span className="text-slate-500 block text-[10px]">
-              {new Date(incident.reported_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </span>
-          </div>
-
-          <div>
-            <span className="text-slate-500 block text-[10px] uppercase">Resolution Timestamp</span>
-            <span className="font-semibold text-slate-200">
+            <span className="text-slate-400 block text-[10px]">Resolved At</span>
+            <span className="font-medium text-slate-200">
               {incident.resolved_at ? (
                 <span className="text-emerald-400 flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   {new Date(incident.resolved_at).toLocaleDateString()}
                 </span>
               ) : (
-                <span className="text-amber-400/80">Pending Triage</span>
+                <span className="text-slate-500">Open</span>
               )}
             </span>
-            <span className="text-slate-500 block text-[10px]">Auto-managed by trigger</span>
           </div>
         </div>
       </div>
 
-      {/* Tabs Section */}
-      <div className="space-y-4">
-        <div className="flex border-b border-slate-800 text-xs font-mono">
+      {/* Tabs */}
+      <div className="space-y-3">
+        <div className="flex border-b border-slate-800 text-xs">
           <button
             onClick={() => setActiveTab('investigations')}
-            className={`py-2 px-4 border-b-2 font-semibold transition-colors flex items-center gap-1.5 ${
+            className={`py-2 px-3 border-b-2 font-medium transition-colors ${
               activeTab === 'investigations'
-                ? 'border-cyan-400 text-cyan-300'
+                ? 'border-blue-500 text-blue-400'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
-            <FileText className="w-3.5 h-3.5" />
-            <span>Forensic Findings ({investigations.length})</span>
+            Investigations ({investigations.length})
           </button>
 
           <button
             onClick={() => setActiveTab('responses')}
-            className={`py-2 px-4 border-b-2 font-semibold transition-colors flex items-center gap-1.5 ${
+            className={`py-2 px-3 border-b-2 font-medium transition-colors ${
               activeTab === 'responses'
-                ? 'border-cyan-400 text-cyan-300'
+                ? 'border-blue-500 text-blue-400'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Shield className="w-3.5 h-3.5" />
-            <span>Containment Actions ({responseActions.length})</span>
+            Responses ({responseActions.length})
           </button>
 
           <button
             onClick={() => setActiveTab('history')}
-            className={`py-2 px-4 border-b-2 font-semibold transition-colors flex items-center gap-1.5 ${
+            className={`py-2 px-3 border-b-2 font-medium transition-colors ${
               activeTab === 'history'
-                ? 'border-cyan-400 text-cyan-300'
+                ? 'border-blue-500 text-blue-400'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Clock className="w-3.5 h-3.5" />
-            <span>Trigger Audit History ({statusHistory.length})</span>
+            Status History ({statusHistory.length})
           </button>
         </div>
 
-        {/* Tab 1: Forensic Investigations */}
+        {/* Tab 1: Investigations */}
         {activeTab === 'investigations' && (
-          <div className="space-y-4">
-            <form onSubmit={handleAddInvestigation} className="cyber-card p-4 space-y-3">
-              <label className="block text-xs font-semibold text-slate-300 font-mono">
-                Log New Forensic Finding
+          <div className="space-y-3">
+            <form onSubmit={handleAddInvestigation} className="clean-card p-4 space-y-2.5">
+              <label className="block text-xs font-medium text-slate-300">
+                Add Investigation Finding
               </label>
               <textarea
                 required
                 rows={2}
                 value={findingText}
                 onChange={(e) => setFindingText(e.target.value)}
-                placeholder="Document sandbox detonated payload, memory analysis, reverse shell artifacts, or Wireshark PCAP analysis..."
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-cyan-500 font-mono"
+                placeholder="Record forensic analysis details, payload behavior, network observations..."
+                className="w-full px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-100 focus:outline-none focus:border-blue-500"
               />
               <button
                 type="submit"
                 disabled={invLoading}
-                className="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold font-mono flex items-center gap-1.5 transition-colors disabled:opacity-50"
+                className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-colors disabled:opacity-50"
               >
-                <Plus className="w-3.5 h-3.5" />
-                <span>{invLoading ? 'Logging...' : 'Add Investigation Entry'}</span>
+                {invLoading ? 'Adding...' : 'Add Finding'}
               </button>
             </form>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               {investigations.length === 0 ? (
-                <div className="p-8 text-center text-xs text-slate-500 font-mono cyber-card">
-                  No forensic investigations logged for this incident yet.
+                <div className="p-6 text-center text-xs text-slate-500 clean-card">
+                  No investigation notes recorded yet.
                 </div>
               ) : (
                 investigations.map((inv) => (
-                  <div key={inv.investigation_id} className="cyber-card p-4 space-y-1.5 text-xs">
-                    <div className="flex items-center justify-between text-slate-400 font-mono text-[11px]">
-                      <span className="text-cyan-400 font-semibold">{inv.analyst_name}</span>
+                  <div key={inv.investigation_id} className="clean-card p-3 space-y-1 text-xs">
+                    <div className="flex items-center justify-between text-slate-400 text-[11px]">
+                      <span className="font-semibold text-slate-200">{inv.analyst_name}</span>
                       <span>{new Date(inv.started_at).toLocaleString()}</span>
                     </div>
-                    <p className="text-slate-200 font-mono bg-slate-900/50 p-2.5 rounded border border-slate-800/80">
-                      {inv.findings}
-                    </p>
+                    <p className="text-slate-300">{inv.findings}</p>
                   </div>
                 ))
               )}
@@ -382,19 +360,19 @@ export default function IncidentDetailPage() {
           </div>
         )}
 
-        {/* Tab 2: Containment Actions */}
+        {/* Tab 2: Response Actions */}
         {activeTab === 'responses' && (
-          <div className="space-y-4">
-            <form onSubmit={handleAddResponse} className="cyber-card p-4 space-y-3">
-              <label className="block text-xs font-semibold text-slate-300 font-mono">
-                Dispatch Containment / Mitigation Response
+          <div className="space-y-3">
+            <form onSubmit={handleAddResponse} className="clean-card p-4 space-y-2.5">
+              <label className="block text-xs font-medium text-slate-300">
+                Log Response / Mitigation Action
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <div>
                   <select
                     value={actionType}
                     onChange={(e) => setActionType(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
+                    className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-200 focus:outline-none focus:border-blue-500"
                   >
                     <option value="Firewall Rule Drop">Firewall Rule Drop</option>
                     <option value="Account Password Revocation">Account Password Revocation</option>
@@ -410,40 +388,35 @@ export default function IncidentDetailPage() {
                     required
                     value={actionDesc}
                     onChange={(e) => setActionDesc(e.target.value)}
-                    placeholder="Describe technical mitigation command or remediation steps taken..."
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-cyan-500 font-mono"
+                    placeholder="Describe containment or remediation steps..."
+                    className="w-full px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-100 focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
               <button
                 type="submit"
                 disabled={respLoading}
-                className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold font-mono flex items-center gap-1.5 transition-colors disabled:opacity-50"
+                className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-colors disabled:opacity-50"
               >
-                <Plus className="w-3.5 h-3.5" />
-                <span>{respLoading ? 'Dispatching...' : 'Execute Response Action'}</span>
+                {respLoading ? 'Saving...' : 'Save Response'}
               </button>
             </form>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               {responseActions.length === 0 ? (
-                <div className="p-8 text-center text-xs text-slate-500 font-mono cyber-card">
-                  No active containment actions logged yet.
+                <div className="p-6 text-center text-xs text-slate-500 clean-card">
+                  No response actions recorded yet.
                 </div>
               ) : (
                 responseActions.map((resp) => (
-                  <div key={resp.response_id} className="cyber-card p-4 space-y-1.5 text-xs">
-                    <div className="flex items-center justify-between font-mono text-[11px]">
-                      <span className="text-emerald-400 font-bold">{resp.action_type}</span>
+                  <div key={resp.response_id} className="clean-card p-3 space-y-1 text-xs">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="font-semibold text-slate-200">{resp.action_type}</span>
                       <span className="text-slate-500">{new Date(resp.performed_at).toLocaleString()}</span>
                     </div>
-                    <p className="text-slate-300 font-mono bg-slate-900/50 p-2.5 rounded border border-slate-800/80">
-                      {resp.description}
-                    </p>
-                    <div className="text-[10px] text-slate-500 font-mono flex items-center gap-2">
-                      <span>Status: <strong className="text-emerald-400">{resp.action_status}</strong></span>
-                      <span>·</span>
-                      <span>Executed by: {resp.performed_by_name}</span>
+                    <p className="text-slate-300">{resp.description}</p>
+                    <div className="text-[10px] text-slate-400">
+                      Status: {resp.action_status} · Performed by: {resp.performed_by_name}
                     </div>
                   </div>
                 ))
@@ -452,37 +425,36 @@ export default function IncidentDetailPage() {
           </div>
         )}
 
-        {/* Tab 3: Trigger Status History */}
+        {/* Tab 3: Status History */}
         {activeTab === 'history' && (
-          <div className="cyber-card p-5 space-y-4">
-            <div className="text-xs text-slate-400 font-mono pb-2 border-b border-slate-800 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-cyan-400" />
-              <span>Immutable Audit Trail (Automated Trigger: trg_incident_status_change)</span>
+          <div className="clean-card p-4 space-y-3">
+            <div className="text-xs text-slate-400 pb-2 border-b border-slate-700">
+              Audit Trail (Automatically populated by database trigger trg_incident_status_change)
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs font-mono">
+              <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-800 text-slate-500">
-                    <th className="py-2 px-3">History ID</th>
-                    <th className="py-2 px-3">Transition</th>
-                    <th className="py-2 px-3">Modifier</th>
-                    <th className="py-2 px-3">Remarks / System Notice</th>
-                    <th className="py-2 px-3">Timestamp</th>
+                  <tr className="border-b border-slate-700 text-slate-400">
+                    <th className="py-2 px-2.5">ID</th>
+                    <th className="py-2 px-2.5">Transition</th>
+                    <th className="py-2 px-2.5">Modified By</th>
+                    <th className="py-2 px-2.5">Remarks</th>
+                    <th className="py-2 px-2.5 text-right">Timestamp</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60">
+                <tbody className="divide-y divide-slate-800">
                   {statusHistory.map((h) => (
-                    <tr key={h.history_id} className="hover:bg-slate-800/30">
-                      <td className="py-2 px-3 text-cyan-400">#{h.history_id}</td>
-                      <td className="py-2 px-3">
+                    <tr key={h.history_id} className="hover:bg-slate-700/20">
+                      <td className="py-2 px-2.5 font-mono text-slate-400">#{h.history_id}</td>
+                      <td className="py-2 px-2.5">
                         <span className="text-slate-400">{h.old_status}</span>
-                        <span className="text-cyan-400 mx-1.5">→</span>
-                        <span className="text-slate-200 font-bold">{h.new_status}</span>
+                        <span className="text-slate-500 mx-1.5">→</span>
+                        <span className="text-slate-200 font-medium">{h.new_status}</span>
                       </td>
-                      <td className="py-2 px-3 text-slate-300">{h.changed_by_name}</td>
-                      <td className="py-2 px-3 text-slate-400">{h.remarks}</td>
-                      <td className="py-2 px-3 text-slate-500">
+                      <td className="py-2 px-2.5 text-slate-300">{h.changed_by_name}</td>
+                      <td className="py-2 px-2.5 text-slate-400">{h.remarks}</td>
+                      <td className="py-2 px-2.5 text-right text-slate-500">
                         {new Date(h.changed_at).toLocaleString()}
                       </td>
                     </tr>
@@ -494,78 +466,73 @@ export default function IncidentDetailPage() {
         )}
       </div>
 
-      {/* Atomic Assignment Modal */}
+      {/* Assignment Modal */}
       {showAssignModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="cyber-card max-w-md w-full p-6 shadow-2xl space-y-4 border-cyan-500/40">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-slate-100 font-mono flex items-center gap-2">
-                <User className="w-4 h-4 text-cyan-400" />
-                <span>ACID Atomic Assignment (sp_assign_incident_atomic)</span>
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
+          <div className="clean-card max-w-sm w-full p-5 space-y-3 shadow-lg">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-700">
+              <h3 className="text-xs font-semibold text-slate-100 uppercase tracking-wide">
+                Assign Incident (Stored Procedure)
               </h3>
               <button
                 onClick={() => setShowAssignModal(false)}
-                className="text-slate-500 hover:text-slate-300 text-sm font-mono"
+                className="text-slate-400 hover:text-slate-200 text-xs"
               >
                 ✕
               </button>
             </div>
 
             {assignMsg && (
-              <div className="p-2.5 rounded bg-red-950/50 border border-red-500/50 text-red-300 text-xs">
+              <div className="p-2 rounded bg-red-950/50 border border-red-800 text-red-200 text-xs">
                 {assignMsg}
               </div>
             )}
 
-            <form onSubmit={handleAtomicAssign} className="space-y-4">
+            <form onSubmit={handleAtomicAssign} className="space-y-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                  Select Certified Security Analyst
-                </label>
+                <label className="block text-xs font-medium text-slate-300 mb-1">Select Analyst</label>
                 <select
                   value={assignAnalystId}
                   onChange={(e) => setAssignAnalystId(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
+                  className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-200 focus:outline-none focus:border-blue-500"
                 >
-                  <option value="2">Alex Rivera (Security Analyst · Tier 2)</option>
-                  <option value="3">David Chen (Security Analyst · Tier 2)</option>
-                  <option value="4">Maya Lin (Security Analyst · Tier 1)</option>
-                  <option value="5">Vikram Rao (Security Analyst · Tier 1)</option>
-                  <option value="6">Elena Rostova (Security Analyst · Tier 1)</option>
+                  <option value="2">Alex Rivera (Security Analyst)</option>
+                  <option value="3">David Chen (Security Analyst)</option>
+                  <option value="4">Maya Lin (Security Analyst)</option>
+                  <option value="5">Vikram Rao (Security Analyst)</option>
+                  <option value="6">Elena Rostova (Security Analyst)</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                  Triage Notes / Dispatch Directive
-                </label>
+                <label className="block text-xs font-medium text-slate-300 mb-1">Notes</label>
                 <textarea
                   rows={2}
                   value={assignNotes}
                   onChange={(e) => setAssignNotes(e.target.value)}
-                  placeholder="Escalated for immediate forensic memory acquisition..."
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-cyan-500 font-mono"
+                  placeholder="Assignment remarks..."
+                  className="w-full px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-100 focus:outline-none focus:border-blue-500"
                 />
               </div>
 
-              <div className="p-2.5 rounded bg-cyan-950/40 border border-cyan-500/30 text-[10px] text-cyan-300 font-mono">
-                Calls PL/pgSQL stored procedure <strong className="text-white">sp_assign_incident_atomic</strong> with full ACID rollback protection.
+              <div className="text-[11px] text-slate-400">
+                Executed via PL/pgSQL procedure <strong className="text-slate-200">sp_assign_incident_atomic</strong> with full ACID rollback.
               </div>
 
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowAssignModal(false)}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs font-mono"
+                  className="px-2.5 py-1.5 rounded bg-slate-800 text-slate-300 text-xs"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={assignLoading}
-                  className="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold font-mono"
+                  className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium"
                 >
-                  {assignLoading ? 'Committing...' : 'Commit Assignment'}
+                  {assignLoading ? 'Assigning...' : 'Confirm Assignment'}
                 </button>
               </div>
             </form>
@@ -575,4 +542,3 @@ export default function IncidentDetailPage() {
     </div>
   );
 }
-
