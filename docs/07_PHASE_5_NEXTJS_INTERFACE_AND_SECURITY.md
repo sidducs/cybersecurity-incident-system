@@ -146,3 +146,4 @@ D:\DBMS Mini Project\
 | **Backend/API & database integration** | RESTful route handlers with safe parameterized DB queries | 13 API endpoints connecting Next.js to PostgreSQL 15 and `pgvector` with connection pooling | **2 / 2** |
 | **Authentication & RBAC** | Front-end and DB role-based access control with >= 2 roles | Passwords hashed via bcrypt, JWT sessions, Admin vs Analyst roles enforced across UI and stored procedures | **4 / 4** |
 | **Total Marks Claimed (Phase 5)** | | | **9 / 9** |
+

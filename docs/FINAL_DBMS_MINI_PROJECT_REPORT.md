@@ -406,3 +406,4 @@ D:\DBMS Mini Project\
 | **Documentation, Git/GitHub** | **2** | **100% COMPLETE** | Complete technical docs, `README.md`, final report, and Git commit history. |
 | **Originality, individual contribution, Modification/Viva** | **4** | **100% COMPLETE** | Original problem formulation, multi-factor risk model, synthetic SOC dataset, dual-paradigm architecture, and viva demonstration scripts. |
 | **Total Marks Claimed** | **50 / 50** | **ALL REQUIREMENTS FULFILLED** | **READY FOR SUBMISSION & EVALUATION** |
+
