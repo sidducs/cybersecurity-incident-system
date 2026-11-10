@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2900 3350" width="2900" height="3350">
+<defs>
+
+        <style>
+            .header-title { font-family: "Segoe UI", Arial, sans-serif; font-size: 38px; font-weight: bold; fill: #1e3a8a; }
+            .header-subtitle { font-family: "Segoe UI", Arial, sans-serif; font-size: 26px; font-weight: 600; fill: #ea580c; }
+            .header-meta { font-family: "Segoe UI", Arial, sans-serif; font-size: 18px; fill: #475569; }
+            .table-title { font-family: "Segoe UI", Arial, sans-serif; font-size: 22px; font-weight: bold; fill: #0f172a; }
+            .cell-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; font-weight: 500; fill: #1e293b; text-anchor: middle; dominant-baseline: middle; }
+            .cell-pk { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: middle; text-decoration: underline; }
+            .cell-fk { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; font-weight: 600; fill: #0369a1; text-anchor: middle; dominant-baseline: middle; }
+            .legend-title { font-family: "Segoe UI", Arial, sans-serif; font-size: 19px; font-weight: bold; fill: #1e293b; }
+            .legend-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 15px; fill: #334155; dominant-baseline: middle; }
+        </style>
+        <marker id="fk-arrow" viewBox="0 0 10 10" refX="5" refY="0" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M 0 10 L 5 0 L 10 10 z" fill="#0f172a" />
+        </marker>
+    
+</defs>
+<rect width="2900" height="3350" fill="#ffffff"/>
+<rect x="0" y="0" width="2900" height="100" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="0" y1="100" x2="2900" y2="100" stroke="#ea580c" stroke-width="5"/>
+<text x="60" y="48" class="header-title">Database Management Systems</text>
+<text x="60" y="82" class="header-subtitle">Result of mapping Cybersecurity Incident Correlation &amp; Response ER schema into a relational database schema</text>
+<text x="2840" y="65" class="header-meta" text-anchor="end">Academic Course: DBMS Experiential Learning (Level 3) | Target RDBMS: PostgreSQL + pgvector</text>
+<text x="220" y="168" class="table-title">ROLES</text>
+<rect x="220" y="180" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="275.0" y="199.0" class="cell-pk">role_id</text>
+<rect x="330" y="180" width="160" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="410.0" y="199.0" class="cell-text">role_name</text>
+<text x="220" y="308" class="table-title">USERS</text>
+<rect x="220" y="320" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="275.0" y="339.0" class="cell-pk">user_id</text>
+<rect x="330" y="320" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="385.0" y="339.0" class="cell-fk">role_id</text>
+<rect x="440" y="320" width="160" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="520.0" y="339.0" class="cell-text">full_name</text>
+<rect x="600" y="320" width="190" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="695.0" y="339.0" class="cell-text">email</text>
+<rect x="790" y="320" width="170" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="875.0" y="339.0" class="cell-text">password_hash</text>
+<rect x="960" y="320" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1015.0" y="339.0" class="cell-text">is_active</text>
+<rect x="1070" y="320" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1140.0" y="339.0" class="cell-text">created_at</text>
+<text x="220" y="458" class="table-title">ASSETS</text>
+<rect x="220" y="470" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="275.0" y="489.0" class="cell-pk">asset_id</text>
+<rect x="330" y="470" width="150" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="405.0" y="489.0" class="cell-text">asset_name</text>
+<rect x="480" y="470" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="545.0" y="489.0" class="cell-text">asset_type</text>
+<rect x="610" y="470" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="670.0" y="489.0" class="cell-text">criticality</text>
+<rect x="730" y="470" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="800.0" y="489.0" class="cell-text">ip_address</text>
+<rect x="870" y="470" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="940.0" y="489.0" class="cell-text">department</text>
+<rect x="1010" y="470" width="100" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1060.0" y="489.0" class="cell-text">is_active</text>
+<rect x="1110" y="470" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1175.0" y="489.0" class="cell-text">created_at</text>
+<text x="220" y="608" class="table-title">INCIDENT_TYPES</text>
+<rect x="220" y="620" width="160" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="300.0" y="639.0" class="cell-pk">incident_type_id</text>
+<rect x="380" y="620" width="160" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="460.0" y="639.0" class="cell-text">type_name</text>
+<rect x="540" y="620" width="220" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="650.0" y="639.0" class="cell-text">description</text>
+<text x="220" y="758" class="table-title">INCIDENTS</text>
+<rect x="220" y="770" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="280.0" y="789.0" class="cell-pk">incident_id</text>
+<rect x="340" y="770" width="160" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="420.0" y="789.0" class="cell-fk">incident_type_id</text>
+<rect x="500" y="770" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="565.0" y="789.0" class="cell-fk">reported_by</text>
+<rect x="630" y="770" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="695.0" y="789.0" class="cell-fk">assigned_to</text>
+<rect x="760" y="770" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="815.0" y="789.0" class="cell-fk">asset_id</text>
+<rect x="870" y="770" width="170" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="955.0" y="789.0" class="cell-text">title</text>
+<rect x="1040" y="770" width="180" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1130.0" y="789.0" class="cell-text">description</text>
+<rect x="1220" y="770" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1275.0" y="789.0" class="cell-text">severity</text>
+<rect x="1330" y="770" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1385.0" y="789.0" class="cell-text">status</text>
+<rect x="1440" y="770" width="100" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1490.0" y="789.0" class="cell-text">priority</text>
+<rect x="1540" y="770" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1595.0" y="789.0" class="cell-text">risk_score</text>
+<rect x="1650" y="770" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1715.0" y="789.0" class="cell-text">reported_at</text>
+<rect x="1780" y="770" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1845.0" y="789.0" class="cell-text">updated_at</text>
+<rect x="1910" y="770" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1975.0" y="789.0" class="cell-text">resolved_at</text>
+<text x="220" y="1028" class="table-title">INVESTIGATIONS</text>
+<rect x="220" y="1040" width="160" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="300.0" y="1059.0" class="cell-pk">investigation_id</text>
+<rect x="380" y="1040" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="445.0" y="1059.0" class="cell-fk">incident_id</text>
+<rect x="510" y="1040" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="570.0" y="1059.0" class="cell-fk">analyst_id</text>
+<rect x="630" y="1040" width="220" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="740.0" y="1059.0" class="cell-text">findings</text>
+<rect x="850" y="1040" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="920.0" y="1059.0" class="cell-text">started_at</text>
+<rect x="990" y="1040" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1060.0" y="1059.0" class="cell-text">completed_at</text>
+<text x="220" y="1288" class="table-title">RESPONSE_ACTIONS</text>
+<rect x="220" y="1300" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="290.0" y="1319.0" class="cell-pk">response_id</text>
+<rect x="360" y="1300" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="425.0" y="1319.0" class="cell-fk">incident_id</text>
+<rect x="490" y="1300" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="560.0" y="1319.0" class="cell-fk">performed_by</text>
+<rect x="630" y="1300" width="150" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="705.0" y="1319.0" class="cell-text">action_type</text>
+<rect x="780" y="1300" width="220" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="890.0" y="1319.0" class="cell-text">description</text>
+<rect x="1000" y="1300" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1065.0" y="1319.0" class="cell-text">action_status</text>
+<rect x="1130" y="1300" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1200.0" y="1319.0" class="cell-text">performed_at</text>
+<text x="220" y="1548" class="table-title">INCIDENT_STATUS_HISTORY</text>
+<rect x="220" y="1560" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="280.0" y="1579.0" class="cell-pk">history_id</text>
+<rect x="340" y="1560" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="405.0" y="1579.0" class="cell-fk">incident_id</text>
+<rect x="470" y="1560" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="530.0" y="1579.0" class="cell-text">old_status</text>
+<rect x="590" y="1560" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="650.0" y="1579.0" class="cell-text">new_status</text>
+<rect x="710" y="1560" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="775.0" y="1579.0" class="cell-fk">changed_by</text>
+<rect x="840" y="1560" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="910.0" y="1579.0" class="cell-text">changed_at</text>
+<rect x="980" y="1560" width="200" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1080.0" y="1579.0" class="cell-text">remarks</text>
+<text x="220" y="1808" class="table-title">RISK_ASSESSMENTS</text>
+<rect x="220" y="1820" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="275.0" y="1839.0" class="cell-pk">risk_id</text>
+<rect x="330" y="1820" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="395.0" y="1839.0" class="cell-fk">incident_id</text>
+<rect x="460" y="1820" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="530.0" y="1839.0" class="cell-text">severity_score</text>
+<rect x="600" y="1820" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="660.0" y="1839.0" class="cell-text">asset_score</text>
+<rect x="720" y="1820" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="785.0" y="1839.0" class="cell-text">impact_score</text>
+<rect x="850" y="1820" width="120" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="910.0" y="1839.0" class="cell-text">risk_score</text>
+<rect x="970" y="1820" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1025.0" y="1839.0" class="cell-text">risk_level</text>
+<rect x="1080" y="1820" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1150.0" y="1839.0" class="cell-fk">calculated_by</text>
+<rect x="1220" y="1820" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1290.0" y="1839.0" class="cell-text">calculated_at</text>
+<text x="220" y="2068" class="table-title">AUDIT_LOGS</text>
+<rect x="220" y="2080" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="275.0" y="2099.0" class="cell-pk">audit_id</text>
+<rect x="330" y="2080" width="110" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="385.0" y="2099.0" class="cell-fk">user_id</text>
+<rect x="440" y="2080" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="505.0" y="2099.0" class="cell-fk">incident_id</text>
+<rect x="570" y="2080" width="150" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="645.0" y="2099.0" class="cell-text">action</text>
+<rect x="720" y="2080" width="250" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="845.0" y="2099.0" class="cell-text">description</text>
+<rect x="970" y="2080" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1040.0" y="2099.0" class="cell-text">created_at</text>
+<text x="220" y="2328" class="table-title">INCIDENT_EMBEDDINGS</text>
+<rect x="220" y="2340" width="150" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="295.0" y="2359.0" class="cell-pk">embedding_id</text>
+<rect x="370" y="2340" width="130" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="435.0" y="2359.0" class="cell-fk">incident_id</text>
+<rect x="500" y="2340" width="220" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="610.0" y="2359.0" class="cell-text">embedding (vector_384)</text>
+<rect x="720" y="2340" width="180" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="810.0" y="2359.0" class="cell-text">model_name</text>
+<rect x="900" y="2340" width="140" height="38" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="970.0" y="2359.0" class="cell-text">created_at</text>
+<path d="M 385.0 358 L 385.0 376 L 290.0 376 L 290.0 218" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 420.0 808 L 420.0 828 L 315.0 828 L 315.0 658" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 565.0 808 L 565.0 846 L 190 846 L 190 376 L 250.0 376 L 250.0 358" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 695.0 808 L 695.0 864 L 170 864 L 170 376 L 265.0 376 L 265.0 358" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 815.0 808 L 815.0 882 L 150 882 L 150 526 L 290.0 526 L 290.0 508" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 445.0 1078 L 445.0 1098 L 255.0 1098 L 255.0 808" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 570.0 1078 L 570.0 1116 L 130 1116 L 130 376 L 280.0 376 L 280.0 358" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 425.0 1338 L 425.0 1358 L 270.0 1358 L 270.0 808" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 560.0 1338 L 560.0 1376 L 110 1376 L 110 376 L 295.0 376 L 295.0 358" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 405.0 1598 L 405.0 1618 L 285.0 1618 L 285.0 808" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 775.0 1598 L 775.0 1636 L 90 1636 L 90 376 L 307.0 376 L 307.0 358" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 395.0 1858 L 395.0 1878 L 300.0 1878 L 300.0 808" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 1150.0 1858 L 1150.0 1896 L 70 1896 L 70 376 L 319.0 376 L 319.0 358" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 385.0 2118 L 385.0 2138 L 50 2138 L 50 376 L 237.0 376 L 237.0 358" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 505.0 2118 L 505.0 2156 L 315.0 2156 L 315.0 808" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<path d="M 435.0 2378 L 435.0 2398 L 240.0 2398 L 240.0 808" fill="none" stroke="#0f172a" stroke-width="1.8" marker-end="url(#fk-arrow)"/>
+<rect x="220" y="2580" width="2560" height="300" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.8" rx="6"/>
+<text x="250" y="2620" class="legend-title">Academic Relational Schema Notation &amp; Referential Integrity Reference (Elmasri &amp; Navathe Chapter 9)</text>
+<rect x="260" y="2650" width="160" height="34" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="340" y="2667" class="cell-pk">Primary_Key</text>
+<text x="440" y="2667" class="legend-text"><b>Primary Key (Solidly Underlined):</b> Uniquely identifies entity tuples; cannot be NULL (Entity Integrity Constraint).</text>
+<rect x="260" y="2700" width="160" height="34" fill="#f8fafc" stroke="#1e293b" stroke-width="1.8"/>
+<text x="340" y="2717" class="cell-fk">Foreign_Key</text>
+<text x="440" y="2717" class="legend-text"><b>Foreign Key (Referencing Field):</b> Must match candidate key value in referenced relation or be NULL (Referential Integrity).</text>
+<path d="M 270 2765 L 370 2765 L 370 2750" fill="none" stroke="#0f172a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<text x="440" y="2758" class="legend-text"><b>Referential Integrity Directed Arrow:</b> Originates at the Foreign Key cell and points directly into the referenced Primary Key cell.</text>
+<text x="260" y="2810" class="legend-text" font-weight="bold">Schema Normalization Status: All 11 relations are in 3NF and BCNF.</text>
+<text x="260" y="2835" class="legend-text">• 1NF: Atomic domain values, no repeating groups  |  • 2NF: No partial key dependencies  |  • 3NF &amp; BCNF: No transitive dependencies on candidate keys.</text>
+</svg>

@@ -1,0 +1,424 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3400 2600" width="3400" height="2600">
+<defs>
+
+        <style>
+            .header-title { font-family: "Segoe UI", Arial, sans-serif; font-size: 38px; font-weight: bold; fill: #1e3a8a; }
+            .header-subtitle { font-family: "Segoe UI", Arial, sans-serif; font-size: 26px; font-weight: 600; fill: #ea580c; }
+            .header-meta { font-family: "Segoe UI", Arial, sans-serif; font-size: 18px; fill: #475569; }
+            .entity-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 22px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: middle; }
+            .rel-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: middle; }
+            .attr-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; font-weight: 500; fill: #1e293b; text-anchor: middle; dominant-baseline: middle; }
+            .attr-pk { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: middle; text-decoration: underline; }
+            .attr-partial-pk { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: middle; }
+            .card-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: middle; }
+            .constraint-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 15px; font-weight: 600; fill: #475569; text-anchor: middle; dominant-baseline: middle; }
+            .role-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; font-style: italic; font-weight: 600; fill: #b91c1c; text-anchor: middle; dominant-baseline: middle; }
+            .legend-title { font-family: "Segoe UI", Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #1e293b; }
+            .legend-text { font-family: "Segoe UI", Arial, sans-serif; font-size: 14px; fill: #334155; dominant-baseline: middle; }
+        </style>
+        <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a" />
+        </marker>
+    
+</defs>
+<rect width="3400" height="2600" fill="#ffffff"/>
+<rect x="0" y="0" width="3400" height="100" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="0" y1="100" x2="3400" y2="100" stroke="#ea580c" stroke-width="5"/>
+<text x="60" y="48" class="header-title">Database Management Systems</text>
+<text x="60" y="82" class="header-subtitle">Cybersecurity Incident Correlation &amp; Response Intelligence System — Entity-Relationship (ER) Diagram (Chen Notation)</text>
+<text x="3340" y="65" class="header-meta" text-anchor="end">Academic Course: DBMS Experiential Learning (Level 3) | Target RDBMS: PostgreSQL + pgvector</text>
+<line x1="250" y1="750" x2="140" y2="640" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="140" cy="640" rx="65" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2.2"/>
+<text x="140" y="640" class="attr-pk">role_id</text>
+<line x1="250" y1="750" x2="130" y2="750" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="130" cy="750" rx="70" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="130" y="750" class="attr-text">role_name</text>
+<rect x="175.0" y="720.0" width="150" height="60" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<text x="250" y="750" class="entity-text">ROLES</text>
+<line x1="250" y1="750" x2="480" y2="880" stroke="#1e293b" stroke-width="2" />
+<line x1="751.421484631187" y1="996.8016595798291" x2="481.42148463118707" y2="876.8016595798291" stroke="#1e293b" stroke-width="2"/>
+<line x1="748.578515368813" y1="1003.1983404201709" x2="478.57851536881293" y2="883.1983404201709" stroke="#1e293b" stroke-width="2"/>
+<polygon points="480,842.5 565.0,880 480,917.5 395.0,880" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="480" y="880" class="rel-text">ASSIGNED_ROLE</text>
+<text x="430" y="840" class="card-text">1</text>
+<text x="450" y="860" class="constraint-text">(1, N)</text>
+<text x="525" y="920" class="card-text">N</text>
+<text x="545" y="938" class="constraint-text">(1, 1)</text>
+<line x1="750" y1="1000" x2="610" y2="860" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="610" cy="860" rx="65" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2.2"/>
+<text x="610" y="860" class="attr-pk">user_id</text>
+<line x1="750" y1="1000" x2="500" y2="960" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="500" cy="960" rx="60" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="500" y="960" class="attr-text">Name</text>
+<line x1="500" y1="960" x2="360" y2="920" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="360" cy="920" rx="65" ry="24" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="360" y="920" class="attr-text">First_name</text>
+<line x1="500" y1="960" x2="360" y2="980" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="360" cy="980" rx="65" ry="24" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="360" y="980" class="attr-text">Last_name</text>
+<line x1="750" y1="1000" x2="490" y2="1060" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="490" cy="1060" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="490" y="1060" class="attr-text">Email</text>
+<line x1="750" y1="1000" x2="520" y2="1140" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="520" cy="1140" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="520" y="1140" class="attr-text">Password_hash</text>
+<line x1="750" y1="1000" x2="600" y2="1210" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="600" cy="1210" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="600" y="1210" class="attr-text">Is_active</text>
+<line x1="750" y1="1000" x2="710" y2="1240" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="710" cy="1240" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="710" y="1240" class="attr-text">Created_at</text>
+<line x1="750" y1="1000" x2="830" y2="1220" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="830" cy="1220" rx="80" ry="26" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+<ellipse cx="830" cy="1220" rx="75" ry="22" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+<text x="830" y="1220" class="attr-text">Phone_numbers</text>
+<path d="M 710 970 Q 630 820 650 750" fill="none" stroke="#1e293b" stroke-width="2"/>
+<path d="M 770 970 Q 830 840 650 750" fill="none" stroke="#1e293b" stroke-width="2"/>
+<polygon points="650,715.0 730.0,750 650,785.0 570.0,750" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="650" y="750" class="rel-text">SUPERVISION</text>
+<text x="560" y="755" class="role-text">Supervisor</text>
+<text x="605" y="785" class="card-text">1</text>
+<text x="730" y="755" class="role-text">Supervisee</text>
+<text x="695" y="785" class="card-text">N</text>
+<rect x="665.0" y="967.5" width="170" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<text x="750" y="1000" class="entity-text">USERS</text>
+<line x1="1300" y1="500" x2="1150" y2="390" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1150" cy="390" rx="65" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2.2"/>
+<text x="1150" y="390" class="attr-pk">asset_id</text>
+<line x1="1300" y1="500" x2="1280" y2="380" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1280" cy="380" rx="70" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1280" y="380" class="attr-text">Asset_name</text>
+<line x1="1300" y1="500" x2="1410" y2="390" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1410" cy="390" rx="65" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1410" y="390" class="attr-text">Asset_type</text>
+<line x1="1300" y1="500" x2="1480" y2="460" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1480" cy="460" rx="65" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1480" y="460" class="attr-text">Criticality</text>
+<line x1="1300" y1="500" x2="1470" y2="540" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1470" cy="540" rx="65" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1470" y="540" class="attr-text">Department</text>
+<line x1="1300" y1="500" x2="1410" y2="610" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1410" cy="610" rx="65" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1410" y="610" class="attr-text">Is_active</text>
+<line x1="1300" y1="500" x2="1140" y2="600" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1140" cy="600" rx="75" ry="26" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+<ellipse cx="1140" cy="600" rx="70" ry="22" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+<text x="1140" y="600" class="attr-text">IP_addresses</text>
+<line x1="1300" y1="500" x2="1110" y2="490" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1110" cy="490" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1110" y="490" class="attr-text">Location</text>
+<line x1="1110" y1="490" x2="970" y2="460" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="970" cy="460" rx="65" ry="24" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="970" y="460" class="attr-text">Data_center</text>
+<line x1="1110" y1="490" x2="970" y2="520" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="970" cy="520" rx="60" ry="24" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="970" y="520" class="attr-text">Rack_no</text>
+<rect x="1215.0" y="467.5" width="170" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<text x="1300" y="500" class="entity-text">ASSETS</text>
+<line x1="2100" y1="500" x2="1940" y2="410" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1940" cy="410" rx="85" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2.2"/>
+<text x="1940" y="410" class="attr-pk">incident_type_id</text>
+<line x1="2100" y1="500" x2="2100" y2="390" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2100" cy="390" rx="70" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2100" y="390" class="attr-text">Type_name</text>
+<line x1="2100" y1="500" x2="2240" y2="430" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2240" cy="430" rx="70" ry="26" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2240" y="430" class="attr-text">Description</text>
+<rect x="2005.0" y="467.5" width="190" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<text x="2100" y="500" class="entity-text">INCIDENT_TYPES</text>
+<line x1="1700" y1="1250" x2="1480" y2="1150" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1480" cy="1150" rx="70" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2.2"/>
+<text x="1480" y="1150" class="attr-pk">incident_id</text>
+<line x1="1700" y1="1250" x2="1460" y2="1220" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1460" cy="1220" rx="55" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1460" y="1220" class="attr-text">Title</text>
+<line x1="1700" y1="1250" x2="1460" y2="1290" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1460" cy="1290" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1460" y="1290" class="attr-text">Description</text>
+<line x1="1700" y1="1250" x2="1490" y2="1360" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1490" cy="1360" rx="60" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1490" y="1360" class="attr-text">Severity</text>
+<line x1="1700" y1="1250" x2="1540" y2="1420" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1540" cy="1420" rx="55" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1540" y="1420" class="attr-text">Status</text>
+<line x1="1700" y1="1250" x2="1620" y2="1460" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1620" cy="1460" rx="55" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1620" y="1460" class="attr-text">Priority</text>
+<line x1="1700" y1="1250" x2="1700" y2="1475" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1700" cy="1475" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1700" y="1475" class="attr-text">Reported_at</text>
+<line x1="1700" y1="1250" x2="1780" y2="1460" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1780" cy="1460" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1780" y="1460" class="attr-text">Updated_at</text>
+<line x1="1700" y1="1250" x2="1860" y2="1420" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1860" cy="1420" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1860" y="1420" class="attr-text">Resolved_at</text>
+<line x1="1700" y1="1250" x2="1910" y2="1340" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1910" cy="1340" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="1910" y="1340" class="attr-text">Risk_score</text>
+<line x1="1700" y1="1250" x2="1920" y2="1250" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1920" cy="1250" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="1920" y="1250" class="attr-text">Turnaround_time</text>
+<line x1="1300" y1="500" x2="1500" y2="875" stroke="#1e293b" stroke-width="2" />
+<line x1="1703.0882352941176" y1="1248.3529411764705" x2="1503.0882352941176" y2="873.3529411764706" stroke="#1e293b" stroke-width="2"/>
+<line x1="1696.9117647058824" y1="1251.6470588235295" x2="1496.9117647058824" y2="876.6470588235294" stroke="#1e293b" stroke-width="2"/>
+<polygon points="1500,840.0 1575.0,875 1500,910.0 1425.0,875" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="1500" y="875" class="rel-text">AFFECTS</text>
+<text x="1455" y="830" class="card-text">1</text>
+<text x="1435" y="850" class="constraint-text">(0, N)</text>
+<text x="1535" y="930" class="card-text">N</text>
+<text x="1555" y="950" class="constraint-text">(1, 1)</text>
+<line x1="2100" y1="500" x2="1900" y2="875" stroke="#1e293b" stroke-width="2" />
+<line x1="1703.0882352941176" y1="1251.6470588235295" x2="1903.0882352941176" y2="876.6470588235294" stroke="#1e293b" stroke-width="2"/>
+<line x1="1696.9117647058824" y1="1248.3529411764705" x2="1896.9117647058824" y2="873.3529411764706" stroke="#1e293b" stroke-width="2"/>
+<polygon points="1900,840.0 1980.0,875 1900,910.0 1820.0,875" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="1900" y="875" class="rel-text">CLASSIFIES</text>
+<text x="1945" y="830" class="card-text">1</text>
+<text x="1965" y="850" class="constraint-text">(0, N)</text>
+<text x="1865" y="930" class="card-text">N</text>
+<text x="1845" y="950" class="constraint-text">(1, 1)</text>
+<line x1="750" y1="1000" x2="1180" y2="1140" stroke="#1e293b" stroke-width="2" />
+<line x1="1700.7243550686553" y1="1246.5757760390836" x2="1180.7243550686553" y2="1136.5757760390836" stroke="#1e293b" stroke-width="2"/>
+<line x1="1699.2756449313447" y1="1253.4242239609164" x2="1179.2756449313447" y2="1143.4242239609164" stroke="#1e293b" stroke-width="2"/>
+<polygon points="1180,1105.0 1255.0,1140 1180,1175.0 1105.0,1140" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="1180" y="1140" class="rel-text">REPORTS</text>
+<text x="1100" y="1125" class="role-text">[Reporter]</text>
+<text x="1130" y="1105" class="card-text">1</text>
+<text x="1150" y="1085" class="constraint-text">(0, N)</text>
+<text x="1225" y="1170" class="card-text">N</text>
+<text x="1245" y="1188" class="constraint-text">(1, 1)</text>
+<line x1="750" y1="1000" x2="1220" y2="1350" stroke="#1e293b" stroke-width="2" />
+<line x1="1700" y1="1250" x2="1220" y2="1350" stroke="#1e293b" stroke-width="2" />
+<polygon points="1220,1315.0 1300.0,1350 1220,1385.0 1140.0,1350" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="1220" y="1350" class="rel-text">ASSIGNED_TO</text>
+<text x="1135" y="1370" class="role-text">[Assigned Analyst]</text>
+<text x="1175" y="1320" class="card-text">1</text>
+<text x="1195" y="1302" class="constraint-text">(0, N)</text>
+<text x="1265" y="1335" class="card-text">N</text>
+<text x="1285" y="1318" class="constraint-text">(0, 1)</text>
+<line x1="1220" y1="1350" x2="1220" y2="1460" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1220" cy="1460" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1220" y="1460" class="attr-text">Assigned_date</text>
+<rect x="1600.0" y="1215.0" width="200" height="70" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<text x="1700" y="1250" class="entity-text">INCIDENTS</text>
+<line x1="1700" y1="1250" x2="2225" y2="1100" stroke="#1e293b" stroke-width="2" />
+<line x1="2749.0384760523593" y1="946.6346661832571" x2="2224.0384760523593" y2="1096.6346661832572" stroke="#1e293b" stroke-width="2"/>
+<line x1="2750.9615239476407" y1="953.3653338167429" x2="2225.9615239476407" y2="1103.3653338167428" stroke="#1e293b" stroke-width="2"/>
+<polygon points="2225,1060.0 2320.0,1100 2225,1140.0 2130.0,1100" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<polygon points="2225,1065.0 2313.0,1100 2225,1135.0 2137.0,1100" fill="#f1f5f9" stroke="#1e293b" stroke-width="1.8"/>
+<text x="2225" y="1100" class="rel-text">HAS_INVESTIGATION</text>
+<text x="2175" y="1070" class="card-text">1</text>
+<text x="2195" y="1052" class="constraint-text">(0, N)</text>
+<text x="2270" y="1070" class="card-text">N</text>
+<text x="2290" y="1052" class="constraint-text">(1, 1)</text>
+<line x1="2750" y1="950" x2="2950" y2="850" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2950" cy="850" rx="85" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+<text x="2950" y="849" class="attr-partial-pk">investigation_no</text>
+<line x1="2874.0" y1="858" x2="3026.0" y2="858" stroke="#0f172a" stroke-width="1.8" stroke-dasharray="3,3"/>
+<line x1="2750" y1="950" x2="2960" y2="920" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2960" cy="920" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2960" y="920" class="attr-text">Findings</text>
+<line x1="2750" y1="950" x2="2960" y2="980" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2960" cy="980" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2960" y="980" class="attr-text">Started_at</text>
+<line x1="2750" y1="950" x2="2950" y2="1050" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2950" cy="1050" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2950" y="1050" class="attr-text">Completed_at</text>
+<line x1="2750" y1="950" x2="2860" y2="1090" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2860" cy="1090" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="2860" y="1090" class="attr-text">Duration_hours</text>
+<path d="M 800 970 Q 1400 680 2100 740" fill="none" stroke="#1e293b" stroke-width="2"/>
+<line x1="2751.0760066907915" y1="946.6695030999307" x2="2101.0760066907915" y2="736.6695030999307" stroke="#1e293b" stroke-width="2"/>
+<line x1="2748.9239933092085" y1="953.3304969000693" x2="2098.9239933092085" y2="743.3304969000693" stroke="#1e293b" stroke-width="2"/>
+<polygon points="2100,705.0 2180.0,740 2100,775.0 2020.0,740" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="2100" y="740" class="rel-text">CONDUCTS</text>
+<text x="2040" y="720" class="card-text">1</text>
+<text x="2140" y="715" class="card-text">N</text>
+<rect x="2640.0" y="917.5" width="220" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<rect x="2645.0" y="922.5" width="210" height="55" fill="#f8fafc" stroke="#1e293b" stroke-width="2" rx="1"/>
+<text x="2750" y="950" class="entity-text">INVESTIGATIONS</text>
+<line x1="1700" y1="1250" x2="2225" y2="1400" stroke="#1e293b" stroke-width="2" />
+<line x1="2750.9615239476407" y1="1546.6346661832572" x2="2225.9615239476407" y2="1396.6346661832572" stroke="#1e293b" stroke-width="2"/>
+<line x1="2749.0384760523593" y1="1553.3653338167428" x2="2224.0384760523593" y2="1403.3653338167428" stroke="#1e293b" stroke-width="2"/>
+<polygon points="2225,1360.0 2315.0,1400 2225,1440.0 2135.0,1400" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<polygon points="2225,1365.0 2308.0,1400 2225,1435.0 2142.0,1400" fill="#f1f5f9" stroke="#1e293b" stroke-width="1.8"/>
+<text x="2225" y="1400" class="rel-text">HAS_RESPONSE</text>
+<text x="2175" y="1440" class="card-text">1</text>
+<text x="2195" y="1458" class="constraint-text">(0, N)</text>
+<text x="2270" y="1440" class="card-text">N</text>
+<text x="2290" y="1458" class="constraint-text">(1, 1)</text>
+<line x1="2750" y1="1550" x2="2950" y2="1450" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2950" cy="1450" rx="75" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+<text x="2950" y="1449" class="attr-partial-pk">action_seq</text>
+<line x1="2902.5" y1="1458" x2="2997.5" y2="1458" stroke="#0f172a" stroke-width="1.8" stroke-dasharray="3,3"/>
+<line x1="2750" y1="1550" x2="2960" y2="1520" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2960" cy="1520" rx="70" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2960" y="1520" class="attr-text">Action_type</text>
+<line x1="2750" y1="1550" x2="2960" y2="1590" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2960" cy="1590" rx="70" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2960" y="1590" class="attr-text">Description</text>
+<line x1="2750" y1="1550" x2="2950" y2="1660" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2950" cy="1660" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2950" y="1660" class="attr-text">Action_status</text>
+<line x1="2750" y1="1550" x2="2860" y2="1710" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2860" cy="1710" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2860" y="1710" class="attr-text">Performed_at</text>
+<path d="M 810 1030 Q 1300 1700 2050 1600" fill="none" stroke="#1e293b" stroke-width="2"/>
+<line x1="2749.7506353250424" y1="1546.5088945505925" x2="2049.7506353250424" y2="1596.5088945505925" stroke="#1e293b" stroke-width="2"/>
+<line x1="2750.2493646749576" y1="1553.4911054494075" x2="2050.2493646749576" y2="1603.4911054494075" stroke="#1e293b" stroke-width="2"/>
+<polygon points="2050,1565.0 2130.0,1600 2050,1635.0 1970.0,1600" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="2050" y="1600" class="rel-text">PERFORMS</text>
+<text x="1990" y="1620" class="card-text">1</text>
+<text x="2090" y="1580" class="card-text">N</text>
+<line x1="2050" y1="1600" x2="2050" y2="1710" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2050" cy="1710" rx="80" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2050" y="1710" class="attr-text">Approval_status</text>
+<rect x="2640.0" y="1517.5" width="220" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<rect x="2645.0" y="1522.5" width="210" height="55" fill="#f8fafc" stroke="#1e293b" stroke-width="2" rx="1"/>
+<text x="2750" y="1550" class="entity-text">RESPONSE_ACTIONS</text>
+<line x1="1700" y1="1250" x2="1700" y2="1780" stroke="#1e293b" stroke-width="2" />
+<line x1="1703.5" y1="2100.0" x2="1703.5" y2="1780.0" stroke="#1e293b" stroke-width="2"/>
+<line x1="1696.5" y1="2100.0" x2="1696.5" y2="1780.0" stroke="#1e293b" stroke-width="2"/>
+<polygon points="1700,1740.0 1790.0,1780 1700,1820.0 1610.0,1780" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<polygon points="1700,1745.0 1783.0,1780 1700,1815.0 1617.0,1780" fill="#f1f5f9" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1700" y="1780" class="rel-text">TRACKS_STATUS</text>
+<text x="1675" y="1730" class="card-text">1</text>
+<text x="1655" y="1748" class="constraint-text">(0, N)</text>
+<text x="1675" y="1830" class="card-text">N</text>
+<text x="1655" y="1848" class="constraint-text">(1, 1)</text>
+<line x1="1700" y1="2100" x2="1500" y2="2190" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1500" cy="2190" rx="70" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+<text x="1500" y="2189" class="attr-partial-pk">history_seq</text>
+<line x1="1447.75" y1="2198" x2="1552.25" y2="2198" stroke="#0f172a" stroke-width="1.8" stroke-dasharray="3,3"/>
+<line x1="1700" y1="2100" x2="1610" y2="2230" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1610" cy="2230" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1610" y="2230" class="attr-text">Old_status</text>
+<line x1="1700" y1="2100" x2="1720" y2="2240" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1720" cy="2240" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1720" y="2240" class="attr-text">New_status</text>
+<line x1="1700" y1="2100" x2="1830" y2="2230" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1830" cy="2230" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1830" y="2230" class="attr-text">Changed_at</text>
+<line x1="1700" y1="2100" x2="1940" y2="2190" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1940" cy="2190" rx="60" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1940" y="2190" class="attr-text">Remarks</text>
+<rect x="1560.0" y="2067.5" width="280" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<rect x="1565.0" y="2072.5" width="270" height="55" fill="#f8fafc" stroke="#1e293b" stroke-width="2" rx="1"/>
+<text x="1700" y="2100" class="entity-text">INCIDENT_STATUS_HISTORY</text>
+<line x1="1700" y1="1250" x2="1400" y2="1750" stroke="#1e293b" stroke-width="2" />
+<line x1="1102.6573981082786" y1="2102.277769807096" x2="1402.6573981082786" y2="1752.2777698070959" stroke="#1e293b" stroke-width="2"/>
+<line x1="1097.3426018917214" y1="2097.722230192904" x2="1397.3426018917214" y2="1747.7222301929041" stroke="#1e293b" stroke-width="2"/>
+<polygon points="1400,1710.0 1490.0,1750 1400,1790.0 1310.0,1750" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<polygon points="1400,1715.0 1483.0,1750 1400,1785.0 1317.0,1750" fill="#f1f5f9" stroke="#1e293b" stroke-width="1.8"/>
+<text x="1400" y="1750" class="rel-text">ASSESSES_RISK</text>
+<text x="1435" y="1710" class="card-text">1</text>
+<text x="1365" y="1790" class="card-text">N</text>
+<line x1="1100" y1="2100" x2="900" y2="2190" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="900" cy="2190" rx="85" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+<text x="900" y="2189" class="attr-partial-pk">assessment_seq</text>
+<line x1="833.5" y1="2198" x2="966.5" y2="2198" stroke="#0f172a" stroke-width="1.8" stroke-dasharray="3,3"/>
+<line x1="1100" y1="2100" x2="1020" y2="2240" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1020" cy="2240" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1020" y="2240" class="attr-text">Severity_score</text>
+<line x1="1100" y1="2100" x2="1140" y2="2250" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1140" cy="2250" rx="70" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1140" y="2250" class="attr-text">Asset_score</text>
+<line x1="1100" y1="2100" x2="1250" y2="2240" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1250" cy="2240" rx="70" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1250" y="2240" class="attr-text">Impact_score</text>
+<line x1="1100" y1="2100" x2="1340" y2="2190" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="1340" cy="2190" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="1340" y="2190" class="attr-text">Risk_level</text>
+<rect x="985.0" y="2067.5" width="230" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<rect x="990.0" y="2072.5" width="220" height="55" fill="#f8fafc" stroke="#1e293b" stroke-width="2" rx="1"/>
+<text x="1100" y="2100" class="entity-text">RISK_ASSESSMENTS</text>
+<line x1="1700" y1="1250" x2="2000" y2="1750" stroke="#1e293b" stroke-width="2" />
+<line x1="2302.6573981082784" y1="2097.722230192904" x2="2002.6573981082786" y2="1747.7222301929041" stroke="#1e293b" stroke-width="2"/>
+<line x1="2297.3426018917216" y1="2102.277769807096" x2="1997.3426018917214" y2="1752.2777698070959" stroke="#1e293b" stroke-width="2"/>
+<polygon points="2000,1710.0 2085.0,1750 2000,1790.0 1915.0,1750" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<polygon points="2000,1715.0 2078.0,1750 2000,1785.0 1922.0,1750" fill="#f1f5f9" stroke="#1e293b" stroke-width="1.8"/>
+<text x="2000" y="1750" class="rel-text">VECTORIZES</text>
+<text x="1965" y="1710" class="card-text">1</text>
+<text x="2035" y="1790" class="card-text">1</text>
+<line x1="2300" y1="2100" x2="2150" y2="2230" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2150" cy="2230" rx="80" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+<text x="2150" y="2229" class="attr-partial-pk">embedding_no</text>
+<line x1="2093.0" y1="2238" x2="2207.0" y2="2238" stroke="#0f172a" stroke-width="1.8" stroke-dasharray="3,3"/>
+<line x1="2300" y1="2100" x2="2280" y2="2250" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2280" cy="2250" rx="85" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2280" y="2250" class="attr-text">vector(384_dim)</text>
+<line x1="2300" y1="2100" x2="2410" y2="2240" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2410" cy="2240" rx="75" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2410" y="2240" class="attr-text">Model_name</text>
+<line x1="2300" y1="2100" x2="2510" y2="2190" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="2510" cy="2190" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="2510" y="2190" class="attr-text">Created_at</text>
+<rect x="2175.0" y="2067.5" width="250" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<rect x="2180.0" y="2072.5" width="240" height="55" fill="#f8fafc" stroke="#1e293b" stroke-width="2" rx="1"/>
+<text x="2300" y="2100" class="entity-text">INCIDENT_EMBEDDINGS</text>
+<line x1="550" y1="1650" x2="400" y2="1560" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="400" cy="1560" rx="65" ry="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2.2"/>
+<text x="400" y="1560" class="attr-pk">audit_id</text>
+<line x1="550" y1="1650" x2="390" y2="1650" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="390" cy="1650" rx="60" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="390" y="1650" class="attr-text">Action</text>
+<line x1="550" y1="1650" x2="410" y2="1740" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="410" cy="1740" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="410" y="1740" class="attr-text">Description</text>
+<line x1="550" y1="1650" x2="500" y2="1780" stroke="#1e293b" stroke-width="2" />
+<ellipse cx="500" cy="1780" rx="65" ry="25" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<text x="500" y="1780" class="attr-text">Created_at</text>
+<line x1="750" y1="1000" x2="650" y2="1380" stroke="#1e293b" stroke-width="2" />
+<line x1="553.282120662533" y1="1651.2156002453826" x2="653.282120662533" y2="1381.2156002453826" stroke="#1e293b" stroke-width="2"/>
+<line x1="546.717879337467" y1="1648.7843997546174" x2="646.717879337467" y2="1378.7843997546174" stroke="#1e293b" stroke-width="2"/>
+<polygon points="650,1347.5 720.0,1380 650,1412.5 580.0,1380" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.5"/>
+<text x="650" y="1380" class="rel-text">LOGS_USER</text>
+<text x="675" y="1350" class="card-text">1</text>
+<text x="625" y="1415" class="card-text">N</text>
+<rect x="465.0" y="1617.5" width="170" height="65" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5" rx="2"/>
+<text x="550" y="1650" class="entity-text">AUDIT_LOGS</text>
+<rect x="60" y="2340" width="3280" height="200" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" rx="6"/>
+<text x="85" y="2370" class="legend-title">Figure 3.14 / Slide Reference: Summary of Academic Notation for ER Diagrams (Chen / Elmasri &amp; Navathe Standard)</text>
+<rect x="100" y="2395" width="80" height="30" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+<text x="140" y="2412" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">Entity</text>
+<text x="190" y="2412" class="legend-text">Strong Entity Set</text>
+<rect x="100" y="2440" width="80" height="30" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+<rect x="103" y="2443" width="74" height="24" fill="#ffffff" stroke="#1e293b" stroke-width="1.5"/>
+<text x="140" y="2457" font-family="Arial" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="middle">Weak Entity</text>
+<text x="190" y="2457" class="legend-text">Weak Entity Set</text>
+<polygon points="390,2395 430,2410 390,2425 350,2410" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+<text x="390" y="2412" font-family="Arial" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="middle">Rel</text>
+<text x="440" y="2412" class="legend-text">Relationship Set</text>
+<polygon points="390,2440 430,2455 390,2470 350,2455" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+<polygon points="390,2444 424,2455 390,2466 356,2455" fill="#ffffff" stroke="#1e293b" stroke-width="1.5"/>
+<text x="390" y="2457" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" dominant-baseline="middle">Id Rel</text>
+<text x="440" y="2457" class="legend-text">Identifying Rel</text>
+<ellipse cx="640" cy="2410" rx="38" ry="16" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+<text x="640" y="2412" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle" text-decoration="underline">Key</text>
+<text x="690" y="2412" class="legend-text">Primary Key</text>
+<ellipse cx="640" cy="2455" rx="38" ry="16" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+<text x="640" y="2456" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">Partial</text>
+<line x1="622" y1="2464" x2="658" y2="2464" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="2,2"/>
+<text x="690" y="2457" class="legend-text">Partial Key (Disc.)</text>
+<ellipse cx="890" cy="2410" rx="38" ry="16" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+<ellipse cx="890" cy="2410" rx="33" ry="12" fill="#ffffff" stroke="#1e293b" stroke-width="1.3"/>
+<text x="890" y="2412" font-family="Arial" font-size="11" text-anchor="middle" dominant-baseline="middle">Multi</text>
+<text x="940" y="2412" class="legend-text">Multivalued Attr</text>
+<ellipse cx="890" cy="2455" rx="38" ry="16" fill="#ffffff" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="4,3"/>
+<text x="890" y="2457" font-family="Arial" font-size="11" text-anchor="middle" dominant-baseline="middle">Derived</text>
+<text x="940" y="2457" class="legend-text">Derived Attribute</text>
+<ellipse cx="1130" cy="2410" rx="25" ry="14" fill="#ffffff" stroke="#1e293b" stroke-width="1.5"/>
+<ellipse cx="1175" cy="2398" rx="18" ry="10" fill="#ffffff" stroke="#1e293b" stroke-width="1.2"/>
+<ellipse cx="1175" cy="2422" rx="18" ry="10" fill="#ffffff" stroke="#1e293b" stroke-width="1.2"/>
+<line x1="1155" y1="2408" x2="1160" y2="2402" stroke="#1e293b" stroke-width="1.2"/>
+<line x1="1155" y1="2412" x2="1160" y2="2418" stroke="#1e293b" stroke-width="1.2"/>
+<text x="1130" y="2412" font-family="Arial" font-size="10" text-anchor="middle" dominant-baseline="middle">Comp</text>
+<text x="1205" y="2412" class="legend-text">Composite Attr</text>
+<line x1="1100" y1="2452" x2="1160" y2="2452" stroke="#1e293b" stroke-width="2"/>
+<line x1="1100" y1="2458" x2="1160" y2="2458" stroke="#1e293b" stroke-width="2"/>
+<text x="1170" y="2457" class="legend-text">Total Participation</text>
+<line x1="1340" y1="2410" x2="1400" y2="2410" stroke="#1e293b" stroke-width="2"/>
+<text x="1410" y="2412" class="legend-text">Partial Participation</text>
+<text x="1350" y="2457" font-family="Arial" font-size="14" font-weight="bold">1 : N , (min, max)</text>
+<text x="1470" y="2457" class="legend-text">Cardinality / Constraints</text>
+</svg>

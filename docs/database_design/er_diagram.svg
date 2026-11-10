@@ -1,0 +1,408 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1150" width="100%" height="100%" style="background-color: #0b0f19; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+    
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="hubHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#0c4a6e" />
+    </linearGradient>
+
+    <linearGradient id="vectorHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6d28d9" />
+      <stop offset="100%" stop-color="#4c1d95" />
+    </linearGradient>
+
+    <!-- Marker Arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-vec" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a855f7" />
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="800" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800" letter-spacing="0.5">CYBERSECURITY INCIDENT INTELLIGENCE SYSTEM</text>
+  <text x="800" y="75" text-anchor="middle" fill="#94a3b8" font-size="14">DBMS Level 3 Conceptual &amp; Logical Relational ER Diagram (PostgreSQL + pgvector)</text>
+
+  <!-- ==================== CONNECTING LINES ==================== -->
+  <g stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.6">
+    <!-- roles to users -->
+    <path d="M 170 230 L 170 300" marker-end="url(#arrow)" />
+
+    <!-- users to incidents (reported_by) -->
+    <path d="M 300 420 Q 480 420 590 420" marker-end="url(#arrow)" />
+    
+    <!-- users to incidents (assigned_to) -->
+    <path d="M 300 450 C 420 460 470 480 590 480" stroke-dasharray="5,5" marker-end="url(#arrow)" />
+
+    <!-- incident_types to incidents -->
+    <path d="M 300 700 Q 450 700 590 560" marker-end="url(#arrow)" />
+
+    <!-- assets to incidents -->
+    <path d="M 300 890 Q 480 890 590 620" marker-end="url(#arrow)" />
+
+    <!-- incidents to investigations -->
+    <path d="M 910 400 Q 1020 320 1130 250" marker-end="url(#arrow)" />
+
+    <!-- incidents to response_actions -->
+    <path d="M 910 460 Q 1020 460 1130 460" marker-end="url(#arrow)" />
+
+    <!-- incidents to incident_status_history -->
+    <path d="M 910 520 Q 1020 620 1130 670" marker-end="url(#arrow)" />
+
+    <!-- incidents to risk_assessments -->
+    <path d="M 910 580 Q 1020 800 1130 890" marker-end="url(#arrow)" />
+
+    <!-- incidents to incident_embeddings -->
+    <path d="M 750 740 L 750 860" stroke="#a855f7" marker-end="url(#arrow-vec)" />
+
+    <!-- users to audit_logs & incidents to audit_logs -->
+    <path d="M 750 310 L 750 240" stroke="#64748b" marker-end="url(#arrow)" />
+  </g>
+
+  <!-- ==================== ENTITY: ROLES ==================== -->
+  <g transform="translate(60, 110)" filter="url(#shadow)">
+    <rect width="220" height="120" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 212 0 Q 220 0 220 8 L 220 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">ROLES</text>
+    <text x="195" y="22" fill="#10b981" font-size="10" text-anchor="end">1:N with users</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">role_id</text>
+    <text x="205" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="85" fill="#34d399" font-size="11" font-weight="700">UQ</text>
+    <text x="40" y="85" fill="#f8fafc" font-size="12">role_name</text>
+    <text x="205" y="85" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(50)</text>
+  </g>
+
+  <!-- ==================== ENTITY: USERS ==================== -->
+  <g transform="translate(50, 300)" filter="url(#shadow)">
+    <rect width="250" height="230" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">USERS</text>
+    <text x="235" y="22" fill="#94a3b8" font-size="10" text-anchor="end">Strong Entity</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">user_id</text>
+    <text x="235" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT (SERIAL)</text>
+
+    <text x="15" y="84" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="84" fill="#f8fafc" font-size="12">role_id</text>
+    <text x="235" y="84" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="110" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="110" fill="#f8fafc" font-size="12">full_name</text>
+    <text x="235" y="110" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(100)</text>
+
+    <text x="15" y="136" fill="#34d399" font-size="11" font-weight="700">UQ</text>
+    <text x="40" y="136" fill="#f8fafc" font-size="12">email</text>
+    <text x="235" y="136" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(150)</text>
+
+    <text x="15" y="162" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="162" fill="#f8fafc" font-size="12">password_hash</text>
+    <text x="235" y="162" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(255)</text>
+
+    <text x="15" y="188" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="188" fill="#f8fafc" font-size="12">is_active</text>
+    <text x="235" y="188" fill="#94a3b8" font-size="11" text-anchor="end">BOOLEAN</text>
+
+    <text x="15" y="214" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="214" fill="#f8fafc" font-size="12">created_at</text>
+    <text x="235" y="214" fill="#94a3b8" font-size="11" text-anchor="end">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- ==================== ENTITY: INCIDENT_TYPES ==================== -->
+  <g transform="translate(50, 610)" filter="url(#shadow)">
+    <rect width="250" height="130" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">INCIDENT_TYPES</text>
+    <text x="235" y="22" fill="#94a3b8" font-size="10" text-anchor="end">1:N with incidents</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">incident_type_id</text>
+    <text x="235" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="85" fill="#34d399" font-size="11" font-weight="700">UQ</text>
+    <text x="40" y="85" fill="#f8fafc" font-size="12">type_name</text>
+    <text x="235" y="85" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(50)</text>
+
+    <text x="15" y="112" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="112" fill="#f8fafc" font-size="12">description</text>
+    <text x="235" y="112" fill="#94a3b8" font-size="11" text-anchor="end">TEXT</text>
+  </g>
+
+  <!-- ==================== ENTITY: ASSETS ==================== -->
+  <g transform="translate(50, 800)" filter="url(#shadow)">
+    <rect width="250" height="230" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">ASSETS</text>
+    <text x="235" y="22" fill="#94a3b8" font-size="10" text-anchor="end">Strong Entity</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">asset_id</text>
+    <text x="235" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="84" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="84" fill="#f8fafc" font-size="12">asset_name</text>
+    <text x="235" y="84" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(100)</text>
+
+    <text x="15" y="110" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="110" fill="#f8fafc" font-size="12">asset_type</text>
+    <text x="235" y="110" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(50)</text>
+
+    <text x="15" y="136" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="40" y="136" fill="#f8fafc" font-size="12">criticality</text>
+    <text x="235" y="136" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(20)</text>
+
+    <text x="15" y="162" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="162" fill="#f8fafc" font-size="12">ip_address</text>
+    <text x="235" y="162" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(45)</text>
+
+    <text x="15" y="188" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="188" fill="#f8fafc" font-size="12">department</text>
+    <text x="235" y="188" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(100)</text>
+
+    <text x="15" y="214" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="214" fill="#f8fafc" font-size="12">is_active</text>
+    <text x="235" y="214" fill="#94a3b8" font-size="11" text-anchor="end">BOOLEAN</text>
+  </g>
+
+  <!-- ==================== CENTRAL HUB: INCIDENTS ==================== -->
+  <g transform="translate(590, 310)" filter="url(#shadow)">
+    <rect width="320" height="430" rx="10" fill="#141e33" stroke="#0284c7" stroke-width="2" />
+    <path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 40 L 0 40 Z" fill="url(#hubHeader)" />
+    <text x="20" y="26" fill="#f0f9ff" font-size="16" font-weight="800">INCIDENTS (CENTRAL)</text>
+    <text x="300" y="25" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="end">Core Operational</text>
+
+    <!-- Attributes -->
+    <text x="20" y="65" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="50" y="65" fill="#f8fafc" font-size="12" font-weight="600">incident_id</text>
+    <text x="300" y="65" fill="#94a3b8" font-size="11" text-anchor="end">INT (SERIAL)</text>
+
+    <text x="20" y="93" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="50" y="93" fill="#f8fafc" font-size="12">incident_type_id</text>
+    <text x="300" y="93" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; incident_types</text>
+
+    <text x="20" y="121" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="50" y="121" fill="#f8fafc" font-size="12">reported_by</text>
+    <text x="300" y="121" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; users (Reporter)</text>
+
+    <text x="20" y="149" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="50" y="149" fill="#f8fafc" font-size="12">assigned_to</text>
+    <text x="300" y="149" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; users (Analyst, Null)</text>
+
+    <text x="20" y="177" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="50" y="177" fill="#f8fafc" font-size="12">asset_id</text>
+    <text x="300" y="177" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; assets</text>
+
+    <text x="20" y="205" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="50" y="205" fill="#f8fafc" font-size="12">title</text>
+    <text x="300" y="205" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(200)</text>
+
+    <text x="20" y="233" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="50" y="233" fill="#f8fafc" font-size="12">description</text>
+    <text x="300" y="233" fill="#94a3b8" font-size="11" text-anchor="end">TEXT</text>
+
+    <text x="20" y="261" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="50" y="261" fill="#f8fafc" font-size="12">severity</text>
+    <text x="300" y="261" fill="#94a3b8" font-size="11" text-anchor="end">Critical/High/Med/Low</text>
+
+    <text x="20" y="289" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="50" y="289" fill="#f8fafc" font-size="12">status</text>
+    <text x="300" y="289" fill="#94a3b8" font-size="11" text-anchor="end">New/Investigating/...</text>
+
+    <text x="20" y="317" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="50" y="317" fill="#f8fafc" font-size="12">priority</text>
+    <text x="300" y="317" fill="#94a3b8" font-size="11" text-anchor="end">Critical/High/Med/Low</text>
+
+    <text x="20" y="345" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="50" y="345" fill="#f8fafc" font-size="12">risk_score</text>
+    <text x="300" y="345" fill="#94a3b8" font-size="11" text-anchor="end">NUMERIC(5,2) [0..100]</text>
+
+    <text x="20" y="373" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="50" y="373" fill="#f8fafc" font-size="12">reported_at</text>
+    <text x="300" y="373" fill="#94a3b8" font-size="11" text-anchor="end">TIMESTAMPTZ</text>
+
+    <text x="20" y="401" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="50" y="401" fill="#f8fafc" font-size="12">resolved_at</text>
+    <text x="300" y="401" fill="#94a3b8" font-size="11" text-anchor="end">TIMESTAMPTZ (Null)</text>
+  </g>
+
+  <!-- ==================== ENTITY: AUDIT_LOGS ==================== -->
+  <g transform="translate(620, 110)" filter="url(#shadow)">
+    <rect width="260" height="130" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 252 0 Q 260 0 260 8 L 260 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">AUDIT_LOGS</text>
+    <text x="245" y="22" fill="#94a3b8" font-size="10" text-anchor="end">System Trace</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">audit_id</text>
+    <text x="245" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="84" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="84" fill="#f8fafc" font-size="12">user_id, incident_id</text>
+    <text x="245" y="84" fill="#94a3b8" font-size="11" text-anchor="end">Nullable FKs</text>
+
+    <text x="15" y="110" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="110" fill="#f8fafc" font-size="12">action, description</text>
+    <text x="245" y="110" fill="#94a3b8" font-size="11" text-anchor="end">TEXT, TIMESTAMP</text>
+  </g>
+
+  <!-- ==================== VECTOR: INCIDENT_EMBEDDINGS ==================== -->
+  <g transform="translate(605, 860)" filter="url(#shadow)">
+    <rect width="290" height="180" rx="8" fill="#1e1833" stroke="#8b5cf6" stroke-width="2" />
+    <path d="M 0 8 Q 0 0 8 0 L 282 0 Q 290 0 290 8 L 290 34 L 0 34 Z" fill="url(#vectorHeader)" />
+    <text x="15" y="23" fill="#ffffff" font-size="14" font-weight="700">INCIDENT_EMBEDDINGS</text>
+    <text x="275" y="22" fill="#c084fc" font-size="10" font-weight="700" text-anchor="end">pgvector (Paradigm 2)</text>
+    <!-- Attributes -->
+    <text x="15" y="60" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="60" fill="#f8fafc" font-size="12">embedding_id</text>
+    <text x="275" y="60" fill="#94a3b8" font-size="11" text-anchor="end">INT SERIAL</text>
+
+    <text x="15" y="88" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="88" fill="#f8fafc" font-size="12">incident_id</text>
+    <text x="275" y="88" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; CASCADE</text>
+
+    <text x="15" y="116" fill="#c084fc" font-size="11" font-weight="700">VEC</text>
+    <text x="45" y="116" fill="#f8fafc" font-size="12">embedding</text>
+    <text x="275" y="116" fill="#a78bfa" font-size="11" text-anchor="end">vector(384) [HNSW]</text>
+
+    <text x="15" y="144" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="144" fill="#f8fafc" font-size="12">model_name</text>
+    <text x="275" y="144" fill="#94a3b8" font-size="11" text-anchor="end">'all-MiniLM-L6-v2'</text>
+
+    <text x="15" y="168" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="168" fill="#f8fafc" font-size="12">created_at</text>
+    <text x="275" y="168" fill="#94a3b8" font-size="11" text-anchor="end">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- ==================== ENTITY: INVESTIGATIONS ==================== -->
+  <g transform="translate(1130, 150)" filter="url(#shadow)">
+    <rect width="280" height="180" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 272 0 Q 280 0 280 8 L 280 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">INVESTIGATIONS</text>
+    <text x="265" y="22" fill="#f59e0b" font-size="10" text-anchor="end">Dependent Entity</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">investigation_id</text>
+    <text x="265" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="84" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="84" fill="#f8fafc" font-size="12">incident_id</text>
+    <text x="265" y="84" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; CASCADE</text>
+
+    <text x="15" y="110" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="110" fill="#f8fafc" font-size="12">analyst_id</text>
+    <text x="265" y="110" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; users</text>
+
+    <text x="15" y="136" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="136" fill="#f8fafc" font-size="12">findings</text>
+    <text x="265" y="136" fill="#94a3b8" font-size="11" text-anchor="end">TEXT NOT NULL</text>
+
+    <text x="15" y="162" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="162" fill="#f8fafc" font-size="12">started_at / completed_at</text>
+    <text x="265" y="162" fill="#94a3b8" font-size="11" text-anchor="end">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- ==================== ENTITY: RESPONSE_ACTIONS ==================== -->
+  <g transform="translate(1130, 360)" filter="url(#shadow)">
+    <rect width="280" height="190" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 272 0 Q 280 0 280 8 L 280 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">RESPONSE_ACTIONS</text>
+    <text x="265" y="22" fill="#f59e0b" font-size="10" text-anchor="end">Dependent Entity</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">response_id</text>
+    <text x="265" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="84" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="84" fill="#f8fafc" font-size="12">incident_id</text>
+    <text x="265" y="84" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; CASCADE</text>
+
+    <text x="15" y="110" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="110" fill="#f8fafc" font-size="12">performed_by</text>
+    <text x="265" y="110" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; users</text>
+
+    <text x="15" y="136" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="136" fill="#f8fafc" font-size="12">action_type</text>
+    <text x="265" y="136" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(50)</text>
+
+    <text x="15" y="162" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="40" y="162" fill="#f8fafc" font-size="12">action_status</text>
+    <text x="265" y="162" fill="#94a3b8" font-size="11" text-anchor="end">Pending/Completed/..</text>
+  </g>
+
+  <!-- ==================== ENTITY: INCIDENT_STATUS_HISTORY ==================== -->
+  <g transform="translate(1130, 580)" filter="url(#shadow)">
+    <rect width="280" height="190" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 272 0 Q 280 0 280 8 L 280 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">STATUS_HISTORY</text>
+    <text x="265" y="22" fill="#10b981" font-size="10" text-anchor="end">Auto Trigger</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">history_id</text>
+    <text x="265" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="84" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="84" fill="#f8fafc" font-size="12">incident_id</text>
+    <text x="265" y="84" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; CASCADE</text>
+
+    <text x="15" y="110" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="110" fill="#f8fafc" font-size="12">old_status &rarr; new_status</text>
+    <text x="265" y="110" fill="#94a3b8" font-size="11" text-anchor="end">VARCHAR(25)</text>
+
+    <text x="15" y="136" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="136" fill="#f8fafc" font-size="12">changed_by</text>
+    <text x="265" y="136" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; users</text>
+
+    <text x="15" y="162" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="162" fill="#f8fafc" font-size="12">changed_at, remarks</text>
+    <text x="265" y="162" fill="#94a3b8" font-size="11" text-anchor="end">TIMESTAMPTZ, TEXT</text>
+  </g>
+
+  <!-- ==================== ENTITY: RISK_ASSESSMENTS ==================== -->
+  <g transform="translate(1130, 800)" filter="url(#shadow)">
+    <rect width="280" height="230" rx="8" fill="#161f30" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 8 Q 0 0 8 0 L 272 0 Q 280 0 280 8 L 280 34 L 0 34 Z" fill="url(#headerGrad)" />
+    <text x="15" y="23" fill="#38bdf8" font-size="14" font-weight="700">RISK_ASSESSMENTS</text>
+    <text x="265" y="22" fill="#10b981" font-size="10" text-anchor="end">Stored Function</text>
+    <!-- Attributes -->
+    <text x="15" y="58" fill="#fbbf24" font-size="11" font-weight="700">PK</text>
+    <text x="40" y="58" fill="#f8fafc" font-size="12">risk_id</text>
+    <text x="265" y="58" fill="#94a3b8" font-size="11" text-anchor="end">INT</text>
+
+    <text x="15" y="84" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="84" fill="#f8fafc" font-size="12">incident_id</text>
+    <text x="265" y="84" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; CASCADE</text>
+
+    <text x="15" y="110" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="40" y="110" fill="#f8fafc" font-size="12">severity_score [0..100]</text>
+    <text x="265" y="110" fill="#94a3b8" font-size="11" text-anchor="end">NUMERIC(5,2)</text>
+
+    <text x="15" y="136" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="40" y="136" fill="#f8fafc" font-size="12">asset_score [0..100]</text>
+    <text x="265" y="136" fill="#94a3b8" font-size="11" text-anchor="end">NUMERIC(5,2)</text>
+
+    <text x="15" y="162" fill="#f59e0b" font-size="11" font-weight="700">CK</text>
+    <text x="40" y="162" fill="#f8fafc" font-size="12">risk_score &amp; level</text>
+    <text x="265" y="162" fill="#94a3b8" font-size="11" text-anchor="end">NUMERIC &amp; VARCHAR</text>
+
+    <text x="15" y="188" fill="#38bdf8" font-size="11" font-weight="700">FK</text>
+    <text x="40" y="188" fill="#f8fafc" font-size="12">calculated_by</text>
+    <text x="265" y="188" fill="#94a3b8" font-size="11" text-anchor="end">&rarr; users</text>
+
+    <text x="15" y="214" fill="#cbd5e1" font-size="11">&bull;</text>
+    <text x="40" y="214" fill="#f8fafc" font-size="12">calculated_at</text>
+    <text x="265" y="214" fill="#94a3b8" font-size="11" text-anchor="end">TIMESTAMPTZ</text>
+  </g>
+
+</svg>

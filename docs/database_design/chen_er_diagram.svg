@@ -1,0 +1,551 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 1350" width="100%" height="100%" style="background-color: #0b1120; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;">
+  <defs>
+    <!-- Shadow Filter -->
+    <filter id="softShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <!-- Gradients -->
+    <linearGradient id="strongEntityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="weakEntityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <linearGradient id="identDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <linearGradient id="attrGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+  </defs>
+
+  <!-- ==================== TITLE & LEGEND ==================== -->
+  <text x="950" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800" letter-spacing="0.5">CYBERSECURITY INCIDENT CORRELATION &amp; RESPONSE INTELLIGENCE SYSTEM</text>
+  <text x="950" y="75" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="600">Formal Classical Entity-Relationship (Chen Notation) Model &bull; Strict Academic DBMS Rules</text>
+
+  <!-- Legend Box -->
+  <g transform="translate(60, 30)" filter="url(#softShadow)">
+    <rect width="360" height="95" rx="6" fill="#111827" stroke="#334155" stroke-width="1.2" />
+    <text x="12" y="20" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="0.05em">FORMAL CHEN ER NOTATION RULES</text>
+    
+    <!-- Legend items row 1 -->
+    <rect x="15" y="30" width="30" height="18" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="52" y="43" fill="#cbd5e1" font-size="10">Strong Entity</text>
+
+    <g transform="translate(130, 30)">
+      <rect x="0" y="0" width="34" height="18" fill="#1e1b4b" stroke="#f59e0b" stroke-width="1.2" />
+      <rect x="3" y="2" width="28" height="14" fill="none" stroke="#f59e0b" stroke-width="1" />
+      <text x="40" y="13" fill="#cbd5e1" font-size="10">Weak Entity</text>
+    </g>
+
+    <g transform="translate(250, 30)">
+      <polygon points="12,0 24,9 12,18 0,9" fill="#0284c7" stroke="#38bdf8" stroke-width="1.2" />
+      <text x="30" y="13" fill="#cbd5e1" font-size="10">Relationship</text>
+    </g>
+
+    <!-- Legend items row 2 -->
+    <g transform="translate(15, 60)">
+      <polygon points="14,0 28,10 14,20 0,10" fill="#b45309" stroke="#fbbf24" stroke-width="1" />
+      <polygon points="14,3 24,10 14,17 4,10" fill="none" stroke="#fbbf24" stroke-width="1" />
+      <text x="35" y="14" fill="#cbd5e1" font-size="10">Identifying Rel.</text>
+    </g>
+
+    <g transform="translate(130, 60)">
+      <ellipse cx="14" cy="10" rx="14" ry="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2" />
+      <text x="8" y="13" fill="#fbbf24" font-size="9" text-decoration="underline">PK</text>
+      <text x="35" y="14" fill="#cbd5e1" font-size="10">Key Attribute</text>
+    </g>
+
+    <g transform="translate(250, 60)">
+      <line x1="0" y1="7" x2="25" y2="7" stroke="#38bdf8" stroke-width="2" />
+      <line x1="0" y1="12" x2="25" y2="12" stroke="#38bdf8" stroke-width="2" />
+      <text x="32" y="14" fill="#cbd5e1" font-size="10">Total Participation</text>
+    </g>
+  </g>
+
+  <!-- ==================== RELATIONSHIP LINES (BACKGROUND) ==================== -->
+  
+  <!-- 1. ROLES <DEFINES> USERS -->
+  <!-- ROLES (Partial, single line) to DEFINES -->
+  <line x1="200" y1="200" x2="200" y2="250" stroke="#38bdf8" stroke-width="1.5" />
+  <!-- USERS (Total, double line) to DEFINES -->
+  <line x1="198" y1="310" x2="198" y2="360" stroke="#38bdf8" stroke-width="1.5" />
+  <line x1="202" y1="310" x2="202" y2="360" stroke="#38bdf8" stroke-width="1.5" />
+
+  <!-- 2. USERS <REPORTS> INCIDENTS -->
+  <!-- USERS (Partial, single line) to REPORTS -->
+  <line x1="310" y1="390" x2="440" y2="390" stroke="#38bdf8" stroke-width="1.5" />
+  <!-- INCIDENTS (Total, double line) to REPORTS -->
+  <line x1="560" y1="388" x2="720" y2="480" stroke="#38bdf8" stroke-width="1.5" />
+  <line x1="562" y1="392" x2="722" y2="484" stroke="#38bdf8" stroke-width="1.5" />
+
+  <!-- 3. USERS <ASSIGNED_TO> INCIDENTS -->
+  <!-- USERS (Partial, single line) to ASSIGNED_TO -->
+  <line x1="310" y1="420" x2="440" y2="480" stroke="#38bdf8" stroke-width="1.5" />
+  <!-- INCIDENTS (Partial, single line) to ASSIGNED_TO -->
+  <line x1="560" y1="480" x2="720" y2="500" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4" />
+
+  <!-- 4. INCIDENT_TYPES <CLASSIFIES> INCIDENTS -->
+  <!-- INCIDENT_TYPES (Partial) to CLASSIFIES -->
+  <line x1="280" y1="670" x2="440" y2="670" stroke="#38bdf8" stroke-width="1.5" />
+  <!-- INCIDENTS (Total, double line) to CLASSIFIES -->
+  <line x1="560" y1="670" x2="720" y2="540" stroke="#38bdf8" stroke-width="1.5" />
+  <line x1="560" y1="674" x2="720" y2="544" stroke="#38bdf8" stroke-width="1.5" />
+
+  <!-- 5. ASSETS <AFFECTED_IN> INCIDENTS -->
+  <!-- ASSETS (Partial) to AFFECTED_IN -->
+  <line x1="280" y1="920" x2="440" y2="920" stroke="#38bdf8" stroke-width="1.5" />
+  <!-- INCIDENTS (Total, double line) to AFFECTED_IN -->
+  <line x1="560" y1="920" x2="730" y2="570" stroke="#38bdf8" stroke-width="1.5" />
+  <line x1="562" y1="924" x2="732" y2="574" stroke="#38bdf8" stroke-width="1.5" />
+
+  <!-- 6. INCIDENTS <HAS_INVESTIGATION> INVESTIGATIONS -->
+  <!-- INCIDENTS (Partial) to HAS_INVESTIGATION -->
+  <line x1="930" y1="490" x2="1140" y2="320" stroke="#f59e0b" stroke-width="1.5" />
+  <!-- INVESTIGATIONS (Total, double line) to HAS_INVESTIGATION -->
+  <line x1="1260" y1="318" x2="1420" y2="318" stroke="#f59e0b" stroke-width="1.5" />
+  <line x1="1260" y1="322" x2="1420" y2="322" stroke="#f59e0b" stroke-width="1.5" />
+  <!-- USERS <CONDUCTS> INVESTIGATIONS -->
+  <path d="M 310 380 Q 800 200 1140 220" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+  <line x1="1260" y1="220" x2="1420" y2="300" stroke="#38bdf8" stroke-width="1.5" />
+
+  <!-- 7. INCIDENTS <HAS_RESPONSE> RESPONSE_ACTIONS -->
+  <!-- INCIDENTS (Partial) to HAS_RESPONSE -->
+  <line x1="930" y1="520" x2="1140" y2="520" stroke="#f59e0b" stroke-width="1.5" />
+  <!-- RESPONSE_ACTIONS (Total, double line) to HAS_RESPONSE -->
+  <line x1="1260" y1="518" x2="1420" y2="518" stroke="#f59e0b" stroke-width="1.5" />
+  <line x1="1260" y1="522" x2="1420" y2="522" stroke="#f59e0b" stroke-width="1.5" />
+  <!-- USERS <PERFORMS> RESPONSE_ACTIONS -->
+  <path d="M 310 430 Q 750 440 1140 440" stroke="#38bdf8" stroke-width="1.5" fill="none" />
+  <line x1="1260" y1="440" x2="1420" y2="500" stroke="#38bdf8" stroke-width="1.5" />
+
+  <!-- 8. INCIDENTS <TRACKS_STATUS> STATUS_HISTORY -->
+  <!-- INCIDENTS (Partial) to TRACKS_STATUS -->
+  <line x1="930" y1="540" x2="1140" y2="720" stroke="#f59e0b" stroke-width="1.5" />
+  <!-- STATUS_HISTORY (Total, double line) to TRACKS_STATUS -->
+  <line x1="1260" y1="718" x2="1420" y2="718" stroke="#f59e0b" stroke-width="1.5" />
+  <line x1="1260" y1="722" x2="1420" y2="722" stroke="#f59e0b" stroke-width="1.5" />
+
+  <!-- 9. INCIDENTS <ASSESSES_RISK> RISK_ASSESSMENTS -->
+  <!-- INCIDENTS (Partial) to ASSESSES_RISK -->
+  <line x1="930" y1="560" x2="1140" y2="920" stroke="#f59e0b" stroke-width="1.5" />
+  <!-- RISK_ASSESSMENTS (Total, double line) to ASSESSES_RISK -->
+  <line x1="1260" y1="918" x2="1420" y2="918" stroke="#f59e0b" stroke-width="1.5" />
+  <line x1="1260" y1="922" x2="1420" y2="922" stroke="#f59e0b" stroke-width="1.5" />
+
+  <!-- 10. INCIDENTS <HAS_EMBEDDING> INCIDENT_EMBEDDINGS -->
+  <!-- INCIDENTS (Partial) to HAS_EMBEDDING -->
+  <line x1="830" y1="570" x2="830" y2="720" stroke="#f59e0b" stroke-width="1.5" />
+  <!-- INCIDENT_EMBEDDINGS (Total, double line) to HAS_EMBEDDING -->
+  <line x1="828" y1="780" x2="828" y2="860" stroke="#f59e0b" stroke-width="1.5" />
+  <line x1="832" y1="780" x2="832" y2="860" stroke="#f59e0b" stroke-width="1.5" />
+
+  <!-- 11. AUDIT_LOGS with USERS and INCIDENTS -->
+  <line x1="830" y1="470" x2="830" y2="350" stroke="#64748b" stroke-width="1.5" />
+  <line x1="830" y1="290" x2="830" y2="200" stroke="#64748b" stroke-width="1.5" />
+
+
+  <!-- ==================== ENTITY SETS (RECTANGLES) ==================== -->
+
+  <!-- STRONG ENTITY: ROLES -->
+  <g transform="translate(110, 140)" filter="url(#softShadow)">
+    <rect width="180" height="60" rx="4" fill="url(#strongEntityGrad)" stroke="#38bdf8" stroke-width="2" />
+    <text x="90" y="36" fill="#f8fafc" font-size="15" font-weight="700" text-anchor="middle">ROLES</text>
+  </g>
+
+  <!-- STRONG ENTITY: USERS -->
+  <g transform="translate(100, 360)" filter="url(#softShadow)">
+    <rect width="210" height="80" rx="4" fill="url(#strongEntityGrad)" stroke="#38bdf8" stroke-width="2" />
+    <text x="105" y="46" fill="#f8fafc" font-size="16" font-weight="700" text-anchor="middle">USERS</text>
+  </g>
+
+  <!-- STRONG ENTITY: INCIDENT_TYPES -->
+  <g transform="translate(80, 640)" filter="url(#softShadow)">
+    <rect width="200" height="60" rx="4" fill="url(#strongEntityGrad)" stroke="#38bdf8" stroke-width="2" />
+    <text x="100" y="36" fill="#f8fafc" font-size="15" font-weight="700" text-anchor="middle">INCIDENT_TYPES</text>
+  </g>
+
+  <!-- STRONG ENTITY: ASSETS -->
+  <g transform="translate(90, 890)" filter="url(#softShadow)">
+    <rect width="190" height="60" rx="4" fill="url(#strongEntityGrad)" stroke="#38bdf8" stroke-width="2" />
+    <text x="95" y="36" fill="#f8fafc" font-size="15" font-weight="700" text-anchor="middle">ASSETS</text>
+  </g>
+
+  <!-- CENTRAL STRONG ENTITY: INCIDENTS -->
+  <g transform="translate(720, 470)" filter="url(#softShadow)">
+    <rect width="220" height="100" rx="6" fill="#0c4a6e" stroke="#38bdf8" stroke-width="3" />
+    <text x="110" y="56" fill="#f0f9ff" font-size="18" font-weight="800" text-anchor="middle">INCIDENTS</text>
+    <text x="110" y="78" fill="#7dd3fc" font-size="11" font-weight="600" text-anchor="middle">(Central Entity)</text>
+  </g>
+
+  <!-- WEAK ENTITY: INVESTIGATIONS -->
+  <g transform="translate(1420, 290)" filter="url(#softShadow)">
+    <rect width="220" height="65" rx="5" fill="url(#weakEntityGrad)" stroke="#f59e0b" stroke-width="2" />
+    <rect x="5" y="5" width="210" height="55" rx="3" fill="none" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="110" y="38" fill="#fef3c7" font-size="15" font-weight="700" text-anchor="middle">INVESTIGATIONS</text>
+  </g>
+
+  <!-- WEAK ENTITY: RESPONSE_ACTIONS -->
+  <g transform="translate(1420, 490)" filter="url(#softShadow)">
+    <rect width="220" height="65" rx="5" fill="url(#weakEntityGrad)" stroke="#f59e0b" stroke-width="2" />
+    <rect x="5" y="5" width="210" height="55" rx="3" fill="none" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="110" y="38" fill="#fef3c7" font-size="14" font-weight="700" text-anchor="middle">RESPONSE_ACTIONS</text>
+  </g>
+
+  <!-- WEAK ENTITY: INCIDENT_STATUS_HISTORY -->
+  <g transform="translate(1420, 690)" filter="url(#softShadow)">
+    <rect width="220" height="65" rx="5" fill="url(#weakEntityGrad)" stroke="#f59e0b" stroke-width="2" />
+    <rect x="5" y="5" width="210" height="55" rx="3" fill="none" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="110" y="38" fill="#fef3c7" font-size="13" font-weight="700" text-anchor="middle">STATUS_HISTORY</text>
+  </g>
+
+  <!-- WEAK ENTITY: RISK_ASSESSMENTS -->
+  <g transform="translate(1420, 890)" filter="url(#softShadow)">
+    <rect width="220" height="65" rx="5" fill="url(#weakEntityGrad)" stroke="#f59e0b" stroke-width="2" />
+    <rect x="5" y="5" width="210" height="55" rx="3" fill="none" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="110" y="38" fill="#fef3c7" font-size="14" font-weight="700" text-anchor="middle">RISK_ASSESSMENTS</text>
+  </g>
+
+  <!-- WEAK ENTITY: INCIDENT_EMBEDDINGS (Vector) -->
+  <g transform="translate(710, 860)" filter="url(#softShadow)">
+    <rect width="240" height="65" rx="5" fill="#2e1065" stroke="#a855f7" stroke-width="2" />
+    <rect x="5" y="5" width="230" height="55" rx="3" fill="none" stroke="#a855f7" stroke-width="1.2" />
+    <text x="120" y="38" fill="#f3e8ff" font-size="14" font-weight="700" text-anchor="middle">INCIDENT_EMBEDDINGS</text>
+  </g>
+
+  <!-- WEAK / DEPENDENT ENTITY: AUDIT_LOGS -->
+  <g transform="translate(730, 140)" filter="url(#softShadow)">
+    <rect width="200" height="60" rx="4" fill="url(#strongEntityGrad)" stroke="#64748b" stroke-width="2" />
+    <text x="100" y="36" fill="#f8fafc" font-size="15" font-weight="700" text-anchor="middle">AUDIT_LOGS</text>
+  </g>
+
+
+  <!-- ==================== RELATIONSHIPS (DIAMONDS) ==================== -->
+
+  <!-- 1. DEFINES (roles -> users) -->
+  <g transform="translate(140, 250)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">DEFINES</text>
+  </g>
+  <text x="215" y="240" fill="#fbbf24" font-size="11" font-weight="700">1</text>
+  <text x="215" y="335" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- 2. REPORTS (users -> incidents) -->
+  <g transform="translate(440, 360)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">REPORTS</text>
+  </g>
+  <text x="340" y="380" fill="#38bdf8" font-size="10" font-weight="600">Role: Reporter [1]</text>
+  <text x="640" y="420" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- 3. ASSIGNED_TO (users -> incidents) -->
+  <g transform="translate(440, 450)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">ASSIGNED_TO</text>
+  </g>
+  <text x="330" y="465" fill="#38bdf8" font-size="10" font-weight="600">Role: Assignee [1]</text>
+  <text x="650" y="490" fill="#94a3b8" font-size="11">N (0,1)</text>
+
+  <!-- 4. CLASSIFIES (incident_types -> incidents) -->
+  <g transform="translate(440, 640)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">CLASSIFIES</text>
+  </g>
+  <text x="320" y="660" fill="#fbbf24" font-size="11" font-weight="700">1 (0,N)</text>
+  <text x="650" y="620" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- 5. AFFECTED_IN (assets -> incidents) -->
+  <g transform="translate(440, 890)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">AFFECTED_IN</text>
+  </g>
+  <text x="320" y="910" fill="#fbbf24" font-size="11" font-weight="700">1 (0,N)</text>
+  <text x="660" y="750" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- 6. IDENTIFYING RELATIONSHIP: HAS_INVESTIGATION -->
+  <g transform="translate(1140, 290)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#identDiamondGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    <polygon points="60,5 110,30 60,55 10,30" fill="none" stroke="#fbbf24" stroke-width="1.2" />
+    <text x="60" y="34" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">HAS_INVEST.</text>
+  </g>
+  <text x="1000" y="420" fill="#fbbf24" font-size="11" font-weight="700">1 (0,N)</text>
+  <text x="1330" y="310" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- CONDUCTS (users -> investigations) -->
+  <g transform="translate(1140, 190)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">CONDUCTS</text>
+  </g>
+  <text x="1330" y="240" fill="#38bdf8" font-size="10">Role: Analyst [1]</text>
+
+  <!-- 7. IDENTIFYING RELATIONSHIP: HAS_RESPONSE -->
+  <g transform="translate(1140, 490)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#identDiamondGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    <polygon points="60,5 110,30 60,55 10,30" fill="none" stroke="#fbbf24" stroke-width="1.2" />
+    <text x="60" y="34" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">HAS_RESP.</text>
+  </g>
+  <text x="1000" y="515" fill="#fbbf24" font-size="11" font-weight="700">1 (0,N)</text>
+  <text x="1330" y="510" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- PERFORMS (users -> response_actions) -->
+  <g transform="translate(1140, 410)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">PERFORMS</text>
+  </g>
+
+  <!-- 8. IDENTIFYING RELATIONSHIP: TRACKS_STATUS -->
+  <g transform="translate(1140, 690)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#identDiamondGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    <polygon points="60,5 110,30 60,55 10,30" fill="none" stroke="#fbbf24" stroke-width="1.2" />
+    <text x="60" y="34" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">TRACKS_STAT.</text>
+  </g>
+  <text x="1000" y="620" fill="#fbbf24" font-size="11" font-weight="700">1 (0,N)</text>
+  <text x="1330" y="710" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- 9. IDENTIFYING RELATIONSHIP: ASSESSES_RISK -->
+  <g transform="translate(1140, 890)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#identDiamondGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    <polygon points="60,5 110,30 60,55 10,30" fill="none" stroke="#fbbf24" stroke-width="1.2" />
+    <text x="60" y="34" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">ASSESS_RISK</text>
+  </g>
+  <text x="1000" y="740" fill="#fbbf24" font-size="11" font-weight="700">1 (0,N)</text>
+  <text x="1330" y="910" fill="#fbbf24" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- 10. IDENTIFYING RELATIONSHIP: HAS_EMBEDDING -->
+  <g transform="translate(770, 720)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#identDiamondGrad)" stroke="#a855f7" stroke-width="1.5" />
+    <polygon points="60,5 110,30 60,55 10,30" fill="none" stroke="#a855f7" stroke-width="1.2" />
+    <text x="60" y="34" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">VECTORIZES</text>
+  </g>
+  <text x="845" y="660" fill="#fbbf24" font-size="11" font-weight="700">1 (0,N)</text>
+  <text x="845" y="820" fill="#a855f7" font-size="11" font-weight="700">N (1,1)</text>
+
+  <!-- 11. LOGS_ACTION (audit_logs) -->
+  <g transform="translate(770, 290)" filter="url(#softShadow)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="url(#diamondGrad)" stroke="#64748b" stroke-width="1.5" />
+    <text x="60" y="34" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">LOGS_EVENT</text>
+  </g>
+
+
+  <!-- ==================== ATTRIBUTES (OVALS) ==================== -->
+
+  <!-- ATTRIBUTES OF ROLES -->
+  <g transform="translate(10, 130)">
+    <line x1="85" y1="20" x2="100" y2="30" stroke="#64748b" />
+    <ellipse cx="45" cy="15" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="45" y="19" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline">role_id</text>
+
+    <line x1="85" y1="65" x2="100" y2="45" stroke="#64748b" />
+    <ellipse cx="45" cy="65" rx="45" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="45" y="69" fill="#f8fafc" font-size="11" text-anchor="middle">role_name</text>
+  </g>
+
+  <!-- ATTRIBUTES OF USERS -->
+  <g transform="translate(10, 310)">
+    <!-- user_id (PK) -->
+    <line x1="80" y1="30" x2="90" y2="55" stroke="#64748b" />
+    <ellipse cx="40" cy="25" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="29" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline">user_id</text>
+
+    <!-- full_name -->
+    <line x1="80" y1="75" x2="90" y2="65" stroke="#64748b" />
+    <ellipse cx="40" cy="75" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="79" fill="#f8fafc" font-size="11" text-anchor="middle">full_name</text>
+
+    <!-- email (Unique) -->
+    <line x1="80" y1="120" x2="90" y2="75" stroke="#64748b" />
+    <ellipse cx="40" cy="120" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="124" fill="#34d399" font-size="11" text-anchor="middle">email (UQ)</text>
+
+    <!-- password_hash -->
+    <line x1="80" y1="165" x2="90" y2="85" stroke="#64748b" />
+    <ellipse cx="40" cy="165" rx="45" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="169" fill="#94a3b8" font-size="10" text-anchor="middle">pwd_hash</text>
+
+    <!-- is_active -->
+    <line x1="80" y1="205" x2="100" y2="100" stroke="#64748b" />
+    <ellipse cx="40" cy="205" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="209" fill="#f8fafc" font-size="10" text-anchor="middle">is_active</text>
+  </g>
+
+  <!-- ATTRIBUTES OF INCIDENTS (CENTRAL) -->
+  <g transform="translate(620, 390)">
+    <!-- incident_id (PK) -->
+    <line x1="140" y1="40" x2="110" y2="80" stroke="#64748b" />
+    <ellipse cx="140" cy="30" rx="48" ry="18" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="140" y="34" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle" text-decoration="underline">incident_id</text>
+
+    <!-- title -->
+    <line x1="190" y1="70" x2="120" y2="90" stroke="#64748b" />
+    <ellipse cx="230" cy="65" rx="40" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="230" y="69" fill="#f8fafc" font-size="11" text-anchor="middle">title</text>
+
+    <!-- description -->
+    <line x1="310" y1="70" x2="280" y2="90" stroke="#64748b" />
+    <ellipse cx="330" cy="65" rx="46" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="330" y="69" fill="#f8fafc" font-size="11" text-anchor="middle">description</text>
+
+    <!-- severity -->
+    <line x1="380" y1="120" x2="320" y2="110" stroke="#64748b" />
+    <ellipse cx="420" cy="120" rx="44" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="420" y="124" fill="#f8fafc" font-size="11" text-anchor="middle">severity</text>
+
+    <!-- status -->
+    <line x1="380" y1="170" x2="320" y2="130" stroke="#64748b" />
+    <ellipse cx="420" cy="170" rx="44" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="420" y="174" fill="#f8fafc" font-size="11" text-anchor="middle">status</text>
+
+    <!-- priority -->
+    <line x1="380" y1="215" x2="320" y2="150" stroke="#64748b" />
+    <ellipse cx="420" cy="215" rx="44" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="420" y="219" fill="#f8fafc" font-size="11" text-anchor="middle">priority</text>
+
+    <!-- risk_score (DERIVED ATTRIBUTE - DASHED OVAL) -->
+    <line x1="380" y1="260" x2="320" y2="165" stroke="#64748b" />
+    <ellipse cx="430" cy="260" rx="55" ry="18" fill="url(#attrGrad)" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+    <text x="430" y="264" fill="#fbbf24" font-size="11" font-weight="600" text-anchor="middle">risk_score (Der)</text>
+
+    <!-- reported_at & resolved_at -->
+    <line x1="160" y1="190" x2="180" y2="180" stroke="#64748b" />
+    <ellipse cx="140" cy="205" rx="55" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="140" y="209" fill="#94a3b8" font-size="10" text-anchor="middle">reported_at</text>
+
+    <line x1="260" y1="190" x2="240" y2="180" stroke="#64748b" />
+    <ellipse cx="270" cy="205" rx="55" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="270" y="209" fill="#94a3b8" font-size="10" text-anchor="middle">resolved_at</text>
+  </g>
+
+  <!-- ATTRIBUTES OF INCIDENT_TYPES -->
+  <g transform="translate(10, 690)">
+    <line x1="75" y1="20" x2="90" y2="0" stroke="#64748b" />
+    <ellipse cx="45" cy="25" rx="45" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="45" y="29" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle" text-decoration="underline">type_id</text>
+
+    <line x1="75" y1="65" x2="90" y2="10" stroke="#64748b" />
+    <ellipse cx="45" cy="65" rx="45" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="45" y="69" fill="#34d399" font-size="10" text-anchor="middle">type_name (UQ)</text>
+  </g>
+
+  <!-- ATTRIBUTES OF ASSETS -->
+  <g transform="translate(10, 940)">
+    <line x1="80" y1="20" x2="90" y2="0" stroke="#64748b" />
+    <ellipse cx="40" cy="20" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="24" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline">asset_id</text>
+
+    <line x1="80" y1="60" x2="90" y2="10" stroke="#64748b" />
+    <ellipse cx="40" cy="60" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="64" fill="#f8fafc" font-size="10" text-anchor="middle">asset_name</text>
+
+    <line x1="80" y1="100" x2="95" y2="15" stroke="#64748b" />
+    <ellipse cx="40" cy="100" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="104" fill="#f8fafc" font-size="10" text-anchor="middle">criticality</text>
+
+    <line x1="80" y1="140" x2="100" y2="20" stroke="#64748b" />
+    <ellipse cx="40" cy="140" rx="42" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="40" y="144" fill="#f8fafc" font-size="10" text-anchor="middle">ip_address</text>
+  </g>
+
+  <!-- ATTRIBUTES OF INVESTIGATIONS (WEAK ENTITY - PARTIAL KEY DASHED UNDERLINE) -->
+  <g transform="translate(1660, 260)">
+    <line x1="0" y1="40" x2="-20" y2="40" stroke="#64748b" />
+    <ellipse cx="55" cy="40" rx="55" ry="16" fill="url(#attrGrad)" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="55" y="44" fill="#f59e0b" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline" stroke-dasharray="2,2">investigation_id</text>
+
+    <line x1="0" y1="80" x2="-20" y2="55" stroke="#64748b" />
+    <ellipse cx="55" cy="80" rx="50" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="84" fill="#f8fafc" font-size="11" text-anchor="middle">findings</text>
+
+    <line x1="0" y1="120" x2="-20" y2="65" stroke="#64748b" />
+    <ellipse cx="55" cy="120" rx="55" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="124" fill="#94a3b8" font-size="10" text-anchor="middle">started_at</text>
+  </g>
+
+  <!-- ATTRIBUTES OF RESPONSE_ACTIONS -->
+  <g transform="translate(1660, 470)">
+    <line x1="0" y1="35" x2="-20" y2="35" stroke="#64748b" />
+    <ellipse cx="55" cy="35" rx="55" ry="16" fill="url(#attrGrad)" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="55" y="39" fill="#f59e0b" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline">response_id</text>
+
+    <line x1="0" y1="75" x2="-20" y2="50" stroke="#64748b" />
+    <ellipse cx="55" cy="75" rx="50" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="79" fill="#f8fafc" font-size="11" text-anchor="middle">action_type</text>
+
+    <line x1="0" y1="115" x2="-20" y2="60" stroke="#64748b" />
+    <ellipse cx="55" cy="115" rx="50" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="119" fill="#f8fafc" font-size="11" text-anchor="middle">action_status</text>
+  </g>
+
+  <!-- ATTRIBUTES OF STATUS_HISTORY -->
+  <g transform="translate(1660, 680)">
+    <line x1="0" y1="30" x2="-20" y2="30" stroke="#64748b" />
+    <ellipse cx="55" cy="30" rx="50" ry="16" fill="url(#attrGrad)" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="55" y="34" fill="#f59e0b" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline">history_id</text>
+
+    <line x1="0" y1="70" x2="-20" y2="45" stroke="#64748b" />
+    <ellipse cx="55" cy="70" rx="55" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="74" fill="#f8fafc" font-size="10" text-anchor="middle">old/new_status</text>
+
+    <line x1="0" y1="110" x2="-20" y2="55" stroke="#64748b" />
+    <ellipse cx="55" cy="110" rx="50" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="114" fill="#94a3b8" font-size="10" text-anchor="middle">changed_at</text>
+  </g>
+
+  <!-- ATTRIBUTES OF RISK_ASSESSMENTS -->
+  <g transform="translate(1660, 880)">
+    <line x1="0" y1="30" x2="-20" y2="30" stroke="#64748b" />
+    <ellipse cx="55" cy="30" rx="45" ry="16" fill="url(#attrGrad)" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="55" y="34" fill="#f59e0b" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline">risk_id</text>
+
+    <line x1="0" y1="70" x2="-20" y2="45" stroke="#64748b" />
+    <ellipse cx="55" cy="70" rx="55" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="74" fill="#f8fafc" font-size="10" text-anchor="middle">severity/asset</text>
+
+    <line x1="0" y1="110" x2="-20" y2="55" stroke="#64748b" />
+    <ellipse cx="55" cy="110" rx="50" ry="16" fill="url(#attrGrad)" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="55" y="114" fill="#f8fafc" font-size="10" text-anchor="middle">risk_score</text>
+  </g>
+
+  <!-- ATTRIBUTES OF INCIDENT_EMBEDDINGS (VECTOR) -->
+  <g transform="translate(680, 940)">
+    <line x1="60" y1="0" x2="60" y2="-15" stroke="#64748b" />
+    <ellipse cx="60" cy="20" rx="55" ry="16" fill="url(#attrGrad)" stroke="#a855f7" stroke-width="1.2" />
+    <text x="60" y="24" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle" text-decoration="underline">embedding_id</text>
+
+    <line x1="180" y1="0" x2="180" y2="-15" stroke="#64748b" />
+    <ellipse cx="180" cy="20" rx="60" ry="16" fill="url(#attrGrad)" stroke="#a855f7" stroke-width="1.2" />
+    <text x="180" y="24" fill="#f3e8ff" font-size="10" text-anchor="middle">embedding vec(384)</text>
+
+    <line x1="300" y1="0" x2="260" y2="-15" stroke="#64748b" />
+    <ellipse cx="300" cy="20" rx="50" ry="16" fill="url(#attrGrad)" stroke="#a855f7" stroke-width="1.2" />
+    <text x="300" y="24" fill="#94a3b8" font-size="10" text-anchor="middle">model_name</text>
+  </g>
+
+  <!-- ATTRIBUTES OF AUDIT_LOGS -->
+  <g transform="translate(945, 120)">
+    <line x1="0" y1="20" x2="-15" y2="30" stroke="#64748b" />
+    <ellipse cx="45" cy="15" rx="42" ry="16" fill="url(#attrGrad)" stroke="#64748b" stroke-width="1.2" />
+    <text x="45" y="19" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle" text-decoration="underline">audit_id</text>
+
+    <line x1="0" y1="60" x2="-15" y2="45" stroke="#64748b" />
+    <ellipse cx="45" cy="60" rx="42" ry="16" fill="url(#attrGrad)" stroke="#64748b" stroke-width="1.2" />
+    <text x="45" y="64" fill="#f8fafc" font-size="11" text-anchor="middle">action</text>
+  </g>
+
+  <!-- Footer Certification -->
+  <text x="950" y="1310" text-anchor="middle" fill="#64748b" font-size="12">
+    Certified ER Rules: (1) Strong Entities in Single Rectangles, (2) Weak Entities in Double Rectangles, (3) Identifying Relationships in Double Diamonds, (4) Key Attributes Underlined, (5) Foreign Keys excluded from entities and defined strictly via Relationships, (6) Total participation marked with Double Lines.
+  </text>
+</svg>
