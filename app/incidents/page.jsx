@@ -43,15 +43,15 @@ export default function IncidentsPage() {
   return (
     <div className="space-y-5">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-zinc-800">
         <div>
-          <h1 className="text-xl font-bold text-slate-100">Security Incidents</h1>
-          <p className="text-xs text-slate-400 mt-0.5">Directory of all reported security incidents and investigations</p>
+          <h1 className="text-xl font-bold text-white">Security Incidents</h1>
+          <p className="text-xs text-zinc-400 mt-0.5">Directory of all reported security incidents and investigations</p>
         </div>
 
         <Link
           href="/incidents/new"
-          className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium flex items-center gap-1.5 transition-colors w-fit"
+          className="px-3 py-1.5 rounded bg-white hover:bg-zinc-200 text-black text-xs font-semibold flex items-center gap-1.5 transition-colors w-fit"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>New Incident</span>
@@ -63,13 +63,13 @@ export default function IncidentsPage() {
         <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-2.5 items-center">
           {/* Keyword Search */}
           <div className="relative flex-1 w-full">
-            <Search className="w-4 h-4 absolute inset-y-0 left-2.5 my-auto text-slate-400 pointer-events-none" />
+            <Search className="w-4 h-4 absolute inset-y-0 left-2.5 my-auto text-zinc-400 pointer-events-none" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by title or description..."
-              className="w-full pl-8 pr-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-100 focus:outline-none focus:border-blue-500"
+              className="w-full pl-8 pr-3 py-1.5 bg-black border border-zinc-800 rounded text-xs text-white focus:outline-none focus:border-white"
             />
           </div>
 
@@ -77,7 +77,7 @@ export default function IncidentsPage() {
           <select
             value={severityFilter}
             onChange={(e) => setSeverityFilter(e.target.value)}
-            className="w-full sm:w-auto py-1.5 px-2.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+            className="w-full sm:w-auto py-1.5 px-2.5 bg-black border border-zinc-800 rounded text-xs text-zinc-200 focus:outline-none focus:border-white"
           >
             <option value="">All Severities</option>
             <option value="Critical">Critical</option>
@@ -90,7 +90,7 @@ export default function IncidentsPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full sm:w-auto py-1.5 px-2.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+            className="w-full sm:w-auto py-1.5 px-2.5 bg-black border border-zinc-800 rounded text-xs text-zinc-200 focus:outline-none focus:border-white"
           >
             <option value="">All Statuses</option>
             <option value="New">New</option>
@@ -103,7 +103,7 @@ export default function IncidentsPage() {
           {/* Search Button */}
           <button
             type="submit"
-            className="w-full sm:w-auto px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-medium transition-colors"
+            className="w-full sm:w-auto px-3 py-1.5 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-medium transition-colors"
           >
             Search
           </button>
@@ -113,19 +113,19 @@ export default function IncidentsPage() {
       {/* Incidents Table */}
       <div className="clean-card p-4">
         {loading ? (
-          <div className="py-12 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-            <Activity className="w-4 h-4 animate-spin text-blue-500" />
+          <div className="py-12 text-center text-zinc-400 text-xs flex items-center justify-center gap-2">
+            <Activity className="w-4 h-4 animate-spin text-white" />
             <span>Loading incidents...</span>
           </div>
         ) : incidents.length === 0 ? (
-          <div className="py-12 text-center text-slate-400 text-xs">
+          <div className="py-12 text-center text-zinc-500 text-xs">
             No incidents found matching the specified filters.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-700 text-slate-400">
+                <tr className="border-b border-zinc-800 text-zinc-400">
                   <th className="py-2.5 px-2.5">ID</th>
                   <th className="py-2.5 px-2.5">Title</th>
                   <th className="py-2.5 px-2.5">Category</th>
@@ -137,7 +137,7 @@ export default function IncidentsPage() {
                   <th className="py-2.5 px-2.5 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800">
+              <tbody className="divide-y divide-zinc-800/80">
                 {incidents.map((inc) => {
                   let badgeClass = 'badge-medium';
                   if (inc.severity === 'Critical') badgeClass = 'badge-critical';
@@ -145,30 +145,30 @@ export default function IncidentsPage() {
                   if (inc.severity === 'Low') badgeClass = 'badge-low';
 
                   return (
-                    <tr key={inc.incident_id} className="hover:bg-slate-700/20">
-                      <td className="py-2.5 px-2.5 font-mono text-slate-400">#{inc.incident_id}</td>
+                    <tr key={inc.incident_id} className="hover:bg-zinc-800/30">
+                      <td className="py-2.5 px-2.5 font-mono text-zinc-400">#{inc.incident_id}</td>
                       <td className="py-2.5 px-2.5 max-w-sm">
-                        <div className="font-medium text-slate-200 truncate">{inc.title}</div>
-                        <div className="text-[11px] text-slate-400 truncate">{inc.description}</div>
+                        <div className="font-medium text-white truncate">{inc.title}</div>
+                        <div className="text-[11px] text-zinc-400 truncate">{inc.description}</div>
                       </td>
-                      <td className="py-2.5 px-2.5 text-slate-300">{inc.classification}</td>
+                      <td className="py-2.5 px-2.5 text-zinc-300">{inc.classification}</td>
                       <td className="py-2.5 px-2.5">
                         <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${badgeClass}`}>
                           {inc.severity}
                         </span>
                       </td>
-                      <td className="py-2.5 px-2.5 text-slate-300">{inc.status}</td>
-                      <td className="py-2.5 px-2.5 text-slate-300">{inc.asset_name}</td>
-                      <td className="py-2.5 px-2.5 text-slate-400">
-                        {inc.assigned_to_name || <span className="text-slate-500 italic">Unassigned</span>}
+                      <td className="py-2.5 px-2.5 text-zinc-300">{inc.status}</td>
+                      <td className="py-2.5 px-2.5 text-zinc-300">{inc.asset_name}</td>
+                      <td className="py-2.5 px-2.5 text-zinc-400">
+                        {inc.assigned_to_name || <span className="text-zinc-500 italic">Unassigned</span>}
                       </td>
-                      <td className="py-2.5 px-2.5 text-right font-mono text-slate-200 font-semibold">
+                      <td className="py-2.5 px-2.5 text-right font-mono text-zinc-100 font-semibold">
                         {inc.risk_score}
                       </td>
                       <td className="py-2.5 px-2.5 text-right">
                         <Link
                           href={`/incidents/${inc.incident_id}`}
-                          className="text-blue-400 hover:text-blue-300 text-xs inline-flex items-center gap-0.5"
+                          className="text-zinc-300 hover:text-white text-xs inline-flex items-center gap-0.5 underline"
                         >
                           <span>View</span>
                           <ChevronRight className="w-3.5 h-3.5" />

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #0f172a; /* Slate 900 */
-  --foreground: #f8fafc; /* Slate 50 */
+  --background: #09090b; /* Zinc 950 (True Deep Black) */
+  --foreground: #ffffff; /* Pure White */
 }
 
 body {
@@ -14,40 +14,40 @@ body {
   min-height: 100vh;
 }
 
-/* Minimalist Clean UI Cards */
+/* Minimalist Black & White Card */
 .clean-card {
-  background-color: #1e293b; /* Slate 800 */
-  border: 1px solid #334155; /* Slate 700 */
+  background-color: #121214;
+  border: 1px solid #27272a; /* Zinc 800 */
   border-radius: 0.5rem;
 }
 
-/* Minimalist Badges */
+/* Semantic Badges (Only where colors are required for incident severity) */
 .badge-critical {
-  background-color: #451a1a;
-  color: #fca5a5;
-  border: 1px solid #7f1d1d;
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
 .badge-high {
-  background-color: #431407;
-  color: #fdba74;
-  border: 1px solid #7c2d12;
+  background-color: rgba(249, 115, 22, 0.12);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.3);
 }
 
 .badge-medium {
-  background-color: #422006;
+  background-color: rgba(234, 179, 8, 0.12);
   color: #fde047;
-  border: 1px solid #713f12;
+  border: 1px solid rgba(234, 179, 8, 0.3);
 }
 
 .badge-low {
-  background-color: #064e3b;
-  color: #6ee7b7;
-  border: 1px solid #065f46;
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .badge-neutral {
-  background-color: #0f172a;
-  color: #94a3b8;
-  border: 1px solid #334155;
+  background-color: #18181b;
+  color: #a1a1aa;
+  border: 1px solid #27272a;
 }

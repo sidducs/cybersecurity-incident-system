@@ -57,10 +57,10 @@ export default function SemanticSearchPage() {
   return (
     <div className="space-y-5 max-w-4xl mx-auto">
       {/* Header */}
-      <div className="pb-2 border-b border-slate-800">
-        <h1 className="text-xl font-bold text-slate-100">Semantic Incident Search</h1>
-        <p className="text-xs text-slate-400 mt-0.5">
-          Find conceptually related historical incidents using PostgreSQL pgvector Cosine Distance (<code className="text-slate-300 font-mono">&lt;=&gt;</code>)
+      <div className="pb-2 border-b border-zinc-800">
+        <h1 className="text-xl font-bold text-white">Semantic Incident Search</h1>
+        <p className="text-xs text-zinc-400 mt-0.5">
+          Find conceptually related historical incidents using PostgreSQL pgvector Cosine Distance (<code className="text-zinc-300 font-mono">&lt;=&gt;</code>)
         </p>
       </div>
 
@@ -74,30 +74,30 @@ export default function SemanticSearchPage() {
           className="space-y-2.5"
         >
           <div className="relative">
-            <Search className="w-4 h-4 absolute inset-y-0 left-3 my-auto text-slate-400 pointer-events-none" />
+            <Search className="w-4 h-4 absolute inset-y-0 left-3 my-auto text-zinc-400 pointer-events-none" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Describe attack symptoms, anomalous behavior, or keywords..."
-              className="w-full pl-9 pr-24 py-2 bg-slate-900 border border-slate-700 rounded text-xs text-slate-100 focus:outline-none focus:border-blue-500"
+              className="w-full pl-9 pr-24 py-2 bg-black border border-zinc-800 rounded text-xs text-white focus:outline-none focus:border-white"
             />
             <button
               type="submit"
               disabled={loading || !query.trim()}
-              className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-colors disabled:opacity-40"
+              className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded bg-white hover:bg-zinc-200 text-black text-xs font-semibold transition-colors disabled:opacity-40"
             >
               {loading ? 'Searching...' : 'Search'}
             </button>
           </div>
 
           {/* Relational Filters */}
-          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
             <span>Filter results:</span>
             <select
               value={severityFilter}
               onChange={(e) => setSeverityFilter(e.target.value)}
-              className="py-1 px-2 bg-slate-900 border border-slate-700 rounded text-slate-200 focus:outline-none focus:border-blue-500 text-xs"
+              className="py-1 px-2 bg-black border border-zinc-800 rounded text-zinc-200 focus:outline-none focus:border-white text-xs"
             >
               <option value="">Any Severity</option>
               <option value="Critical">Critical</option>
@@ -109,7 +109,7 @@ export default function SemanticSearchPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="py-1 px-2 bg-slate-900 border border-slate-700 rounded text-slate-200 focus:outline-none focus:border-blue-500 text-xs"
+              className="py-1 px-2 bg-black border border-zinc-800 rounded text-zinc-200 focus:outline-none focus:border-white text-xs"
             >
               <option value="">Any Status</option>
               <option value="New">New</option>
@@ -121,15 +121,15 @@ export default function SemanticSearchPage() {
         </form>
 
         {/* Sample Queries */}
-        <div className="pt-2 border-t border-slate-700/60">
-          <div className="text-[11px] text-slate-400 mb-1.5">Example searches:</div>
+        <div className="pt-2 border-t border-zinc-800">
+          <div className="text-[11px] text-zinc-400 mb-1.5">Example searches:</div>
           <div className="flex flex-wrap gap-1.5">
             {sampleQueries.map((sample, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => handleSampleClick(sample)}
-                className="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 text-[11px] text-left transition-colors"
+                className="px-2 py-0.5 rounded bg-black border border-zinc-800 hover:border-zinc-600 text-zinc-300 text-[11px] text-left transition-colors"
               >
                 "{sample}"
               </button>
@@ -140,27 +140,27 @@ export default function SemanticSearchPage() {
 
       {/* Results */}
       {error && (
-        <div className="p-3 rounded bg-red-950/50 border border-red-800 text-red-200 text-xs">
+        <div className="p-3 rounded bg-red-950/40 border border-red-900/60 text-red-300 text-xs">
           Error: {error}
         </div>
       )}
 
       {loading && (
-        <div className="py-12 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-          <Activity className="w-4 h-4 animate-spin text-blue-500" />
+        <div className="py-12 text-center text-zinc-400 text-xs flex items-center justify-center gap-2">
+          <Activity className="w-4 h-4 animate-spin text-white" />
           <span>Executing pgvector cosine similarity search...</span>
         </div>
       )}
 
       {!loading && searched && results.length === 0 && (
-        <div className="py-8 text-center text-slate-500 text-xs clean-card">
+        <div className="py-8 text-center text-zinc-500 text-xs clean-card">
           No matching incidents found.
         </div>
       )}
 
       {!loading && results.length > 0 && (
         <div className="space-y-3">
-          <div className="text-xs text-slate-400">
+          <div className="text-xs text-zinc-400">
             Found {results.length} related incidents (ordered by vector similarity):
           </div>
 
@@ -175,31 +175,31 @@ export default function SemanticSearchPage() {
                 <div key={res.incident_id} className="clean-card p-4 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-slate-400">#{res.incident_id}</span>
+                      <span className="font-mono text-zinc-400">#{res.incident_id}</span>
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${badgeClass}`}>
                         {res.severity}
                       </span>
-                      <span className="text-[11px] text-slate-300 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700">
+                      <span className="text-[11px] text-zinc-300 bg-black px-1.5 py-0.5 rounded border border-zinc-800">
                         {res.category}
                       </span>
                     </div>
 
-                    <div className="font-mono text-xs text-blue-400 font-semibold">
+                    <div className="font-mono text-xs text-white font-semibold">
                       {res.similarity_percentage}% Match
                     </div>
                   </div>
 
-                  <h3 className="font-medium text-slate-100 text-sm">{res.title}</h3>
+                  <h3 className="font-medium text-white text-sm">{res.title}</h3>
 
-                  <p className="text-xs text-slate-400 line-clamp-2">
+                  <p className="text-xs text-zinc-400 line-clamp-2">
                     {res.description}
                   </p>
 
-                  <div className="pt-2 border-t border-slate-700/60 flex items-center justify-between text-xs">
-                    <span className="text-slate-500 text-[11px]">Asset: {res.asset_name}</span>
+                  <div className="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs">
+                    <span className="text-zinc-500 text-[11px]">Asset: {res.asset_name}</span>
                     <Link
                       href={`/incidents/${res.incident_id}`}
-                      className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-xs"
+                      className="text-zinc-300 hover:text-white flex items-center gap-1 text-xs underline"
                     >
                       <span>View Incident</span>
                       <ArrowRight className="w-3.5 h-3.5" />

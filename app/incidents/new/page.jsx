@@ -103,20 +103,20 @@ export default function NewIncidentPage() {
       <div>
         <Link
           href="/incidents"
-          className="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1 transition-colors"
+          className="text-xs text-zinc-400 hover:text-white flex items-center gap-1 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Incidents</span>
         </Link>
       </div>
 
-      <div className="pb-2 border-b border-slate-800">
-        <h1 className="text-xl font-bold text-slate-100">Log Security Incident</h1>
-        <p className="text-xs text-slate-400 mt-0.5">Submit a new security incident report</p>
+      <div className="pb-2 border-b border-zinc-800">
+        <h1 className="text-xl font-bold text-white">Log Security Incident</h1>
+        <p className="text-xs text-zinc-400 mt-0.5">Submit a new security incident report</p>
       </div>
 
       {error && (
-        <div className="p-3 rounded bg-red-950/50 border border-red-800 text-red-200 text-xs flex items-center gap-2">
+        <div className="p-3 rounded bg-red-950/40 border border-red-900/60 text-red-300 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{error}</span>
         </div>
@@ -126,24 +126,24 @@ export default function NewIncidentPage() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="clean-card p-5 lg:col-span-2 space-y-4">
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Incident Title *</label>
+            <label className="block text-xs font-medium text-zinc-300 mb-1">Incident Title *</label>
             <input
               type="text"
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Abnormal login spike from unrecognized subnet"
-              className="w-full px-3 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-100 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-1.5 bg-black border border-zinc-800 rounded text-xs text-white focus:outline-none focus:border-white"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Classification *</label>
+              <label className="block text-xs font-medium text-zinc-300 mb-1">Classification *</label>
               <select
                 value={typeId}
                 onChange={(e) => setTypeId(e.target.value)}
-                className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+                className="w-full px-2.5 py-1.5 bg-black border border-zinc-800 rounded text-xs text-zinc-200 focus:outline-none focus:border-white"
               >
                 {INCIDENT_TYPES.map((t) => (
                   <option key={t.id} value={t.id}>
@@ -154,11 +154,11 @@ export default function NewIncidentPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Target Asset *</label>
+              <label className="block text-xs font-medium text-zinc-300 mb-1">Target Asset *</label>
               <select
                 value={assetId}
                 onChange={(e) => setAssetId(e.target.value)}
-                className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+                className="w-full px-2.5 py-1.5 bg-black border border-zinc-800 rounded text-xs text-zinc-200 focus:outline-none focus:border-white"
               >
                 {ASSETS.map((a) => (
                   <option key={a.id} value={a.id}>
@@ -171,11 +171,11 @@ export default function NewIncidentPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Severity *</label>
+              <label className="block text-xs font-medium text-zinc-300 mb-1">Severity *</label>
               <select
                 value={severity}
                 onChange={(e) => setSeverity(e.target.value)}
-                className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+                className="w-full px-2.5 py-1.5 bg-black border border-zinc-800 rounded text-xs text-zinc-200 focus:outline-none focus:border-white"
               >
                 <option value="Critical">Critical</option>
                 <option value="High">High</option>
@@ -185,9 +185,9 @@ export default function NewIncidentPage() {
             </div>
 
             <div>
-              <div className="flex items-center justify-between text-xs font-medium text-slate-300 mb-1">
+              <div className="flex items-center justify-between text-xs font-medium text-zinc-300 mb-1">
                 <span>Impact Score</span>
-                <span className="font-mono text-slate-200">{impactScore} / 100</span>
+                <span className="font-mono text-white">{impactScore} / 100</span>
               </div>
               <input
                 type="range"
@@ -195,27 +195,27 @@ export default function NewIncidentPage() {
                 max="100"
                 value={impactScore}
                 onChange={(e) => setImpactScore(parseInt(e.target.value, 10))}
-                className="w-full accent-blue-500 mt-1"
+                className="w-full accent-white mt-1"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Incident Description *</label>
+            <label className="block text-xs font-medium text-zinc-300 mb-1">Incident Description *</label>
             <textarea
               required
               rows={4}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Describe the observed indicators of compromise, source IPs, affected accounts or systems..."
-              className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded text-xs text-slate-100 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 bg-black border border-zinc-800 rounded text-xs text-white focus:outline-none focus:border-white"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 rounded bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-colors disabled:opacity-50"
+            className="w-full py-2 rounded bg-white hover:bg-zinc-200 text-black font-semibold text-xs transition-colors disabled:opacity-50"
           >
             {loading ? 'Submitting Incident...' : 'Save Incident'}
           </button>
@@ -223,18 +223,18 @@ export default function NewIncidentPage() {
 
         {/* Risk Score Calculation Preview */}
         <div className="clean-card p-5 space-y-4">
-          <div className="pb-2 border-b border-slate-700">
-            <h2 className="text-xs font-semibold text-slate-200 uppercase tracking-wide">
+          <div className="pb-2 border-b border-zinc-800">
+            <h2 className="text-xs font-semibold text-white uppercase tracking-wide">
               Risk Score Calculation
             </h2>
-            <div className="text-[11px] text-slate-400 mt-0.5">
+            <div className="text-[11px] text-zinc-400 mt-0.5">
               calculate_incident_risk(severity, asset, impact)
             </div>
           </div>
 
-          <div className="text-center p-4 rounded bg-slate-900/60 border border-slate-700/60 space-y-1">
-            <div className="text-[10px] text-slate-400 uppercase">Calculated Risk</div>
-            <div className="text-3xl font-bold font-mono text-slate-100">{previewScore}</div>
+          <div className="text-center p-4 rounded bg-black border border-zinc-800 space-y-1">
+            <div className="text-[10px] text-zinc-400 uppercase">Calculated Risk</div>
+            <div className="text-3xl font-bold font-mono text-white">{previewScore}</div>
             <div>
               <span className={`px-2 py-0.5 rounded text-[11px] font-semibold ${previewBadge}`}>
                 {previewLevel}
@@ -242,24 +242,24 @@ export default function NewIncidentPage() {
             </div>
           </div>
 
-          <div className="text-xs space-y-1.5 text-slate-400">
-            <div className="flex justify-between py-1 border-b border-slate-800">
+          <div className="text-xs space-y-1.5 text-zinc-400">
+            <div className="flex justify-between py-1 border-b border-zinc-800">
               <span>Severity Weight (40%):</span>
-              <span className="text-slate-200">{severity}</span>
+              <span className="text-white">{severity}</span>
             </div>
-            <div className="flex justify-between py-1 border-b border-slate-800">
+            <div className="flex justify-between py-1 border-b border-zinc-800">
               <span>Asset Weight (35%):</span>
-              <span className="text-slate-200">
+              <span className="text-white">
                 {ASSETS.find((a) => a.id === parseInt(assetId, 10))?.criticality}
               </span>
             </div>
-            <div className="flex justify-between py-1 border-b border-slate-800">
+            <div className="flex justify-between py-1 border-b border-zinc-800">
               <span>Impact Weight (25%):</span>
-              <span className="text-slate-200">{impactScore} pts</span>
+              <span className="text-white">{impactScore} pts</span>
             </div>
           </div>
 
-          <div className="text-[11px] text-slate-400 leading-normal">
+          <div className="text-[11px] text-zinc-400 leading-normal">
             Calculated risk score is stored in PostgreSQL, and description text is indexed into pgvector for similarity search.
           </div>
         </div>

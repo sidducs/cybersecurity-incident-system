@@ -45,11 +45,11 @@ export default function Navbar() {
   if (pathname === '/login') return null;
 
   return (
-    <header className="bg-slate-900 border-b border-slate-800">
+    <header className="bg-black border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
         {/* Brand */}
-        <Link href="/dashboard" className="flex items-center space-x-2 text-slate-100 font-semibold text-sm">
-          <Shield className="w-5 h-5 text-blue-500" />
+        <Link href="/dashboard" className="flex items-center space-x-2 text-white font-semibold text-sm">
+          <Shield className="w-5 h-5 text-white" />
           <span>Incident Tracker</span>
         </Link>
 
@@ -67,8 +67,8 @@ export default function Navbar() {
                 href={item.href}
                 className={`px-3 py-1.5 rounded text-xs font-medium flex items-center gap-1.5 transition-colors ${
                   isActive
-                    ? 'bg-slate-800 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                    ? 'bg-zinc-800 text-white'
+                    : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -82,12 +82,12 @@ export default function Navbar() {
         <div className="flex items-center space-x-3 text-xs">
           {currentUser && (
             <div className="flex items-center gap-3">
-              <span className="text-slate-300">
-                {currentUser.fullName} <span className="text-slate-500">({currentUser.roleName})</span>
+              <span className="text-zinc-300">
+                {currentUser.fullName} <span className="text-zinc-500">({currentUser.roleName})</span>
               </span>
               <button
                 onClick={handleLogout}
-                className="text-slate-400 hover:text-red-400 flex items-center gap-1 transition-colors"
+                className="text-zinc-400 hover:text-white flex items-center gap-1 transition-colors"
                 title="Sign out"
               >
                 <LogOut className="w-3.5 h-3.5" />
