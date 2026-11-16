@@ -71,12 +71,10 @@ export default function AdminPage() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {[1, 2, 3].map((tier) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[1, 2].map((tier) => {
             const members = hierarchy.filter((h) => h.tier_level === tier);
-            let tierTitle = 'Tier 1: Management / Lead';
-            if (tier === 2) tierTitle = 'Tier 2: Senior Analysts';
-            if (tier === 3) tierTitle = 'Tier 3: Incident Responders';
+            let tierTitle = tier === 1 ? 'Tier 1: SOC Administrator' : 'Tier 2: Security Analyst';
 
             return (
               <div key={tier} className="p-3 rounded bg-black border border-zinc-800 space-y-2">

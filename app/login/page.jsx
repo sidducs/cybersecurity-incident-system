@@ -121,22 +121,8 @@ export default function LoginPage() {
               </button>
             </div>
 
-            <div className="flex items-center justify-center gap-1.5 pt-1 text-[10px] text-zinc-400">
-              <span>Other Analysts:</span>
-              {['david', 'maya', 'vikram', 'elena'].map((name) => (
-                <button
-                  key={name}
-                  type="button"
-                  onClick={() => handleQuickFill(name, name)}
-                  className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 hover:border-zinc-600 text-zinc-300 font-mono text-[10px]"
-                >
-                  {name}
-                </button>
-              ))}
-            </div>
-
-            <div className="text-[10px] text-zinc-500 text-center">
-              Password is always the same as the username (or <span className="font-mono text-zinc-300">password123</span>)
+            <div className="text-[10px] text-zinc-500 text-center pt-1">
+              Password is the same as the username (or <span className="font-mono text-zinc-300">password123</span>)
             </div>
           </div>
         </div>

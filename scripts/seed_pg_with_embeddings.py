@@ -26,11 +26,7 @@ cur.execute("""
 pwd_hash = "$2b$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW"
 users = [
     (1, 1, 'Sarah Connor', 'sarah.connor@soc.corp', pwd_hash, True, '2026-01-10 08:00:00+05:30'),
-    (2, 2, 'Alex Rivera', 'alex.rivera@soc.corp', pwd_hash, True, '2026-01-11 09:30:00+05:30'),
-    (3, 2, 'David Chen', 'david.chen@soc.corp', pwd_hash, True, '2026-01-12 10:15:00+05:30'),
-    (4, 2, 'Maya Lin', 'maya.lin@soc.corp', pwd_hash, True, '2026-01-15 11:00:00+05:30'),
-    (5, 2, 'Vikram Rao', 'vikram.rao@soc.corp', pwd_hash, True, '2026-01-18 08:45:00+05:30'),
-    (6, 2, 'Elena Rostova', 'elena.rostova@soc.corp', pwd_hash, True, '2026-01-20 14:20:00+05:30')
+    (2, 2, 'Alex Rivera', 'alex.rivera@soc.corp', pwd_hash, True, '2026-01-11 09:30:00+05:30')
 ]
 for u in users:
     cur.execute("""

@@ -506,10 +506,6 @@ export default function IncidentDetailPage() {
                   className="w-full px-2.5 py-1.5 bg-black border border-zinc-800 rounded text-xs text-zinc-200 focus:outline-none focus:border-white"
                 >
                   <option value="2">Alex Rivera (Security Analyst)</option>
-                  <option value="3">David Chen (Security Analyst)</option>
-                  <option value="4">Maya Lin (Security Analyst)</option>
-                  <option value="5">Vikram Rao (Security Analyst)</option>
-                  <option value="6">Elena Rostova (Security Analyst)</option>
                 </select>
               </div>
 
