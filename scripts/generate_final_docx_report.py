@@ -560,7 +560,8 @@ D:\\DBMS Mini Project\\
     p_er_txt = doc.add_paragraph()
     p_er_txt.add_run("The conceptual data model follows Elmasri & Navathe standards (Figures 3.14 & 3.2). It comprises 6 strong entities (ROLES, USERS, ASSETS, INCIDENT_TYPES, INCIDENTS, AUDIT_LOGS) and 5 weak entities (INVESTIGATIONS, RESPONSE_ACTIONS, INCIDENT_STATUS_HISTORY, RISK_ASSESSMENTS, INCIDENT_EMBEDDINGS):")
     
-    er_img_path = r"D:\DBMS Mini Project\docs\database_design\01_CHEN_ER_DIAGRAM.png"
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    er_img_path = os.path.join(BASE_DIR, "docs", "database_design", "01_CHEN_ER_DIAGRAM.png")
     if os.path.exists(er_img_path):
         doc.add_picture(er_img_path, width=Inches(6.5))
         p_cap = doc.add_paragraph()
@@ -574,7 +575,7 @@ D:\\DBMS Mini Project\\
     p_rel_txt = doc.add_paragraph()
     p_rel_txt.add_run("The relational schema mapping follows textbook Figure 9.2 standards: 11 horizontally adjacent normalized relation grids with underlined Primary Keys and orthogonal directed arrows pointing directly into referenced PK boxes:")
     
-    rel_img_path = r"D:\DBMS Mini Project\docs\database_design\02_RELATIONAL_SCHEMA_DIAGRAM.png"
+    rel_img_path = os.path.join(BASE_DIR, "docs", "database_design", "02_RELATIONAL_SCHEMA_DIAGRAM.png")
     if os.path.exists(rel_img_path):
         doc.add_picture(rel_img_path, width=Inches(6.5))
         p_cap2 = doc.add_paragraph()
@@ -683,7 +684,7 @@ D:\\DBMS Mini Project\\
                 r.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
 
     # Save document
-    out_path = r"D:\DBMS Mini Project\docs\FINAL_DBMS_MINI_PROJECT_REPORT.docx"
+    out_path = os.path.join(BASE_DIR, "docs", "FINAL_DBMS_MINI_PROJECT_REPORT.docx")
     doc.save(out_path)
     print(f"Successfully generated Final Report document at: {out_path}")
     print(f"File size: {os.path.getsize(out_path):,} bytes")

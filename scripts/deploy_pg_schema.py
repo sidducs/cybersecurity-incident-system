@@ -36,8 +36,8 @@ cur_app.execute("CREATE EXTENSION IF NOT EXISTS vector;")
 conn_app.commit()
 print("Enabled 'vector' extension in 'cybersecurity_db'")
 
-# Read and execute schema.sql (handling BOM)
-schema_file = r'D:\DBMS Mini Project\database\schema.sql'
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+schema_file = os.path.join(BASE_DIR, 'database', 'schema.sql')
 with open(schema_file, 'r', encoding='utf-8-sig') as f:
     schema_sql = f.read()
 

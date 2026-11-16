@@ -1,4 +1,8 @@
+import os
 import psycopg2
+import re
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 def test_queries():
     conn = psycopg2.connect(
@@ -10,11 +14,11 @@ def test_queries():
     )
     cur = conn.cursor()
 
-    with open(r'D:\DBMS Mini Project\database\queries\05_complex_analytical_queries.sql', 'r', encoding='utf-8') as f:
+    sql_path = os.path.join(BASE_DIR, 'database', 'queries', '05_complex_analytical_queries.sql')
+    with open(sql_path, 'r', encoding='utf-8') as f:
         full_sql = f.read()
 
     # Split script into discrete queries by '-- Q'
-    import re
     query_blocks = re.split(r'-- ----------------------------------------------------------------------------\s*-- Q', full_sql)
     
     print("=" * 80)

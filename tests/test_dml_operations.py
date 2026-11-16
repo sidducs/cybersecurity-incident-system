@@ -1,4 +1,7 @@
+import os
 import psycopg2
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 def run_dml():
     conn = psycopg2.connect(
@@ -11,7 +14,8 @@ def run_dml():
     conn.autocommit = True
     cur = conn.cursor()
 
-    with open(r'D:\DBMS Mini Project\database\queries\04_dml_operations.sql', 'r', encoding='utf-8') as f:
+    sql_path = os.path.join(BASE_DIR, 'database', 'queries', '04_dml_operations.sql')
+    with open(sql_path, 'r', encoding='utf-8') as f:
         sql = f.read()
 
     # Split into clean statements (skipping \c)

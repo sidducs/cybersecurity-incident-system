@@ -132,18 +132,32 @@ cybersecurity-incident-intelligence/
 │   ├── vector/
 │   └── queries/
 ├── scripts/
+│   ├── deploy_pg_schema.py
+│   ├── populate_all_pg_tables.py
+│   ├── seed_pg_with_embeddings.py
+│   ├── sync_sequences.py
+│   ├── verify_pgvector.py
+│   ├── generate_final_docx_report.py
 │   └── vector_cli.py
+├── tests/
+│   ├── test_dml_operations.py
+│   ├── test_complex_queries.py
+│   ├── test_stored_functions.py
+│   ├── test_transactions.py
+│   ├── test_trigger.py
+│   └── test_vector_crud.py
 ├── docs/
-│   ├── 01_CHEN_ER_DIAGRAM.png
-│   ├── 02_RELATIONAL_SCHEMA_DIAGRAM.png
-│   ├── 04_PHASE_2_SQL_DDL_IMPLEMENTATION.md
-│   ├── 05_PHASE_3_ADVANCED_DATABASE_FEATURES.md
-│   ├── 06_PHASE_4_VECTOR_DATABASE_AND_SEARCH.md
-│   ├── 07_PHASE_5_NEXTJS_INTERFACE_AND_SECURITY.md
+│   ├── database_design/
+│   │   ├── 01_CHEN_ER_DIAGRAM.png
+│   │   └── 02_RELATIONAL_SCHEMA_DIAGRAM.png
+│   ├── references/
+│   ├── DEMO_PRESENTATION_AND_VIVA_GUIDE.md
+│   ├── TEAMMATE_QUICK_GUIDE.md
 │   ├── FINAL_REPORT_CHECKLIST_AND_RUBRIC.md
+│   ├── FINAL_DBMS_MINI_PROJECT_REPORT.docx
 │   └── FINAL_DBMS_MINI_PROJECT_REPORT.md
+├── run_psql_terminal.bat
 ├── .env.example
-├── .env.local
 ├── .gitignore
 ├── package.json
 └── README.md
@@ -168,5 +182,15 @@ npm run dev
 
 # 3. Access Web Application
 # Open browser at: http://localhost:3000
+```
+
+### Running Automated Test Suites
+```bash
+python tests/test_complex_queries.py
+python tests/test_dml_operations.py
+python tests/test_stored_functions.py
+python tests/test_transactions.py
+python tests/test_trigger.py
+python tests/test_vector_crud.py
 ```
 

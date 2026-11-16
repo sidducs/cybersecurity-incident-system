@@ -1,4 +1,7 @@
+import os
 import psycopg2
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 conn = psycopg2.connect(
     dbname='cybersecurity_db',
@@ -9,7 +12,8 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
-with open(r'D:\DBMS Mini Project\database\functions\01_calculate_incident_risk.sql', 'r', encoding='utf-8') as f:
+sql_path = os.path.join(BASE_DIR, 'database', 'functions', '01_calculate_incident_risk.sql')
+with open(sql_path, 'r', encoding='utf-8') as f:
     sql = f.read()
 
 # Filter out psql \c command

@@ -1,4 +1,7 @@
+import os
 import psycopg2
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 conn = psycopg2.connect(
     dbname='cybersecurity_db',
@@ -10,13 +13,18 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 # Deploy trigger
-with open(r'D:\DBMS Mini Project\database\triggers\02_incident_status_trigger.sql', 'r', encoding='utf-8') as f:
+sql_path = os.path.join(BASE_DIR, 'database', 'triggers', '02_incident_status_trigger.sql')
+with open(sql_path, 'r', encoding='utf-8') as f:
     sql = f.read()
 
 clean_sql = '\n'.join([line for line in sql.splitlines() if not line.strip().startswith('\\c')])
 cur.execute(clean_sql)
 conn.commit()
 print("Successfully deployed trigger in PostgreSQL!")
+
+# Ensure known initial state
+cur.execute("UPDATE incidents SET status = 'Contained', resolved_at = NULL WHERE incident_id = 1;")
+conn.commit()
 
 # Check incident 1 before update
 cur.execute("SELECT incident_id, status, resolved_at FROM incidents WHERE incident_id = 1;")

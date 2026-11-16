@@ -1,5 +1,8 @@
-import psycopg2
+import os
 import sys
+import psycopg2
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 def run_transaction_tests():
     conn = psycopg2.connect(
@@ -15,7 +18,8 @@ def run_transaction_tests():
     print("=================================================================")
     print("STEP 1: Deploying Stored Procedure sp_assign_incident_atomic")
     print("=================================================================")
-    with open(r'D:\DBMS Mini Project\database\transactions\03_incident_assignment_transaction.sql', 'r', encoding='utf-8') as f:
+    sql_path = os.path.join(BASE_DIR, 'database', 'transactions', '03_incident_assignment_transaction.sql')
+    with open(sql_path, 'r', encoding='utf-8') as f:
         sql = f.read()
 
     # Filter out \c cybersecurity_db
