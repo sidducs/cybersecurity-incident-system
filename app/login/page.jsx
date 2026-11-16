@@ -29,7 +29,7 @@ export default function LoginPage() {
       }
 
       localStorage.setItem('soc_user', JSON.stringify(data.user));
-      router.push('/dashboard');
+      window.location.href = '/dashboard';
     } catch (err) {
       setError(err.message);
     } finally {

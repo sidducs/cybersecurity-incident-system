@@ -11,27 +11,40 @@ export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('soc_user');
-    if (savedUser) {
-      try {
-        setCurrentUser(JSON.parse(savedUser));
-      } catch (e) {}
-    } else {
-      const defaultUser = {
-        userId: 1,
-        fullName: 'Sarah Connor',
-        email: 'sarah.connor@soc.corp',
-        roleName: 'Administrator',
-      };
-      localStorage.setItem('soc_user', JSON.stringify(defaultUser));
-      setCurrentUser(defaultUser);
-    }
-  }, []);
+    const syncUser = () => {
+      const savedUser = localStorage.getItem('soc_user');
+      if (savedUser) {
+        try {
+          setCurrentUser(JSON.parse(savedUser));
+        } catch (e) {}
+      } else {
+        const defaultUser = {
+          userId: 1,
+          fullName: 'Sarah Connor',
+          username: 'admin',
+          email: 'sarah.connor@soc.corp',
+          roleName: 'Administrator',
+        };
+        localStorage.setItem('soc_user', JSON.stringify(defaultUser));
+        setCurrentUser(defaultUser);
+      }
+    };
+
+    syncUser();
+
+    // Listen for storage changes across tabs or login events
+    window.addEventListener('storage', syncUser);
+    window.addEventListener('soc_user_changed', syncUser);
+    return () => {
+      window.removeEventListener('storage', syncUser);
+      window.removeEventListener('soc_user_changed', syncUser);
+    };
+  }, [pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem('soc_user');
     document.cookie = 'auth_token=; Max-Age=0; path=/;';
-    router.push('/login');
+    window.location.href = '/login';
   };
 
   const navLinks = [
