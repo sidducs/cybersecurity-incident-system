@@ -1,9 +1,6 @@
 @echo off
-title PostgreSQL Terminal - cybersecurity_db
-echo =====================================================================
-echo  Connecting to PostgreSQL: cybersecurity_db (User: postgres)
-echo =====================================================================
+title PostgreSQL 15 - cybersecurity_db
 set PGPASSWORD=2233
-"C:\Program Files\PostgreSQL\15\bin\psql.exe" -h localhost -p 5432 -U postgres -d cybersecurity_db
+"C:\Program Files\PostgreSQL\15\bin\psql.exe" -h 127.0.0.1 -p 5432 -U postgres -d cybersecurity_db
 pause
 
