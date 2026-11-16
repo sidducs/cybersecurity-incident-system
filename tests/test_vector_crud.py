@@ -15,10 +15,6 @@ from database.vector.vector_service import (
 )
 
 def run_vector_crud_tests():
-    print("=" * 80)
-    print("PHASE 4: TESTING PGVECTOR EMBEDDINGS & SEMANTIC SEARCH ENGINE")
-    print("=" * 80)
-
     # ------------------------------------------------------------------------
     # STEP 1: TEST VECTOR CREATE
     # ------------------------------------------------------------------------
@@ -94,10 +90,7 @@ def run_vector_crud_tests():
     # Re-insert permanent embedding for incident 16 to keep dataset 100% complete
     create_incident_embedding(16, inc_16_text)
     print("\nRe-indexed permanent embedding for Incident #16 for complete dataset retention.")
-
-    print("\n" + "=" * 80)
     print("ALL VECTOR CRUD AND SEMANTIC SEARCH TESTS PASSED 100%!")
-    print("=" * 80)
 
 if __name__ == '__main__':
     run_vector_crud_tests()
