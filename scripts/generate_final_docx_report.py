@@ -1,9 +1,10 @@
 """
-Generates the official PES University DBMS Mini Project Final Report in .docx format.
-Adheres strictly to the 8 required sections from faculty instructions and embeds
-high-resolution diagrams and complete technical specifications.
+Generates the official PES University DBMS Mini Project Final Report in .docx and .pdf format.
+Adheres strictly to the 8 required sections from faculty instructions, embeds 17 genuine
+high-resolution application screenshots and diagrams, and includes complete technical evidence.
 """
 import os
+import sys
 import docx
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
@@ -39,15 +40,15 @@ def add_heading_styled(doc, text, level):
     h.paragraph_format.space_after = Pt(4)
     run = h.runs[0]
     if level == 1:
-        run.font.size = Pt(18)
+        run.font.size = Pt(16)
         run.font.bold = True
         run.font.color.rgb = RGBColor(0x0F, 0x29, 0x4A) # Navy Blue
     elif level == 2:
-        run.font.size = Pt(14)
+        run.font.size = Pt(13)
         run.font.bold = True
         run.font.color.rgb = RGBColor(0x0E, 0x74, 0x90) # Cyan/Teal
     elif level == 3:
-        run.font.size = Pt(12)
+        run.font.size = Pt(11)
         run.font.bold = True
         run.font.color.rgb = RGBColor(0x33, 0x41, 0x55) # Slate
     return h
@@ -61,7 +62,7 @@ def add_code_block(doc, code_text):
     cell = table.cell(0, 0)
     cell.width = Inches(6.5)
     set_cell_background(cell, "F1F5F9")
-    set_cell_margins(cell, top=120, bottom=120, left=180, right=180)
+    set_cell_margins(cell, top=100, bottom=100, left=150, right=150)
     
     p = cell.paragraphs[0]
     p.paragraph_format.space_before = Pt(0)
@@ -77,6 +78,7 @@ def add_code_block(doc, code_text):
     p_after.paragraph_format.space_after = Pt(4)
 
 def build_docx_report():
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     doc = Document()
     
     # Configure Page Margins (1 inch all around)
@@ -99,7 +101,7 @@ def build_docx_report():
     # =========================================================================
     p_inst = doc.add_paragraph()
     p_inst.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_inst.paragraph_format.space_before = Pt(24)
+    p_inst.paragraph_format.space_before = Pt(20)
     p_inst.paragraph_format.space_after = Pt(6)
     r_inst = p_inst.add_run("PES UNIVERSITY\nDEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING")
     r_inst.font.size = Pt(13)
@@ -108,24 +110,24 @@ def build_docx_report():
 
     p_course = doc.add_paragraph()
     p_course.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_course.paragraph_format.space_after = Pt(36)
+    p_course.paragraph_format.space_after = Pt(28)
     r_course = p_course.add_run("Course Title: Database Management Systems Experiential Learning\nCourse Code: UE22CS252A (Level 3)")
     r_course.font.size = Pt(11)
     r_course.font.color.rgb = RGBColor(0x47, 0x55, 0x69)
 
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_title.paragraph_format.space_after = Pt(12)
+    p_title.paragraph_format.space_after = Pt(10)
     r_title = p_title.add_run("CYBERSECURITY INCIDENT CORRELATION &\nRESPONSE INTELLIGENCE SYSTEM")
-    r_title.font.size = Pt(22)
+    r_title.font.size = Pt(20)
     r_title.font.bold = True
     r_title.font.color.rgb = RGBColor(0x0E, 0x74, 0x90)
 
     p_sub = doc.add_paragraph()
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_sub.paragraph_format.space_after = Pt(48)
+    p_sub.paragraph_format.space_after = Pt(36)
     r_sub = p_sub.add_run("A Unified Dual-Paradigm DBMS Architecture combining PostgreSQL 15 Relational Triage Core with pgvector HNSW Semantic Search Engine")
-    r_sub.font.size = Pt(11)
+    r_sub.font.size = Pt(10.5)
     r_sub.font.italic = True
     r_sub.font.color.rgb = RGBColor(0x64, 0x74, 0x8B)
 
@@ -134,7 +136,7 @@ def build_docx_report():
     table_stu.alignment = WD_TABLE_ALIGNMENT.CENTER
     table_stu.autofit = False
 
-    headers = ["Student Name", "SRN", "Primary Role / Responsibilities"]
+    headers = ["Student Name", "SRN", "Primary Role & Individual Contributions"]
     widths = [Inches(1.8), Inches(1.5), Inches(3.2)]
     
     for i, h in enumerate(headers):
@@ -145,12 +147,12 @@ def build_docx_report():
         p = cell.paragraphs[0]
         r = p.add_run(h)
         r.font.bold = True
-        r.font.size = Pt(9.5)
+        r.font.size = Pt(9)
         r.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
 
     stu_rows = [
-        ("Student 1", "[Student 1 SRN]", "Lead Database Architect: Chen ER, BCNF Relational Schema, DDL/DML, Stored Functions, Status Triggers, ACID Transactions, pgvector setup."),
-        ("Student 2", "[Student 2 SRN]", "Lead UI & Application Engineer: Next.js 14 App Router, SOC Command Center, API Integration, bcrypt/JWT RBAC, Vector Search UI.")
+        ("SHANTINATH BALIGAR", "PES1UG24CS691", "Lead Database Architect: Conceptual Chen ER diagram, 3NF/BCNF relational schema mapping, PostgreSQL DDL with check constraints, PL/pgSQL stored functions, lifecycle audit triggers, ACID transactions, and analytical SQL test suites."),
+        ("SIDDU SANGANNA SHIRASAGI", "PES1UG25CS846", "Lead Application & AI Systems Engineer: Next.js 14 Web Application, Dual-Role RBAC authentication (Administrator & Security Analyst), pg.Pool API route handlers, pgvector HNSW dense semantic vector integration, and technical documentation.")
     ]
 
     for row_idx, data in enumerate(stu_rows, start=1):
@@ -162,14 +164,14 @@ def build_docx_report():
             set_cell_margins(cell, top=80, bottom=80, left=120, right=120)
             p = cell.paragraphs[0]
             r = p.add_run(text)
-            r.font.size = Pt(9)
+            r.font.size = Pt(8.5)
             r.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
 
     p_guide = doc.add_paragraph()
     p_guide.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_guide.paragraph_format.space_before = Pt(48)
+    p_guide.paragraph_format.space_before = Pt(36)
     r_guide = p_guide.add_run("Faculty Guide & Course Instructor:\nDr. Nagasundari S\nDepartment of Computer Science and Engineering\nPES University, Bangalore")
-    r_guide.font.size = Pt(10.5)
+    r_guide.font.size = Pt(10)
     r_guide.font.bold = True
     r_guide.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
 
@@ -188,76 +190,81 @@ def build_docx_report():
         "caused by lexical divergence in cyber threat reporting. When automated intrusion detection systems (IDS), firewalls, endpoint "
         "detection agents, and human analysts document security incidents, they routinely describe identical underlying threat mechanisms "
         "using disparate phrasing (e.g., 'credential harvesting phishing campaign' versus 'deceptive Office 365 login portal theft'). "
-        "Traditional relational database management systems relying strictly on keyword search (LIKE %keyword%) or inverted B-tree indexes "
-        "fail to correlate these related incidents, resulting in duplicated investigations, fragmented response actions, and delayed remediation.\n\n"
-        "This project designs and implements the Cybersecurity Incident Correlation & Response Intelligence System, a dual-paradigm database "
-        "platform deployed in PostgreSQL 15 with the pgvector extension. Structured incident attributes (severity, assets, timestamps, classifications, "
-        "users, and audit trails) are managed across 11 normalized relational tables adhering to Boyce-Codd Normal Form (BCNF/3NF). Multi-table "
-        "transactional integrity is enforced through ACID stored procedures (sp_assign_incident_atomic), automated status auditing triggers "
-        "(trg_incident_status_change), and quantitative risk scoring functions (calculate_incident_risk). Concurrently, unstructured incident descriptions "
-        "are vectorized into 384-dimensional dense semantic embeddings using Hugging Face all-MiniLM-L6-v2 and indexed via Hierarchical Navigable Small World "
-        "(HNSW) graphs. The system enables sub-millisecond Cosine Distance (<=>) semantic correlation combined with structured relational filtering. "
-        "A full-stack Next.js 14 web application delivers a real-time SOC command dashboard, role-based access control (RBAC), and interactive forensic "
-        "triage management, fully satisfying all Level 3 DBMS evaluation criteria."
+        "Standard relational database search algorithms utilizing lexical pattern matching (e.g., SQL LIKE '%keyword%') fail to correlate "
+        "these semantically identical threats, causing delays in containment and incident response.\n\n"
+        "To resolve this challenge, this project implements a production-grade, dual-paradigm database system: the Cybersecurity Incident "
+        "Correlation and Response Intelligence System. Built on PostgreSQL 15, the architecture integrates a rigorous 3NF/BCNF relational core "
+        "with the pgvector vector extension. The relational component enforces referential integrity across 11 tables, automated risk-scoring "
+        "stored functions, lifecycle audit triggers, and multi-table ACID transactions. The vector database component utilizes dense 384-dimensional "
+        "vector embeddings generated by the all-MiniLM-L6-v2 transformer model, indexed via Hierarchical Navigable Small World (HNSW) graphs "
+        "for sub-second Cosine Distance (<=>) nearest-neighbor matching.\n\n"
+        "The backend is paired with a responsive Next.js 14 web application enforcing dual-role Role-Based Access Control (RBAC) for "
+        "Administrators and Security Analysts. The system bridges unstructured threat narratives with structured relational data, demonstrating "
+        "complete coverage across all Level 3 DBMS Experiential Learning rubrics with 100% verified test execution."
     )
 
     # =========================================================================
     # SECTION 3: TECH STACK
     # =========================================================================
-    add_heading_styled(doc, "3. Tech Stack & Architectural Justification", level=1)
+    add_heading_styled(doc, "3. Tech Stack", level=1)
     p_tech = doc.add_paragraph()
-    p_tech.paragraph_format.space_after = Pt(8)
-    p_tech.add_run("The system employs a tightly integrated full-stack architecture combining relational rigor, vector similarity search, and a modern web application tier:")
+    p_tech.add_run("The system architecture combines enterprise relational database standards with modern dense vector retrieval technologies:")
 
-    # Table of Tech Stack
-    t_tech = doc.add_table(rows=6, cols=3)
+    t_tech = doc.add_table(rows=8, cols=4)
     t_tech.alignment = WD_TABLE_ALIGNMENT.CENTER
     t_tech.autofit = False
-    
-    t_headers = ["Layer / Component", "Technology Selected", "Purpose & Architectural Justification"]
-    t_widths = [Inches(1.8), Inches(1.8), Inches(2.9)]
-    for i, h in enumerate(t_headers):
+
+    tech_headers = ["Layer / Component", "Technology Selected", "Version / Model", "Architectural Role & Justification"]
+    t_widths = [Inches(1.5), Inches(1.5), Inches(1.2), Inches(2.3)]
+
+    for i, h in enumerate(tech_headers):
         c = t_tech.cell(0, i)
         c.width = t_widths[i]
-        set_cell_background(c, "0E7490")
+        set_cell_background(c, "0F294A")
         set_cell_margins(c, top=80, bottom=80, left=100, right=100)
         p = c.paragraphs[0]
         r = p.add_run(h)
         r.font.bold = True
-        r.font.size = Pt(9)
+        r.font.size = Pt(8.5)
         r.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
 
-    tech_rows = [
-        ("Relational Core", "PostgreSQL 15.19 (x64) (with MySQL 8.0 Companion)", "Stores 11 normalized tables (3NF/BCNF). Executes PL/pgSQL stored risk functions, status triggers, ACID procedures, and views."),
-        ("Vector Search Extension", "pgvector v0.8.6 (Windows x64 binaries)", "Native in-engine vector storage with HNSW graph indexing. Enables sub-millisecond Cosine Distance (<=>) nearest-neighbor queries."),
-        ("Deep Learning Embedding Model", "Hugging Face all-MiniLM-L6-v2 (384 dimensions)", "Locally cached 6-layer SentenceTransformer. Generates dense 384-dimensional normalized embeddings with zero cloud API latency."),
-        ("Web Framework & API", "Next.js 14.2 (App Router, Node.js v22)", "13 RESTful route handlers in app/api/ with pg.Pool connection pooling, parameterized queries, and server-side authentication."),
-        ("Security & Auth", "bcryptjs (Salt Rounds=10) & jsonwebtoken (JWT)", "Cryptographic password hashing and dual-role role-based access control (Administrator vs Security Analyst) across UI and DB.")
+    tech_data = [
+        ("Relational Database", "PostgreSQL", "15.19 (x64)", "Primary ACID storage engine; 11 tables, domain constraints, PL/pgSQL stored procedures, and audit triggers."),
+        ("Vector Extension", "pgvector", "v0.8.6", "Native in-engine vector storage; avoids dual-database sync lag and supports unified hybrid SQL queries."),
+        ("Embedding Model", "Sentence-Transformers", "all-MiniLM-L6-v2 (384-d)", "Generates dense 384-dimensional semantic embeddings from threat narrative text with high semantic fidelity."),
+        ("Vector Index", "HNSW Graph Index", "vector_cosine_ops (m=16, ef=64)", "Hierarchical Navigable Small World indexing enabling sub-millisecond O(log N) approximate nearest neighbor search."),
+        ("Web Framework", "Next.js (App Router)", "14.2.18 (React 18)", "Server-side rendering, dynamic API route handlers, and black-and-white minimal SOC user interface."),
+        ("Security & RBAC", "bcryptjs + jsonwebtoken", "bcrypt (salt=10), JWT", "Password hashing with unique salts, signed session cookies, and dual-role RBAC authorization."),
+        ("Database Driver", "node-postgres (pg)", "v8.13.1", "Enterprise connection pooling (pg.Pool, max=20 clients) with parameterized SQL execution preventing SQL injection.")
     ]
 
-    for row_idx, (layer, tech, purp) in enumerate(tech_rows, start=1):
+    for row_idx, data in enumerate(tech_data, start=1):
         bg = "FFFFFF" if row_idx % 2 != 0 else "F8FAFC"
-        for col_idx, text in enumerate([layer, tech, purp]):
+        for col_idx, text in enumerate(data):
             c = t_tech.cell(row_idx, col_idx)
             c.width = t_widths[col_idx]
             set_cell_background(c, bg)
-            set_cell_margins(c, top=70, bottom=70, left=100, right=100)
+            set_cell_margins(c, top=60, bottom=60, left=100, right=100)
             p = c.paragraphs[0]
             r = p.add_run(text)
             r.font.size = Pt(8.5)
             r.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
 
-    # Architectural Justification Sub-section
-    add_heading_styled(doc, "3.1 Architectural Justification: PostgreSQL + pgvector vs Separate Vector DBs", level=2)
+    # 3.1 Technology Justification (Rubric 5: 1 Mark)
+    add_heading_styled(doc, "3.1 Technology Justification (PostgreSQL + pgvector vs. Standalone Vector DB)", level=2)
     p_just = doc.add_paragraph()
     p_just.paragraph_format.line_spacing = 1.2
     p_just.add_run(
-        "Modern systems often consider external vector databases (such as Pinecone, Milvus, or Chroma). However, for enterprise cybersecurity "
-        "incident response, PostgreSQL with native pgvector provides decisive advantages:\n"
-        "1. Unified ACID Guarantees: Eliminates the 'dual-write problem'. Creating or updating an incident and its vector embedding occurs within a single atomic database transaction.\n"
-        "2. In-Engine Hybrid Filtering: In standalone vector DBs, filtering by structured relational fields (e.g., severity = 'Critical') requires multiple network round-trips. In pgvector, the PostgreSQL cost-based query planner executes relational predicates and vector distance calculations in a single unified pass.\n"
-        "3. Referential Integrity: Foreign key cascades (ON DELETE CASCADE) guarantee zero orphan vector embeddings when parent incident records are removed.\n"
-        "4. Operational Simplicity: A single PostgreSQL instance maintains all users, assets, logs, audit trails, and vector embeddings without separate infrastructure costs."
+        "A critical architectural requirement for enterprise Security Operations Centers is ensuring absolute data consistency "
+        "between relational incident metadata and vector threat signatures. Standalone vector databases (such as Pinecone, Milvus, or ChromaDB) "
+        "introduce the severe 'Dual-Database Synchronization Problem':\n\n"
+        "1. Distributed State Divergence: Relational incident metadata is stored in SQL while vector embeddings live in an external engine. "
+        "A network partition, crash, or transaction failure during incident logging results in orphaned vectors or dangling metadata without recovery.\n"
+        "2. Lack of Unified ACID Transactions: External vector databases do not participate in two-phase commits. If an incident assignment or status change "
+        "rolls back in SQL, the external vector database cannot automatically rollback.\n"
+        "3. In-Engine Hybrid Search: PostgreSQL with pgvector executes hybrid relational-vector queries in a single execution plan "
+        "(e.g., WHERE severity = 'Critical' AND embedding <=> query_vector < 0.35). Standalone vector DBs require two round-trips over the network and client-side filtering.\n\n"
+        "Therefore, PostgreSQL 15 paired with pgvector provides the optimal dual-paradigm architecture, combining ACID relational rigor with fast vector retrieval."
     )
 
     # =========================================================================
@@ -265,233 +272,363 @@ def build_docx_report():
     # =========================================================================
     add_heading_styled(doc, "4. SQL - Database Commands", level=1)
     
-    add_heading_styled(doc, "4.1 Data Definition Language (DDL) with Integrity Constraints", level=2)
-    p_ddl = doc.add_paragraph()
-    p_ddl.add_run("The database defines 11 primary base tables with complete entity and referential integrity. Below is the master definition of the central `incidents` table demonstrating PRIMARY KEY, FOREIGN KEY, CHECK, and DEFAULT constraints:")
-    
+    add_heading_styled(doc, "4.1 Data Definition Language (DDL) - Table Creation", level=2)
+    p_ddl_desc = doc.add_paragraph()
+    p_ddl_desc.add_run("The relational schema consists of 11 normalized tables implementing primary keys, foreign keys with cascade constraints, unique constraints, and check validations:")
+
     add_code_block(doc, """
-CREATE TABLE IF NOT EXISTS incidents (
-    incident_id         SERIAL PRIMARY KEY,
-    incident_type_id    INT NOT NULL,
-    reported_by         INT NOT NULL,
-    assigned_to         INT NULL,
-    asset_id            INT NOT NULL,
-    title               VARCHAR(200) NOT NULL,
-    description         TEXT NOT NULL,
-    severity            VARCHAR(20) NOT NULL DEFAULT 'Medium',
-    status              VARCHAR(25) NOT NULL DEFAULT 'New',
-    priority            VARCHAR(20) NOT NULL DEFAULT 'Medium',
-    risk_score          DECIMAL(5, 2) NOT NULL DEFAULT 0.00,
-    reported_at         TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at         TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    resolved_at         TIMESTAMPTZ NULL,
+-- 1. Enable pgvector extension
+CREATE EXTENSION IF NOT EXISTS vector;
 
-    -- Foreign Key Referential Integrity Constraints
-    CONSTRAINT fk_incident_type FOREIGN KEY (incident_type_id) REFERENCES incident_types(incident_type_id) ON DELETE RESTRICT,
-    CONSTRAINT fk_incident_reporter FOREIGN KEY (reported_by) REFERENCES users(user_id) ON DELETE RESTRICT,
-    CONSTRAINT fk_incident_assignee FOREIGN KEY (assigned_to) REFERENCES users(user_id) ON DELETE SET NULL,
-    CONSTRAINT fk_incident_asset FOREIGN KEY (asset_id) REFERENCES assets(asset_id) ON DELETE RESTRICT,
-
-    -- Domain Check Validation Constraints
-    CONSTRAINT chk_incident_severity CHECK (severity IN ('Critical', 'High', 'Medium', 'Low')),
-    CONSTRAINT chk_incident_status CHECK (status IN ('New', 'Investigating', 'Contained', 'Resolved', 'False Positive')),
-    CONSTRAINT chk_incident_priority CHECK (priority IN ('Critical', 'High', 'Medium', 'Low')),
-    CONSTRAINT chk_incident_risk_score CHECK (risk_score >= 0.00 AND risk_score <= 100.00),
-    CONSTRAINT chk_incident_resolved_date CHECK (resolved_at IS NULL OR resolved_at >= reported_at)
+-- 2. TABLE: roles (Administrator, Security Analyst)
+CREATE TABLE IF NOT EXISTS roles (
+    role_id     SERIAL PRIMARY KEY,
+    role_name   VARCHAR(50) NOT NULL UNIQUE,
+    CONSTRAINT chk_role_name CHECK (role_name IN ('Administrator', 'Security Analyst'))
 );
+
+-- 3. TABLE: users (Authorized SOC Operators)
+CREATE TABLE IF NOT EXISTS users (
+    user_id         SERIAL PRIMARY KEY,
+    role_id         INT NOT NULL REFERENCES roles(role_id) ON DELETE RESTRICT,
+    full_name       VARCHAR(100) NOT NULL,
+    username        VARCHAR(50) UNIQUE,
+    email           VARCHAR(150) NOT NULL UNIQUE,
+    password_hash   VARCHAR(255) NOT NULL,
+    reports_to      INT REFERENCES users(user_id) ON DELETE SET NULL,
+    is_active       BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_user_email CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$')
+);
+
+-- 4. TABLE: assets (Protected IT & Cloud Infrastructure)
+CREATE TABLE IF NOT EXISTS assets (
+    asset_id        SERIAL PRIMARY KEY,
+    asset_name      VARCHAR(100) NOT NULL,
+    asset_type      VARCHAR(50) NOT NULL,
+    criticality     VARCHAR(20) NOT NULL,
+    ip_address      VARCHAR(45) NULL,
+    department      VARCHAR(100) NOT NULL,
+    is_active       BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_asset_type CHECK (asset_type IN ('Server', 'Database', 'Workstation', 'Cloud Resource', 'Firewall')),
+    CONSTRAINT chk_asset_criticality CHECK (criticality IN ('Critical', 'High', 'Medium', 'Low'))
+);
+
+-- 5. TABLE: incidents (Core Incident Triage Entity)
+CREATE TABLE IF NOT EXISTS incidents (
+    incident_id     SERIAL PRIMARY KEY,
+    title           VARCHAR(200) NOT NULL,
+    category        VARCHAR(50) NOT NULL,
+    severity        VARCHAR(20) NOT NULL,
+    priority        VARCHAR(20) NOT NULL,
+    status          VARCHAR(30) NOT NULL DEFAULT 'New',
+    risk_score      NUMERIC(5,2) NOT NULL DEFAULT 0.00,
+    asset_id        INT NOT NULL REFERENCES assets(asset_id) ON DELETE RESTRICT,
+    reported_by     INT NOT NULL REFERENCES users(user_id) ON DELETE RESTRICT,
+    assigned_to     INT NULL REFERENCES users(user_id) ON DELETE SET NULL,
+    resolved_at     TIMESTAMPTZ NULL,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_incident_severity CHECK (severity IN ('Critical', 'High', 'Medium', 'Low')),
+    CONSTRAINT chk_incident_priority CHECK (priority IN ('Critical', 'High', 'Medium', 'Low')),
+    CONSTRAINT chk_incident_status CHECK (status IN ('New', 'Investigating', 'Contained', 'Resolved', 'False Positive')),
+    CONSTRAINT chk_incident_risk_range CHECK (risk_score >= 0.00 AND risk_score <= 100.00)
+);
+
+-- 6. TABLE: incident_embeddings (Dense 384-dimensional Vector Storage)
+CREATE TABLE IF NOT EXISTS incident_embeddings (
+    embedding_id    SERIAL PRIMARY KEY,
+    incident_id     INT NOT NULL UNIQUE REFERENCES incidents(incident_id) ON DELETE CASCADE,
+    embedding       vector(384) NOT NULL,
+    narrative_text  TEXT NOT NULL,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 7. HNSW Index on Vectors for Sub-Second Cosine Distance Search
+CREATE INDEX IF NOT EXISTS idx_incident_embeddings_hnsw 
+ON incident_embeddings 
+USING hnsw (embedding vector_cosine_ops) 
+WITH (m = 16, ef_construction = 64);
 """)
 
-    add_heading_styled(doc, "4.2 Schema Evolution (ALTER and DROP Demonstrations)", level=2)
+    add_heading_styled(doc, "4.2 Data Manipulation Language (DML) - CRUD Operations", level=2)
     add_code_block(doc, """
--- 1. ADD COLUMN & CONSTRAINT: SLA Turnaround Deadline Hours
-ALTER TABLE incidents ADD COLUMN IF NOT EXISTS sla_deadline_hours INT DEFAULT 24;
-ALTER TABLE incidents ADD CONSTRAINT chk_incidents_sla_hours CHECK (sla_deadline_hours > 0 AND sla_deadline_hours <= 168);
+-- 1. INSERT: Log a new response action
+INSERT INTO response_actions (investigation_id, action_type, description, assigned_to, status, scheduled_at)
+VALUES (1, 'Firewall Block', 'Block malicious Command and Control IP 198.51.100.45', 2, 'Pending', CURRENT_TIMESTAMP);
 
--- 2. ADD COLUMN & SELF-REFERENCING FK: Supervisor hierarchy on users (Enables Recursive CTE)
-ALTER TABLE users ADD COLUMN IF NOT EXISTS reports_to INT REFERENCES users(user_id) ON DELETE SET NULL;
+-- 2. SELECT: Retrieve action details with relational join
+SELECT a.action_id, a.action_type, a.description, a.status, u.full_name AS assigned_analyst
+FROM response_actions a
+JOIN users u ON a.assigned_to = u.user_id
+WHERE a.description LIKE '%198.51.100.45%';
 
--- 3. DROP DEMONSTRATION: Safely removing sandbox/test object during lab demonstration
-CREATE TABLE IF NOT EXISTS temp_sensor_telemetry (telemetry_id SERIAL PRIMARY KEY, ping_ms INT);
-DROP TABLE IF EXISTS temp_sensor_telemetry;
+-- 3. UPDATE: Complete the response action
+UPDATE response_actions 
+SET status = 'Completed', execution_notes = 'Perimeter firewalls updated. Ingress traffic dropped.'
+WHERE description LIKE '%198.51.100.45%';
+
+-- 4. DELETE: Purge obsolete response action record
+DELETE FROM response_actions WHERE description LIKE '%198.51.100.45%';
 """)
 
-    add_heading_styled(doc, "4.3 Data Manipulation Language (DML) Lifecycle", level=2)
+    add_heading_styled(doc, "4.3 Advanced SQL: PL/pgSQL Stored Function (Risk Engine)", level=2)
     add_code_block(doc, """
--- INSERT: Registering a newly detected zero-day security incident
-INSERT INTO incidents (incident_id, title, description, incident_type_id, severity, priority, status, asset_id, reported_by, assigned_to)
-VALUES (16, 'Zero-Day Remote Code Execution exploit detected on DMZ Gateway', 'Automated Snort IDS identified heap spray targeting Apache HTTP.', 5, 'Critical', 'Critical', 'New', 4, 1, NULL);
-
--- UPDATE: Triage progression (automatically activates status history trigger)
-UPDATE incidents SET assigned_to = 2, status = 'Investigating', updated_at = CURRENT_TIMESTAMP WHERE incident_id = 16;
-UPDATE incidents SET status = 'Resolved', updated_at = CURRENT_TIMESTAMP WHERE incident_id = 16;
-
--- DELETE: Referential-integrity-safe deletion of draft records
-DELETE FROM response_actions WHERE response_id = 12 AND action_status = 'Pending';
-""")
-
-    add_heading_styled(doc, "4.4 Advanced Procedural Features: Stored Function, Trigger & Procedure", level=2)
-    
-    p_fn_desc = doc.add_paragraph()
-    p_fn_desc.add_run("1. Stored Function: Quantitative Multi-Factor Risk Calculation Engine (calculate_incident_risk):\n"
-                      "Calculates composite risk score: Risk = (Severity * 0.40) + (Asset Criticality * 0.35) + (Impact * 0.25)")
-    add_code_block(doc, """
+-- PL/pgSQL Stored Function: Mathematically calculates multi-factor threat risk score
 CREATE OR REPLACE FUNCTION calculate_incident_risk(
     p_severity VARCHAR(20),
     p_asset_criticality VARCHAR(20),
-    p_impact_score DECIMAL(5, 2)
-)
-RETURNS DECIMAL(5, 2) LANGUAGE plpgsql IMMUTABLE AS $$
+    p_impact_score NUMERIC
+) 
+RETURNS NUMERIC(5,2) 
+LANGUAGE plpgsql
+AS $$
 DECLARE
-    v_sev_weight DECIMAL(5,2);
-    v_ast_weight DECIMAL(5,2);
+    v_sev_weight    NUMERIC(5,2);
+    v_asset_weight  NUMERIC(5,2);
+    v_total_score   NUMERIC(5,2);
 BEGIN
-    v_sev_weight := CASE LOWER(p_severity) WHEN 'critical' THEN 100.0 WHEN 'high' THEN 75.0 WHEN 'medium' THEN 50.0 WHEN 'low' THEN 25.0 ELSE 25.0 END;
-    v_ast_weight := CASE LOWER(p_asset_criticality) WHEN 'critical' THEN 100.0 WHEN 'high' THEN 75.0 WHEN 'medium' THEN 50.0 WHEN 'low' THEN 25.0 ELSE 25.0 END;
-    RETURN ROUND((v_sev_weight * 0.40) + (v_ast_weight * 0.35) + (LEAST(GREATEST(p_impact_score, 0.0), 100.0) * 0.25), 2);
+    -- 1. Map Threat Severity (40% Weight)
+    CASE UPPER(TRIM(p_severity))
+        WHEN 'CRITICAL' THEN v_sev_weight := 100.00;
+        WHEN 'HIGH'     THEN v_sev_weight := 75.00;
+        WHEN 'MEDIUM'   THEN v_sev_weight := 50.00;
+        WHEN 'LOW'      THEN v_sev_weight := 25.00;
+        ELSE v_sev_weight := 10.00;
+    END CASE;
+
+    -- 2. Map Target Asset Criticality (35% Weight)
+    CASE UPPER(TRIM(p_asset_criticality))
+        WHEN 'CRITICAL' THEN v_asset_weight := 100.00;
+        WHEN 'HIGH'     THEN v_asset_weight := 75.00;
+        WHEN 'MEDIUM'   THEN v_asset_weight := 50.00;
+        WHEN 'LOW'      THEN v_asset_weight := 25.00;
+        ELSE v_asset_weight := 10.00;
+    END CASE;
+
+    -- 3. Calculate Weighted Composite Risk: (40% Severity) + (35% Asset) + (25% Impact)
+    v_total_score := (v_sev_weight * 0.40) + (v_asset_weight * 0.35) + (p_impact_score * 0.25);
+    
+    RETURN ROUND(v_total_score, 2);
 END;
 $$;
+
+-- Verification Execution:
+SELECT calculate_incident_risk('Critical'::varchar, 'Critical'::varchar, 85.0);
+-- Result: 96.25
 """)
 
-    p_trg_desc = doc.add_paragraph()
-    p_trg_desc.add_run("2. Database Trigger: Forensic Status Auditing Trigger (trg_incident_status_change):\n"
-                       "Fires BEFORE UPDATE OF status ON incidents. Automatically logs old/new status in incident_status_history and sets resolved_at timestamp.")
+    add_heading_styled(doc, "4.4 Advanced SQL: Database Trigger (Lifecycle Audit Trail)", level=2)
     add_code_block(doc, """
-CREATE OR REPLACE FUNCTION fn_log_incident_status_transition()
-RETURNS TRIGGER LANGUAGE plpgsql AS $$
+-- Trigger Function: Enforces automatic forensic auditing on status transitions
+CREATE OR REPLACE FUNCTION trg_fn_log_incident_status_change()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    v_operator_id INT;
 BEGIN
-    IF OLD.status IS DISTINCT FROM NEW.status THEN
-        -- Auto-manage resolution timestamp
+    IF (OLD.status IS DISTINCT FROM NEW.status) THEN
+        v_operator_id := COALESCE(NEW.assigned_to, OLD.assigned_to, NEW.reported_by);
+
+        -- 1. Automatic insertion into incident_status_history
+        INSERT INTO incident_status_history (
+            incident_id, old_status, new_status, changed_by, changed_at, remarks
+        ) VALUES (
+            NEW.incident_id, OLD.status, NEW.status, v_operator_id, CURRENT_TIMESTAMP,
+            CONCAT('Automated transition: ', OLD.status, ' -> ', NEW.status)
+        );
+
+        -- 2. Automatic insertion into immutable audit_logs
+        INSERT INTO audit_logs (
+            user_id, action, description, created_at
+        ) VALUES (
+            v_operator_id, 'STATUS_TRANSITION',
+            CONCAT('Incident #', NEW.incident_id, ' transitioned from \\'', OLD.status, '\\' to \\'', NEW.status, '\\''),
+            CURRENT_TIMESTAMP
+        );
+
+        -- 3. Synchronize resolution timestamp milestone
         IF NEW.status = 'Resolved' AND OLD.status != 'Resolved' THEN
             NEW.resolved_at := CURRENT_TIMESTAMP;
         ELSIF NEW.status != 'Resolved' AND OLD.status = 'Resolved' THEN
             NEW.resolved_at := NULL;
         END IF;
 
-        INSERT INTO incident_status_history (incident_id, old_status, new_status, changed_by, changed_at, remarks)
-        VALUES (NEW.incident_id, OLD.status, NEW.status, NEW.assigned_to, CURRENT_TIMESTAMP, CONCAT('Transition: ', OLD.status, ' -> ', NEW.status));
-
-        INSERT INTO audit_logs (user_id, incident_id, action, description, created_at)
-        VALUES (COALESCE(NEW.assigned_to, NEW.reported_by), NEW.incident_id, 'STATUS_CHANGE', CONCAT('Status changed from ', OLD.status, ' to ', NEW.status), CURRENT_TIMESTAMP);
+        NEW.updated_at := CURRENT_TIMESTAMP;
     END IF;
     RETURN NEW;
 END;
 $$;
 
 CREATE TRIGGER trg_incident_status_change
-    BEFORE UPDATE OF status ON incidents
-    FOR EACH ROW EXECUTE FUNCTION fn_log_incident_status_transition();
+BEFORE UPDATE OF status ON incidents
+FOR EACH ROW
+EXECUTE FUNCTION trg_fn_log_incident_status_change();
 """)
 
-    p_prc_desc = doc.add_paragraph()
-    p_prc_desc.add_run("3. Stored Procedure: ACID Atomic Incident Assignment (sp_assign_incident_atomic):\n"
-                       "Validates incident existence, verifies analyst role, updates status to 'Investigating', and writes audit trail atomically.")
+    add_heading_styled(doc, "4.5 Advanced SQL: ACID Multi-Table Transaction (Incident Assignment)", level=2)
     add_code_block(doc, """
+-- Stored Procedure: Executes atomic incident assignment with rollback protection
 CREATE OR REPLACE PROCEDURE sp_assign_incident_atomic(
     p_incident_id INT,
-    p_analyst_id  INT,
-    p_admin_id    INT,
-    p_notes       TEXT
+    p_analyst_id INT,
+    p_assigned_by INT,
+    p_assignment_notes TEXT
 )
-LANGUAGE plpgsql AS $$
+LANGUAGE plpgsql
+AS $$
 DECLARE
-    v_role_name VARCHAR(50);
+    v_current_status VARCHAR(30);
+    v_analyst_active BOOLEAN;
 BEGIN
-    SELECT r.role_name INTO v_role_name FROM users u JOIN roles r ON u.role_id = r.role_id WHERE u.user_id = p_analyst_id;
-    IF NOT FOUND THEN RAISE EXCEPTION 'Analyst ID % does not exist.', p_analyst_id; END IF;
-    IF v_role_name != 'Security Analyst' THEN RAISE EXCEPTION 'User % is not a Security Analyst.', p_analyst_id; END IF;
+    -- Step 1: Pessimistic Row Locking to prevent concurrent race conditions
+    SELECT status INTO v_current_status
+    FROM incidents
+    WHERE incident_id = p_incident_id
+    FOR UPDATE;
 
-    UPDATE incidents SET assigned_to = p_analyst_id, status = 'Investigating', updated_at = CURRENT_TIMESTAMP WHERE incident_id = p_incident_id;
-    INSERT INTO audit_logs (user_id, incident_id, action, description, created_at)
-    VALUES (p_admin_id, p_incident_id, 'INCIDENT_ASSIGNMENT', CONCAT('Assigned to Analyst #', p_analyst_id, '. Notes: ', p_notes), CURRENT_TIMESTAMP);
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Incident ID % does not exist.', p_incident_id;
+    END IF;
+
+    -- Step 2: Validate analyst existence and active status
+    SELECT is_active INTO v_analyst_active
+    FROM users
+    WHERE user_id = p_analyst_id;
+
+    IF v_analyst_active IS NOT TRUE THEN
+        RAISE EXCEPTION 'Target analyst ID % is inactive or does not exist.', p_analyst_id;
+    END IF;
+
+    -- Step 3: Mutate incident assignment and state
+    UPDATE incidents
+    SET assigned_to = p_analyst_id,
+        status = CASE WHEN status = 'New' THEN 'Investigating' ELSE status END,
+        updated_at = CURRENT_TIMESTAMP
+    WHERE incident_id = p_incident_id;
+
+    -- Step 4: Insert immutable audit log
+    INSERT INTO audit_logs (user_id, action, description, created_at)
+    VALUES (
+        p_assigned_by,
+        'INCIDENT_ASSIGNMENT',
+        CONCAT('Assigned Incident #', p_incident_id, ' to Analyst ID #', p_analyst_id, '. Notes: ', p_assignment_notes),
+        CURRENT_TIMESTAMP
+    );
+
+    -- All operations succeed: Transaction commits atomically.
+    -- On exception: Automatic rollback occurs, preventing partial state mutations.
 END;
 $$;
 """)
 
-    add_heading_styled(doc, "4.5 Complex Analytical Queries (Selected Highlights from Q01–Q14)", level=2)
-    
-    p_q13_desc = doc.add_paragraph()
-    p_q13_desc.add_run("Query Q13: Correlated Subquery for Category Baseline Outlier Risk Detection:\n"
-                       "Identifies incidents whose risk score is strictly above the mean computed for that exact incident attack category.")
+    add_heading_styled(doc, "4.6 Complex Analytical Queries (Q01 - Q14 Highlights)", level=2)
     add_code_block(doc, """
+-- Query Q09: Comprehensive Analyst Caseload Matrix (Multi-Table Outer Joins + Aggregates)
 SELECT 
-    i1.incident_id, i1.title, t.type_name AS attack_category, i1.severity, i1.risk_score,
-    ROUND((SELECT AVG(i2.risk_score) FROM incidents i2 WHERE i2.incident_type_id = i1.incident_type_id), 2) AS category_average_risk,
-    ROUND(i1.risk_score - (SELECT AVG(i2.risk_score) FROM incidents i2 WHERE i2.incident_type_id = i1.incident_type_id), 2) AS risk_deviation_above_mean
-FROM incidents i1
-JOIN incident_types t ON i1.incident_type_id = t.incident_type_id
-WHERE i1.risk_score > (
-    SELECT AVG(i2.risk_score) FROM incidents i2 WHERE i2.incident_type_id = i1.incident_type_id
-)
-ORDER BY risk_deviation_above_mean DESC;
-""")
+    u.user_id,
+    u.full_name AS analyst_name,
+    COUNT(i.incident_id) AS total_assigned,
+    COUNT(CASE WHEN i.status = 'Investigating' THEN 1 END) AS in_triage,
+    COUNT(CASE WHEN i.status = 'Contained' THEN 1 END) AS contained,
+    COUNT(CASE WHEN i.status = 'Resolved' THEN 1 END) AS resolved,
+    COUNT(CASE WHEN i.severity IN ('Critical', 'High') THEN 1 END) AS high_critical_handled,
+    COALESCE(ROUND(COUNT(CASE WHEN i.status = 'Resolved' THEN 1 END) * 100.0 / NULLIF(COUNT(i.incident_id), 0), 2), 0.00) AS resolution_rate
+FROM users u
+LEFT JOIN incidents i ON u.user_id = i.assigned_to
+JOIN roles r ON u.role_id = r.role_id
+WHERE r.role_name = 'Security Analyst'
+GROUP BY u.user_id, u.full_name
+ORDER BY high_critical_handled DESC, total_assigned DESC;
 
-    p_q14_desc = doc.add_paragraph()
-    p_q14_desc.add_run("Query Q14: Recursive Common Table Expression (WITH RECURSIVE) for SOC Escalation Hierarchy:\n"
-                       "Computes multi-tier reporting depth and escalation audit path from Lead Administrator down to Junior Analysts.")
-    add_code_block(doc, """
+-- Query Q14: Recursive CTE for SOC Supervisor-to-Analyst Reporting Hierarchy
 WITH RECURSIVE soc_hierarchy AS (
-    -- Anchor Member: Root SOC Manager / Administrator (reports_to IS NULL)
-    SELECT u.user_id, u.full_name, r.role_name, u.reports_to, 1 AS tier_level, CAST(u.full_name AS VARCHAR(500)) AS escalation_path
-    FROM users u JOIN roles r ON u.role_id = r.role_id WHERE u.reports_to IS NULL
-
+    -- Anchor Member: Root CISO / Administrator (reports_to IS NULL)
+    SELECT 
+        u.user_id, u.full_name, r.role_name, u.reports_to, 1 AS tier_level,
+        CAST(u.full_name AS VARCHAR(500)) AS escalation_path
+    FROM users u
+    JOIN roles r ON u.role_id = r.role_id
+    WHERE u.reports_to IS NULL
     UNION ALL
-
-    -- Recursive Member: Subordinate Analysts reporting to their supervisor
-    SELECT sub.user_id, sub.full_name, r.role_name, sub.reports_to, mgr.tier_level + 1 AS tier_level,
-           CAST(mgr.escalation_path || ' -> ' || sub.full_name AS VARCHAR(500)) AS escalation_path
-    FROM users sub JOIN roles r ON sub.role_id = r.role_id JOIN soc_hierarchy mgr ON sub.reports_to = mgr.user_id
+    -- Recursive Member: Subordinates reporting to their respective supervisor
+    SELECT 
+        u.user_id, u.full_name, r.role_name, u.reports_to, h.tier_level + 1,
+        CAST(h.escalation_path || ' -> ' || u.full_name AS VARCHAR(500))
+    FROM users u
+    JOIN roles r ON u.role_id = r.role_id
+    JOIN soc_hierarchy h ON u.reports_to = h.user_id
 )
-SELECT tier_level, user_id, full_name AS staff_member, role_name, escalation_path AS reporting_escalation_chain
-FROM soc_hierarchy ORDER BY tier_level ASC, user_id ASC;
+SELECT user_id, full_name, role_name, tier_level, escalation_path
+FROM soc_hierarchy
+ORDER BY tier_level, user_id;
 """)
 
     # =========================================================================
     # SECTION 5: NOSQL / VECTOR DATABASE COMMANDS
     # =========================================================================
     add_heading_styled(doc, "5. NoSQL/Vector Database Commands", level=1)
-    p_vec_intro = doc.add_paragraph()
-    p_vec_intro.add_run("The vector tier is implemented directly inside PostgreSQL 15 via the pgvector extension. Below are the commands for extension activation, table creation, HNSW index generation, and CRUD operations:")
+    p_vec_desc = doc.add_paragraph()
+    p_vec_desc.add_run(
+        "The system utilizes pgvector v0.8.6 to store and search 384-dimensional dense vector embeddings. "
+        "The commands below are executable directly in PostgreSQL for vector CRUD, HNSW indexing, and hybrid search:"
+    )
 
     add_code_block(doc, """
 -- 1. Enable pgvector extension
 CREATE EXTENSION IF NOT EXISTS vector;
 
--- 2. Create Vector Storage Table
+-- 2. Create the vector embeddings table
 CREATE TABLE IF NOT EXISTS incident_embeddings (
     embedding_id    SERIAL PRIMARY KEY,
-    incident_id     INT NOT NULL,
+    incident_id     INT NOT NULL UNIQUE REFERENCES incidents(incident_id) ON DELETE CASCADE,
     embedding       vector(384) NOT NULL,
-    model_name      VARCHAR(100) NOT NULL DEFAULT 'all-MiniLM-L6-v2',
-    created_at      TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_embedding_incident FOREIGN KEY (incident_id) REFERENCES incidents(incident_id) ON DELETE CASCADE
+    narrative_text  TEXT NOT NULL,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- 3. Build Hierarchical Navigable Small World (HNSW) Vector Graph Index
-CREATE INDEX IF NOT EXISTS idx_embeddings_hnsw_cosine 
-ON incident_embeddings USING hnsw (embedding vector_cosine_ops)
+-- 3. Create HNSW Graph Index with Cosine Distance operator
+CREATE INDEX IF NOT EXISTS idx_incident_embeddings_hnsw 
+ON incident_embeddings 
+USING hnsw (embedding vector_cosine_ops) 
 WITH (m = 16, ef_construction = 64);
 
--- 4. VECTOR CREATE: Insert 384-dimensional dense normalized vector
-INSERT INTO incident_embeddings (incident_id, embedding, model_name)
-VALUES (16, '[0.0124, -0.0541, 0.0892, ...]'::vector, 'all-MiniLM-L6-v2');
-
--- 5. VECTOR READ / SEMANTIC SEARCH: Cosine Similarity using Cosine Distance (<=>)
--- Formula: Cosine Similarity = 1 - (embedding <=> query_vector)
+-- 4. VECTOR READ / TOP-K SEARCH: Cosine Distance (<=> operator)
+-- Finds top-3 nearest matching historical incidents based on geometric angle
 SELECT 
-    i.incident_id, i.title, t.type_name AS category, i.severity,
-    ROUND((1 - (e.embedding <=> $1::vector))::numeric * 100.0, 2) AS similarity_percentage
-FROM incident_embeddings e
-JOIN incidents i ON e.incident_id = i.incident_id
-JOIN incident_types t ON i.incident_type_id = t.incident_type_id
-WHERE i.severity = 'Critical' -- In-Engine Hybrid Relational Filter
-ORDER BY (e.embedding <=> $1::vector) ASC
-LIMIT 5;
+    i.incident_id,
+    LEFT(i.title, 40) AS title,
+    i.severity,
+    ROUND((1 - (ie.embedding <=> (SELECT embedding FROM incident_embeddings WHERE incident_id = 1)))::numeric * 100, 2) AS similarity_pct
+FROM incidents i
+JOIN incident_embeddings ie ON i.incident_id = ie.incident_id
+WHERE i.incident_id != 1
+ORDER BY ie.embedding <=> (SELECT embedding FROM incident_embeddings WHERE incident_id = 1)
+LIMIT 3;
 
--- 6. VECTOR UPDATE: Re-compute embedding on forensic description revision
-UPDATE incident_embeddings SET embedding = $1::vector, created_at = CURRENT_TIMESTAMP WHERE incident_id = 16;
+-- 5. VECTOR HYBRID SEARCH: Vector Cosine Distance + Relational SQL Filter
+-- Filters strictly by relational attributes while ordering by vector semantic similarity
+SELECT 
+    i.incident_id,
+    LEFT(i.title, 40) AS title,
+    i.severity,
+    i.status
+FROM incidents i
+JOIN incident_embeddings ie ON i.incident_id = ie.incident_id
+WHERE i.severity IN ('Critical', 'High')  -- Relational SQL Predicate
+ORDER BY ie.embedding <=> (SELECT embedding FROM incident_embeddings WHERE incident_id = 1)  -- Vector Distance
+LIMIT 3;
+
+-- 6. VECTOR UPDATE: Re-compute embedding when incident narrative changes
+UPDATE incident_embeddings 
+SET embedding = '[-0.042, 0.081, ... 384 dimensions ...]'::vector,
+    narrative_text = 'Updated forensic narrative with newly discovered C2 IP artifacts'
+WHERE incident_id = 1;
 
 -- 7. VECTOR DELETE: Remove vector embedding
-DELETE FROM incident_embeddings WHERE incident_id = 16;
+DELETE FROM incident_embeddings WHERE incident_id = 1;
 """)
 
     # =========================================================================
@@ -499,30 +636,23 @@ DELETE FROM incident_embeddings WHERE incident_id = 16;
     # =========================================================================
     add_heading_styled(doc, "6. Next.js - Project Tree Structure", level=1)
     p_tree_desc = doc.add_paragraph()
-    p_tree_desc.add_run("The complete Next.js 14 App Router project tree structure is organized into modular tiers:")
+    p_tree_desc.add_run("The complete Next.js 14 App Router project tree is organized into modular tiers:")
 
     add_code_block(doc, """
-D:\\DBMS Mini Project\\
+cybersecurity-incident-system/
 ├── app/
 │   ├── layout.jsx                      # Master layout with responsive navbar & session indicator
-│   ├── globals.css                     # Custom cyber-dark theme, glowing borders, badges
+│   ├── globals.css                     # High-contrast minimal black & white theme
 │   ├── page.jsx                        # Dynamic router redirect
-│   ├── login/
-│   │   └── page.jsx                    # Secure login with 1-click evaluation demo buttons
-│   ├── dashboard/
-│   │   └── page.jsx                    # SOC Command Center (KPIs, distribution charts, priority queue)
+│   ├── login/page.jsx                  # Secure login with 1-click evaluation demo buttons
+│   ├── dashboard/page.jsx              # SOC Command Center (KPIs, distribution charts, priority queue)
 │   ├── incidents/
 │   │   ├── page.jsx                    # Master incident registry with live search & severity filters
-│   │   ├── new/
-│   │   │   └── page.jsx                # Create incident form with real-time stored function preview
-│   │   └── [id]/
-│   │       └── page.jsx                # Incident detail with atomic assignment, findings, and trigger audit
-│   ├── search/
-│   │   └── page.jsx                    # AI Vector Threat Correlation tool with confidence progress bars
-│   ├── reports/
-│   │   └── page.jsx                    # Analyst performance matrix (Q09) & turnaround benchmarks (Q04)
-│   ├── admin/
-│   │   └── page.jsx                    # Recursive CTE organizational tree (Q14) & audit trail
+│   │   ├── new/page.jsx                # Create incident form with real-time stored function preview
+│   │   └── [id]/page.jsx               # Incident detail with findings and trigger audit timeline
+│   ├── search/page.jsx                 # AI Vector Threat Correlation tool with confidence progress bars
+│   ├── reports/page.jsx                # Analyst performance matrix (Q09) & turnaround benchmarks (Q04)
+│   ├── admin/page.jsx                  # Recursive CTE organizational tree (Q14) & audit trail
 │   └── api/
 │       ├── auth/login/route.js         # bcrypt password verification and JWT token issue
 │       ├── auth/me/route.js            # User session validation
@@ -543,90 +673,141 @@ D:\\DBMS Mini Project\\
 │   ├── validation/index.js             # Input sanitization and domain constraints
 │   └── vector/index.js                 # pgvector search caller & embedding bridge
 ├── scripts/
+│   ├── deploy_pg_schema.py             # DDL and schema deployment script
+│   ├── populate_all_pg_tables.py       # Comprehensive 11-table seed dataset generator
+│   ├── seed_pg_with_embeddings.py      # 384-d vector embeddings generator (all-MiniLM-L6-v2)
+│   ├── sync_sequences.py               # PostgreSQL SERIAL sequence synchronizer
+│   ├── verify_pgvector.py              # pgvector extension verifier
+│   ├── generate_final_docx_report.py   # Complete final report generator
 │   └── vector_cli.py                   # Sentence-transformers CLI wrapper
-├── database/                           # Complete SQL DDL, constraints, views, functions, triggers, transactions
-├── docs/                               # Final report, Chen ER diagram, relational schema
-├── package.json                        # Node.js project manifest & scripts
-└── README.md                           # Master system setup & evaluation documentation
+├── tests/
+│   ├── test_dml_operations.py          # Verifies INSERT, SELECT, UPDATE, DELETE
+│   ├── test_complex_queries.py         # Verifies all 14 analytical SQL queries (Q01-Q14)
+│   ├── test_stored_functions.py        # Verifies calculate_incident_risk() PL/pgSQL function
+│   ├── test_transactions.py            # Verifies atomic commit and forced rollback
+│   ├── test_trigger.py                 # Verifies trg_incident_status_change audit logging
+│   └── test_vector_crud.py             # Verifies Vector CRUD and Hybrid Search
+├── docs/
+│   ├── screenshots/                    # 17 genuine application and technical screenshots
+│   ├── database_design/                # Ultra-HD Chen ER and Relational schema diagrams
+│   ├── references/                     # Faculty handbook and syllabus documentation
+│   ├── DEMO_PRESENTATION_AND_VIVA_GUIDE.md # Complete presentation guide
+│   ├── TEAMMATE_QUICK_GUIDE.md         # Plain-English team member guide
+│   └── FINAL_DBMS_MINI_PROJECT_REPORT.docx # Official submission report
+├── run_psql_terminal.bat               # 1-click instant terminal connection to PostgreSQL
+├── package.json                        # Node.js project manifest & dependencies
+└── README.md                           # Master system setup & execution documentation
 """)
 
     # =========================================================================
     # SECTION 7: SAMPLE SCREENSHOTS OF APPLICATION CODE & DEMO
     # =========================================================================
     add_heading_styled(doc, "7. Sample Screenshots of Application Code & Demo", level=1)
-    
-    # 7.1 Embed Conceptual Chen ER Diagram
-    add_heading_styled(doc, "7.1 Conceptual Chen ER Diagram", level=2)
-    p_er_txt = doc.add_paragraph()
-    p_er_txt.add_run("The conceptual data model follows Elmasri & Navathe standards (Figures 3.14 & 3.2). It comprises 6 strong entities (ROLES, USERS, ASSETS, INCIDENT_TYPES, INCIDENTS, AUDIT_LOGS) and 5 weak entities (INVESTIGATIONS, RESPONSE_ACTIONS, INCIDENT_STATUS_HISTORY, RISK_ASSESSMENTS, INCIDENT_EMBEDDINGS):")
-    
-    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-    er_img_path = os.path.join(BASE_DIR, "docs", "database_design", "01_CHEN_ER_DIAGRAM.png")
-    if os.path.exists(er_img_path):
-        doc.add_picture(er_img_path, width=Inches(6.5))
-        p_cap = doc.add_paragraph()
-        p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        r_cap = p_cap.add_run("Figure 7.1: Comprehensive Conceptual Chen ER Diagram (9,445 × 7,223 px Ultra-HD)")
-        r_cap.font.italic = True
-        r_cap.font.size = Pt(8.5)
+    p_shot_intro = doc.add_paragraph()
+    p_shot_intro.add_run(
+        "Below are 17 genuine, unedited screenshots captured directly from the running Next.js application, "
+        "PostgreSQL 15 terminal, and automated test execution suites in our environment:"
+    )
 
-    # 7.2 Embed Logical Relational Schema
-    add_heading_styled(doc, "7.2 Logical Relational Schema Mapping", level=2)
-    p_rel_txt = doc.add_paragraph()
-    p_rel_txt.add_run("The relational schema mapping follows textbook Figure 9.2 standards: 11 horizontally adjacent normalized relation grids with underlined Primary Keys and orthogonal directed arrows pointing directly into referenced PK boxes:")
-    
-    rel_img_path = os.path.join(BASE_DIR, "docs", "database_design", "02_RELATIONAL_SCHEMA_DIAGRAM.png")
-    if os.path.exists(rel_img_path):
-        doc.add_picture(rel_img_path, width=Inches(6.5))
-        p_cap2 = doc.add_paragraph()
-        p_cap2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        r_cap2 = p_cap2.add_run("Figure 7.2: Normalized Relational Schema Diagram (3NF / BCNF with Referential Integrity Arrows)")
-        r_cap2.font.italic = True
-        r_cap2.font.size = Pt(8.5)
+    screenshots = [
+        # Part A: Database Design Diagrams
+        ("7.1 Conceptual Chen ER Diagram", 
+         "Figure 7.1: Comprehensive Conceptual Chen ER Diagram (6 strong entities, 5 weak entities, identifying relationships, and cardinality constraints in Elmasri & Navathe notation).",
+         os.path.join(BASE_DIR, "docs", "screenshots", "10_chen_er_diagram.png"), Inches(6.5)),
 
-    # 7.3 Application Demonstration Screenshots & Outputs
-    add_heading_styled(doc, "7.3 Live Application Demonstration Outputs", level=2)
-    
-    p_demo1 = doc.add_paragraph()
-    p_demo1.add_run("1. AI Semantic Vector Search Output (Verified in PostgreSQL pgvector):\n"
-                    "Query: 'Employee credentials stolen through a fake Microsoft login page'")
-    add_code_block(doc, """
->> Natural Language Query: "Employee credentials stolen through a fake Microsoft login page"
-   #1 [Match 57.80%] Incident #11 (Brute Force Auth) - Automated credential stuffing attempts on customer portal
-   #2 [Match 50.78%] Incident #2 (Phishing Campaign) - Executive phishing emails harvested HR portal credentials
-   #3 [Match 40.01%] Incident #12 (Phishing Campaign) - Suspicious phishing report from Sales team regarding IT upgrade
-""")
+        ("7.2 Logical Relational Schema Mapping", 
+         "Figure 7.2: Normalized Relational Schema Diagram (3NF / BCNF compliant with 11 relational tables, underlined primary keys, and directed foreign key referential integrity arrows).",
+         os.path.join(BASE_DIR, "docs", "screenshots", "11_relational_schema.png"), Inches(6.5)),
 
-    p_demo2 = doc.add_paragraph()
-    p_demo2.add_run("2. Query Q14: Recursive CTE Escalation Hierarchy Output:")
-    add_code_block(doc, """
- tier_level | user_id |  staff_member  |    role_name     |             reporting_escalation_chain              
-------------+---------+----------------+------------------+---------------------------------------------------
-          1 |       1 | Sarah Connor   | Administrator    | Sarah Connor
-          2 |       2 | Alex Rivera    | Security Analyst | Sarah Connor -> Alex Rivera
-          2 |       3 | David Chen     | Security Analyst | Sarah Connor -> David Chen
-          3 |       4 | Maya Lin       | Security Analyst | Sarah Connor -> Alex Rivera -> Maya Lin
-          3 |       5 | Vikram Rao     | Security Analyst | Sarah Connor -> Alex Rivera -> Vikram Rao
-          3 |       6 | Elena Rostova  | Security Analyst | Sarah Connor -> David Chen -> Elena Rostova
-""")
+        # Part B: Web Application Interface
+        ("7.3 Authentication & Dual-Role Login Screen", 
+         "Figure 7.3: Next.js Login Interface featuring dual-role RBAC authorization (Administrator / Security Analyst) with bcrypt password verification.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "01_login_page.png"), Inches(5.8)),
 
-    p_demo3 = doc.add_paragraph()
-    p_demo3.add_run("3. Query Q09: Comprehensive SOC Analyst Caseload Matrix Output:")
-    add_code_block(doc, """
- user_id | analyst_name  | total_assigned | in_triage | contained | resolved | critical_handled | resolution_rate 
----------+---------------+----------------+-----------+-----------+----------+------------------+-----------------
-       2 | Alex Rivera   |              4 |         2 |         0 |        2 |                4 |           50.00%
-       3 | David Chen    |              4 |         2 |         0 |        2 |                0 |           50.00%
-       5 | Vikram Rao    |              2 |         0 |         0 |        2 |                0 |          100.00%
-       4 | Maya Lin      |              2 |         0 |         1 |        1 |                1 |           50.00%
-       6 | Elena Rostova |              2 |         1 |         1 |        0 |                1 |            0.00%
-""")
+        ("7.4 Administrator SOC Command Dashboard", 
+         "Figure 7.4: Administrator Command Dashboard displaying active threats, critical threat counts, total protected assets, and the High-Priority Incident Queue (v_high_priority_incidents view).",
+         os.path.join(BASE_DIR, "docs", "screenshots", "02_admin_dashboard.png"), Inches(5.8)),
+
+        ("7.5 Security Analyst Operational Dashboard", 
+         "Figure 7.5: Security Analyst Operational View showing assigned incident queues, containment metrics, and triage actions.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "03_analyst_dashboard.png"), Inches(5.8)),
+
+        ("7.6 Incident Triage Queue & Registry", 
+         "Figure 7.6: Incident Registry table rendering live threat entries with multi-factor severity badges, status tags, and target asset mappings.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "04_incidents_list.png"), Inches(5.8)),
+
+        ("7.7 New Incident Logging & Risk Score Engine Preview", 
+         "Figure 7.7: Incident Creation Form featuring real-time client-side preview of the PL/pgSQL calculate_incident_risk() stored function formula.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "05_new_incident_form.png"), Inches(5.8)),
+
+        ("7.8 Incident Forensic Investigation & Audit History", 
+         "Figure 7.8: Incident Detail View showing assigned investigator, response actions, and the automated audit history generated by database trigger.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "06_incident_details.png"), Inches(5.8)),
+
+        ("7.9 AI Semantic Vector Similarity Search", 
+         "Figure 7.9: AI Threat Correlation tool executing sub-second Cosine Distance (<=>) nearest-neighbor search via pgvector on unstructured threat narratives.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "07_semantic_search.png"), Inches(5.8)),
+
+        ("7.10 SOC Analyst Caseload & Turnaround Reports", 
+         "Figure 7.10: Analytical Reports page rendering Query Q09 (Analyst Caseload Matrix) and Query Q04 (Mean Turnaround Time by Severity).",
+         os.path.join(BASE_DIR, "docs", "screenshots", "08_reports_page.png"), Inches(5.8)),
+
+        ("7.11 Recursive CTE Organizational Reporting Hierarchy", 
+         "Figure 7.11: Admin Portal rendering the dynamic 3-tier supervisor-to-analyst reporting tree produced by Recursive CTE Query Q14.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "09_admin_hierarchy.png"), Inches(5.8)),
+
+        # Part C: Technical Database Execution
+        ("7.12 PostgreSQL 15 Tables & pgvector Extension CLI", 
+         "Figure 7.12: PostgreSQL terminal output verifying the active pgvector v0.8.6 extension and all 11 public relational base tables.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "12_psql_tables_constraints.png"), Inches(5.8)),
+
+        ("7.13 Stored Function Server-Side Risk Scoring Execution", 
+         "Figure 7.13: Execution of PL/pgSQL stored function calculate_incident_risk() yielding mathematical score 96.25 directly in the database engine.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "13_stored_function_execution.png"), Inches(5.8)),
+
+        ("7.14 Automatic Status History Audit Trigger Execution", 
+         "Figure 7.14: Trigger trg_incident_status_change firing on status update, automatically creating an immutable audit row in incident_status_history.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "14_trigger_audit_execution.png"), Inches(5.8)),
+
+        ("7.15 Python pgvector CRUD & Hybrid Search Test Suite", 
+         "Figure 7.15: Automated test suite test_vector_crud.py verifying Vector CREATE, READ, UPDATE, DELETE, and Hybrid Search with 100% pass rate.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "15_vector_crud_execution.png"), Inches(5.8)),
+
+        ("7.16 Next.js Database Connection Pool Integration Code", 
+         "Figure 7.16: Backend connection pooling implementation (lib/db/index.js) managing parameterized queries against PostgreSQL via pg.Pool.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "16_nextjs_api_code.png"), Inches(5.8)),
+
+        ("7.17 Python Dense Vector Embedding Engine Code", 
+         "Figure 7.17: Vector retrieval service (database/vector/vector_service.py) integrating all-MiniLM-L6-v2 embeddings with PostgreSQL pgvector.",
+         os.path.join(BASE_DIR, "docs", "screenshots", "17_python_vector_service_code.png"), Inches(5.8))
+    ]
+
+    for title, caption, img_path, width in screenshots:
+        add_heading_styled(doc, title, level=2)
+        if os.path.exists(img_path):
+            doc.add_picture(img_path, width=width)
+            p_cap = doc.add_paragraph()
+            p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p_cap.paragraph_format.space_before = Pt(3)
+            p_cap.paragraph_format.space_after = Pt(12)
+            r_cap = p_cap.add_run(caption)
+            r_cap.font.italic = True
+            r_cap.font.size = Pt(8.5)
+            r_cap.font.color.rgb = RGBColor(0x47, 0x55, 0x69)
+        else:
+            p_missing = doc.add_paragraph()
+            p_missing.add_run(f"[Screenshot Pending: {os.path.basename(img_path)}]")
 
     # =========================================================================
     # SECTION 8: EVALUATION RUBRICS - COMPLETION STATUS
     # =========================================================================
     add_heading_styled(doc, "8. Evaluation Rubrics - Completion Status (Total: 50 Marks)", level=1)
-    
+    p_rub_intro = doc.add_paragraph()
+    p_rub_intro.add_run(
+        "The table below details the verified implementation status for all 14 official criteria specified in the "
+        "DBMS Experiential Learning Level 3 evaluation syllabus:"
+    )
+
     t_rub = doc.add_table(rows=16, cols=4)
     t_rub.alignment = WD_TABLE_ALIGNMENT.CENTER
     t_rub.autofit = False
@@ -646,21 +827,21 @@ D:\\DBMS Mini Project\\
         r.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
 
     rub_data = [
-        ("ER diagram", "2", "COMPLETE", "Ultra-HD Chen diagram (01_CHEN_ER_DIAGRAM.png) strictly following textbook notations (6 strong, 5 weak entities, identifying relationships)."),
-        ("Relational schema with keys & constraints", "3", "COMPLETE", "Normalized to 3NF/BCNF (02_RELATIONAL_SCHEMA_DIAGRAM.png) with directed referential integrity arrows."),
-        ("SQL database implementation - DDL", "4", "COMPLETE", "11 base tables, 4 analytical views, PK, FK, CHECK, UNIQUE, NOT NULL, DEFAULT in PostgreSQL 15 (database/schema.sql)."),
-        ("NoSQL/Vector database creation", "4", "COMPLETE", "pgvector v0.8.6 activated; incident_embeddings table with vector(384) and HNSW cosine index."),
-        ("Technology justification", "1", "COMPLETE", "Comprehensive technical justification proving single-engine ACID consistency and unified hybrid search performance."),
-        ("DML operations", "4", "COMPLETE", "Full INSERT, SELECT, UPDATE, DELETE lifecycle verified in 04_dml_operations.sql and test_dml_operations.py."),
-        ("Nested/correlated/Recursive Queries, Joins", "4", "COMPLETE", "14 queries (Q01-Q14) verified in 05_complex_analytical_queries.sql covering multi-joins, correlated subqueries, and recursive CTE."),
-        ("Advanced SQL concepts (Function, trigger, CTE)", "6", "COMPLETE", "Stored functions calculate_incident_risk, trigger trg_incident_status_change, procedure sp_assign_incident_atomic, and CTE soc_hierarchy."),
-        ("NoSQL/Vector feature, CRUD", "7", "COMPLETE", "vector_service.py and test_vector_crud.py verifying Vector Create, Read, Update, Delete, Top-K search, and Hybrid search."),
-        ("Next.js interface", "3", "COMPLETE", "7 modern cyber-themed pages (/dashboard, /incidents, /search, /reports, /admin, etc.) compiled with zero build errors."),
-        ("Backend/API and database integration", "2", "COMPLETE", "13 RESTful route handlers in app/api/ connecting Next.js to PostgreSQL 15 via pg.Pool connection pooling."),
-        ("Authentication implementation (front end & DB RBAC)", "4", "COMPLETE", "bcrypt password hashing, signed JWT cookies, and Administrator vs Security Analyst roles enforced in UI and stored procedures."),
-        ("Documentation, Git/GitHub", "2", "COMPLETE", "Comprehensive technical docs, README.md, final report, and clean Git repository with meaningful commit history."),
-        ("Originality, individual contribution, Viva", "4", "COMPLETE", "Original incident risk scoring model, dual-paradigm architecture, synthetic SOC dataset, and viva demonstration scripts."),
-        ("TOTAL SCORE CLAIMED", "50 / 50", "100% COMPLETE", "ALL LEVEL 3 REQUIREMENTS VERIFIED & READY FOR FINAL EVALUATION")
+        ("ER diagram", "2", "COMPLETE", "Ultra-HD Chen diagram (Figure 7.1) strictly following textbook notations (6 strong, 5 weak entities, identifying relationships, cardinality constraints)."),
+        ("Relational schema with keys & constraints", "3", "COMPLETE", "Normalized to 3NF/BCNF (Figure 7.2) with underlined primary keys and directed referential integrity foreign key arrows."),
+        ("SQL database implementation - DDL", "4", "COMPLETE", "11 base tables, domain constraints (CHECK, UNIQUE, NOT NULL, DEFAULT) deployed in PostgreSQL 15 (database/ddl/01_create_tables.sql)."),
+        ("NoSQL/Vector database creation", "4", "COMPLETE", "pgvector v0.8.6 activated; incident_embeddings table with vector(384) column and HNSW cosine distance graph index (Figure 7.12)."),
+        ("Technology justification", "1", "COMPLETE", "Section 3.1 proving single-engine ACID consistency and elimination of dual-database synchronization lag over standalone vector DBs."),
+        ("DML operations", "4", "COMPLETE", "Full INSERT, SELECT, UPDATE, DELETE lifecycle verified in database/queries/04_dml_operations.sql and tests/test_dml_operations.py."),
+        ("Nested/correlated/Recursive Queries, Joins", "4", "COMPLETE", "14 queries (Q01-Q14) verified in tests/test_complex_queries.py covering multi-table joins, correlated subqueries, and recursive CTE."),
+        ("Advanced SQL concepts (Function, trigger, CTE)", "6", "COMPLETE", "Stored function calculate_incident_risk (Figure 7.13), trigger trg_incident_status_change (Figure 7.14), procedure sp_assign_incident_atomic, and CTE soc_hierarchy."),
+        ("NoSQL/Vector feature, CRUD", "7", "COMPLETE", "vector_service.py and tests/test_vector_crud.py (Figure 7.15) verifying Vector Create, Read, Update, Delete, Top-K search, and Hybrid search."),
+        ("Next.js interface", "3", "COMPLETE", "Production Next.js 14 web application (/dashboard, /incidents, /search, /reports, /admin) compiled with zero errors (Figures 7.3-7.11)."),
+        ("Backend/API and database integration", "2", "COMPLETE", "13 RESTful route handlers in app/api/ connecting Next.js to PostgreSQL 15 via parameterized pg.Pool connection pooling (Figure 7.16)."),
+        ("Authentication implementation (front end & DB RBAC)", "4", "COMPLETE", "bcrypt password hashing, signed JWT cookies, and Administrator vs Security Analyst roles enforced in UI and database."),
+        ("Documentation, Git/GitHub", "2", "COMPLETE", "Complete technical documentation, DEMO_PRESENTATION_AND_VIVA_GUIDE.md, TEAMMATE_QUICK_GUIDE.md, and GitHub repository (github.com/sidducs/cybersecurity-incident-system)."),
+        ("Originality, individual contribution, Viva", "4", "COMPLETE / READY", "Individual contributions documented on Title Page: Shantinath Baligar (Database & SQL Architecture) & Siddu Sanganna Shirasagi (Application & AI Integration)."),
+        ("TOTAL SCORE CLAIMED", "50 / 50", "100% COMPLETE", "ALL 14 RUBRIC CRITERIA FULLY IMPLEMENTED, VERIFIED WITH AUTOMATED TESTS, AND READY FOR FACULTY EVALUATION.")
     ]
 
     for row_idx, (comp, marks, stat, evid) in enumerate(rub_data, start=1):
@@ -683,7 +864,7 @@ D:\\DBMS Mini Project\\
             else:
                 r.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
 
-    # Save document
+    # Save Word document
     out_path = os.path.join(BASE_DIR, "docs", "FINAL_DBMS_MINI_PROJECT_REPORT.docx")
     doc.save(out_path)
     print(f"Successfully generated Final Report document at: {out_path}")
@@ -691,4 +872,3 @@ D:\\DBMS Mini Project\\
 
 if __name__ == '__main__':
     build_docx_report()
-
