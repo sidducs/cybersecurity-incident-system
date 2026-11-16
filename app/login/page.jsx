@@ -100,28 +100,43 @@ export default function LoginPage() {
 
           {/* Quick Demo Credentials */}
           <div className="pt-3 border-t border-zinc-800 space-y-2">
-            <div className="text-[11px] font-medium text-zinc-400 text-center">Quick-Fill Accounts</div>
+            <div className="text-[11px] font-medium text-zinc-400 text-center">Quick-Fill by Role / User</div>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <button
                 type="button"
                 onClick={() => handleQuickFill('admin', 'admin')}
-                className="p-2 rounded bg-black border border-zinc-800 hover:border-zinc-600 text-left transition-colors"
+                className="p-2 rounded bg-black border border-zinc-800 hover:border-zinc-500 text-left transition-colors"
               >
                 <div className="font-semibold text-white">Administrator</div>
-                <div className="text-[10px] text-zinc-400 truncate">username: admin</div>
+                <div className="text-[10px] text-zinc-400 font-mono">admin / admin</div>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleQuickFill('analyst', 'analyst')}
-                className="p-2 rounded bg-black border border-zinc-800 hover:border-zinc-600 text-left transition-colors"
+                className="p-2 rounded bg-black border border-zinc-800 hover:border-zinc-500 text-left transition-colors"
               >
                 <div className="font-semibold text-white">Security Analyst</div>
-                <div className="text-[10px] text-zinc-400 truncate">username: analyst</div>
+                <div className="text-[10px] text-zinc-400 font-mono">analyst / analyst</div>
               </button>
             </div>
+
+            <div className="flex items-center justify-center gap-1.5 pt-1 text-[10px] text-zinc-400">
+              <span>Other Analysts:</span>
+              {['david', 'maya', 'vikram', 'elena'].map((name) => (
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => handleQuickFill(name, name)}
+                  className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 hover:border-zinc-600 text-zinc-300 font-mono text-[10px]"
+                >
+                  {name}
+                </button>
+              ))}
+            </div>
+
             <div className="text-[10px] text-zinc-500 text-center">
-              Simple login: <span className="text-zinc-300 font-mono">admin / admin</span> or <span className="text-zinc-300 font-mono">analyst / analyst</span>
+              Password is always the same as the username (or <span className="font-mono text-zinc-300">password123</span>)
             </div>
           </div>
         </div>
