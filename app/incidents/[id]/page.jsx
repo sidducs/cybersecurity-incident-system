@@ -112,7 +112,10 @@ export default function IncidentDetailPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ findings: findingText }),
       });
-      if (!res.ok) throw new Error('Failed to record investigation');
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed to record investigation');
+      }
       setFindingText('');
       await fetchIncident();
     } catch (err) {
@@ -136,7 +139,10 @@ export default function IncidentDetailPage() {
           action_status: 'Completed',
         }),
       });
-      if (!res.ok) throw new Error('Failed to record response');
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed to record response');
+      }
       setActionDesc('');
       await fetchIncident();
     } catch (err) {

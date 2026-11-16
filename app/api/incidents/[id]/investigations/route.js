@@ -6,7 +6,13 @@ export async function POST(request, { params }) {
   try {
     const incidentId = parseInt(params.id, 10);
     const session = getSessionFromRequest(request);
-    const analystId = session ? session.userId : 2; // Default to analyst 2 in demo
+    let analystId = session ? session.userId : 2;
+
+    // Validate that analyst exists in users table (in case of stale session)
+    const userCheck = await db.query('SELECT user_id FROM users WHERE user_id = $1;', [analystId]);
+    if (userCheck.rows.length === 0) {
+      analystId = 2; // Default to active analyst Alex Rivera
+    }
 
     const body = await request.json();
     const { findings } = body;
