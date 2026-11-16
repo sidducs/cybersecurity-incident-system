@@ -213,3 +213,4 @@ When your teacher says: *"Tell me about your project."*
 | **Authentication & RBAC** | 4 | `app/api/auth/login/route.js`, `lib/auth/` | Demonstrate `admin` vs `analyst` logins |
 | **Documentation & Git** | 2 | `docs/FINAL_DBMS_MINI_PROJECT_REPORT.docx` | Show 2.1 MB Word report + clean git log |
 | **Viva & Modification** | 4 | Follow Part 3 of this guide | Confident answers from Q1–Q10 |
+

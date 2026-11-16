@@ -217,3 +217,4 @@ SELECT
 FROM users u
 JOIN roles r ON u.role_id = r.role_id
 ORDER BY u.role_id, u.user_id;
+

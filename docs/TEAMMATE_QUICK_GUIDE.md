@@ -90,3 +90,4 @@ If the teacher asks:
 * *"How many tables do you have?"* $\rightarrow$ **11 tables** (Users, Roles, Assets, Incidents, Evidence, Responses, Audit Logs, etc.).
 * *"Is it normalized?"* $\rightarrow$ Yes, it is in **3rd Normal Form (3NF)** so there is no duplicate data.
 * *"How does the smart search work?"* $\rightarrow$ An AI model turns text into **384 numbers** (a vector), and PostgreSQL finds the closest matching vectors using **Cosine Distance**.
+
