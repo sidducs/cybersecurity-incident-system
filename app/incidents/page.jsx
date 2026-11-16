@@ -10,14 +10,32 @@ export default function IncidentsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [severityFilter, setSeverityFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
+  const [scope, setScope] = useState('all'); // 'all' or 'assigned'
 
-  const fetchIncidents = async () => {
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('soc_user');
+      if (saved) {
+        const u = JSON.parse(saved);
+        setCurrentUser(u);
+        if (u.roleName === 'Security Analyst') {
+          setScope('assigned');
+        }
+      }
+    } catch (e) {}
+  }, []);
+
+  const fetchIncidents = async (currentScope = scope, user = currentUser) => {
     setLoading(true);
     try {
       const params = new URLSearchParams();
       if (searchTerm) params.append('q', searchTerm);
       if (severityFilter) params.append('severity', severityFilter);
       if (statusFilter) params.append('status', statusFilter);
+      if (currentScope === 'assigned' && user?.userId) {
+        params.append('assigned_to', user.userId);
+      }
 
       const res = await fetch(`/api/incidents?${params.toString()}`);
       const data = await res.json();
@@ -32,8 +50,8 @@ export default function IncidentsPage() {
   };
 
   useEffect(() => {
-    fetchIncidents();
-  }, [severityFilter, statusFilter]);
+    fetchIncidents(scope, currentUser);
+  }, [severityFilter, statusFilter, scope, currentUser]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +75,34 @@ export default function IncidentsPage() {
           <span>New Incident</span>
         </Link>
       </div>
+
+      {/* Scope Switcher for Security Analyst */}
+      {currentUser?.roleName === 'Security Analyst' && (
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setScope('assigned')}
+            className={`px-3 py-1.5 rounded text-xs font-semibold transition-colors ${
+              scope === 'assigned'
+                ? 'bg-white text-black'
+                : 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white'
+            }`}
+          >
+            Assigned to Me ({currentUser.fullName})
+          </button>
+          <button
+            type="button"
+            onClick={() => setScope('all')}
+            className={`px-3 py-1.5 rounded text-xs font-semibold transition-colors ${
+              scope === 'all'
+                ? 'bg-white text-black'
+                : 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white'
+            }`}
+          >
+            All Organization Incidents
+          </button>
+        </div>
+      )}
 
       {/* Filter and Search Bar */}
       <div className="clean-card p-3">

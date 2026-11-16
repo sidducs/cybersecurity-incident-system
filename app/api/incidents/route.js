@@ -11,6 +11,7 @@ export async function GET(request) {
     const status = searchParams.get('status');
     const assetId = searchParams.get('asset_id');
     const typeId = searchParams.get('type_id');
+    const assignedTo = searchParams.get('assigned_to');
     const search = searchParams.get('q');
     const limit = parseInt(searchParams.get('limit') || '50', 10);
     const offset = parseInt(searchParams.get('offset') || '0', 10);
@@ -34,6 +35,10 @@ export async function GET(request) {
     if (typeId) {
       conditions.push(`i.incident_type_id = $${paramIdx++}`);
       params.push(typeId);
+    }
+    if (assignedTo) {
+      conditions.push(`i.assigned_to = $${paramIdx++}`);
+      params.push(parseInt(assignedTo, 10));
     }
     if (search) {
       conditions.push(`(i.title ILIKE $${paramIdx} OR i.description ILIKE $${paramIdx})`);

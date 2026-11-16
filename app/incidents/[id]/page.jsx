@@ -31,6 +31,14 @@ export default function IncidentDetailPage() {
   const [assignNotes, setAssignNotes] = useState('');
   const [assignLoading, setAssignLoading] = useState(false);
   const [assignMsg, setAssignMsg] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('soc_user');
+      if (saved) setCurrentUser(JSON.parse(saved));
+    } catch (e) {}
+  }, []);
 
   const fetchIncident = async () => {
     try {
@@ -195,14 +203,16 @@ export default function IncidentDetailPage() {
             {statusUpdating && <RefreshCw className="w-3 h-3 animate-spin text-zinc-400" />}
           </div>
 
-          {/* Assign Button */}
-          <button
-            onClick={() => setShowAssignModal(true)}
-            className="px-3 py-1.5 rounded bg-white hover:bg-zinc-200 text-black text-xs font-semibold flex items-center gap-1.5 transition-colors"
-          >
-            <User className="w-3.5 h-3.5" />
-            <span>Assign Analyst</span>
-          </button>
+          {/* Assign Button - Only visible to Administrator */}
+          {currentUser?.roleName === 'Administrator' && (
+            <button
+              onClick={() => setShowAssignModal(true)}
+              className="px-3 py-1.5 rounded bg-white hover:bg-zinc-200 text-black text-xs font-semibold flex items-center gap-1.5 transition-colors"
+            >
+              <User className="w-3.5 h-3.5" />
+              <span>Assign Analyst</span>
+            </button>
+          )}
         </div>
       </div>
 
