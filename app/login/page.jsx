@@ -37,12 +37,6 @@ export default function LoginPage() {
     }
   };
 
-  const handleQuickFill = (demoUser, demoPass = 'password123') => {
-    setEmail(demoUser);
-    setPassword(demoPass);
-    setError('');
-  };
-
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 bg-black">
       <div className="max-w-sm w-full space-y-6">
@@ -97,34 +91,6 @@ export default function LoginPage() {
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </form>
-
-          {/* Quick Demo Credentials */}
-          <div className="pt-3 border-t border-zinc-800 space-y-2">
-            <div className="text-[11px] font-medium text-zinc-400 text-center">Quick-Fill by Role / User</div>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <button
-                type="button"
-                onClick={() => handleQuickFill('admin', 'admin')}
-                className="p-2 rounded bg-black border border-zinc-800 hover:border-zinc-500 text-left transition-colors"
-              >
-                <div className="font-semibold text-white">Administrator</div>
-                <div className="text-[10px] text-zinc-400 font-mono">admin / admin</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleQuickFill('analyst', 'analyst')}
-                className="p-2 rounded bg-black border border-zinc-800 hover:border-zinc-500 text-left transition-colors"
-              >
-                <div className="font-semibold text-white">Security Analyst</div>
-                <div className="text-[10px] text-zinc-400 font-mono">analyst / analyst</div>
-              </button>
-            </div>
-
-            <div className="text-[10px] text-zinc-500 text-center pt-1">
-              Password is the same as the username (or <span className="font-mono text-zinc-300">password123</span>)
-            </div>
-          </div>
         </div>
       </div>
     </div>
