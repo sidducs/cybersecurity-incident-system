@@ -5,20 +5,20 @@
 
 ## 1. Title Page
 
-- **Course Title**: Database Management Systems Experiential Learning (Level 3)
-- **Course Code**: UE22CS252A / DBMS Experiential Learning
-- **Institution**: Department of Computer Science & Engineering, PES University
-- **Faculty Instructor**: Dr. Nagasundari S
+- **Course Title**: Database Management Systems
+- **Course Code**: UE24CS351A
+- **Institution**: Department of Computer Science & Engineering, PES University, Bangalore
+- **Faculty Guide & Course Instructor**: Vinay Joshi , Assistant Professor
 - **Project Title**: **Cybersecurity Incident Correlation & Response Intelligence System**
 - **Architecture**: Dual-Paradigm Architecture (PostgreSQL 15 Relational Core + pgvector HNSW Vector Engine)
 - **Team Composition & Student Information**:
   - **Student 1 (Lead Database Architect & API Integrator)**:
-    - **Name**: [Student 1 Name]
-    - **SRN**: [Student 1 SRN]
+    - **Name**: SHANTINATH BALIGAR
+    - **SRN**: PES1UG24CS691
     - **Responsibilities**: Conceptual Chen ER design, 3NF/BCNF relational mapping, PostgreSQL schema implementation, stored risk calculation functions, database status triggers, ACID atomic transaction procedures, and vector CRUD service.
-  - **Student 2 (Lead UI Engineer & Security Architect)**:
-    - **Name**: [Student 2 Name]
-    - **SRN**: [Student 2 SRN]
+  - **Student 2 (Lead Application & AI Systems Engineer)**:
+    - **Name**: SIDDU SANGANNA SHIRASAGI
+    - **SRN**: PES1UG25CS846
     - **Responsibilities**: Next.js 14 App Router development, SOC Command Center dashboard, incident management forms, bcrypt/JWT role-based authentication, semantic search interface, and analytical reporting views.
 
 ---

@@ -28,18 +28,14 @@ This system solves this challenge by implementing a unified **Dual-Paradigm Data
 
 ---
 
-## 3. Evaluation Quick-Fill Credentials
+## 3. Evaluation User Credentials
 
-For presentation, grading, and faculty evaluation, simple usernames and 1-click login buttons are provided on `/login`:
+For presentation, grading, and faculty evaluation, the two system roles are configured as follows:
 
 | User Role | Username | Password | Full Name | Corporate Email | Allowed Capabilities |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Administrator** | `admin` | `admin` *(or `password123`)* | Sarah Connor | `sarah.connor@soc.corp` | Executive oversight, atomic assignment dispatch, escalation tree audit (`WITH RECURSIVE`) |
 | **Security Analyst** | `analyst` | `analyst` *(or `password123`)* | Alex Rivera | `alex.rivera@soc.corp` | Triage queue, forensic investigation logging, containment actions, semantic vector search |
-| **Security Analyst** | `david` | `david` *(or `password123`)* | David Chen | `david.chen@soc.corp` | Incident investigation and remediation response |
-| **Security Analyst** | `maya` | `maya` *(or `password123`)* | Maya Lin | `maya.lin@soc.corp` | Malware reverse engineering |
-| **Security Analyst** | `vikram` | `vikram` *(or `password123`)* | Vikram Rao | `vikram.rao@soc.corp` | Threat hunting operations |
-| **Security Analyst** | `elena` | `elena` *(or `password123`)* | Elena Rostova | `elena.rostova@soc.corp` | Digital forensics |
 
 ---
 

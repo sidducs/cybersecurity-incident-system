@@ -73,16 +73,17 @@ The final report must comprise the following 8 core sections:
 ## 3. Team Information Placeholder (To be filled before report export)
 
 ```text
-Course Title: Database Management Systems Experiential Learning (Level 3)
-Course Code:  [Insert Course Code]
+Course Title: Database Management Systems
+Course Code:  UE24CS351A
 Project Title: Cybersecurity Incident Correlation & Response Intelligence System
+Faculty Guide: Vinay Joshi , Assistant Professor
 
 Team Member 1:
-- Name: [Student 1 Name]
-- SRN:  [Student 1 SRN]
+- Name: SHANTINATH BALIGAR
+- SRN:  PES1UG24CS691
 
 Team Member 2:
-- Name: [Student 2 Name]
-- SRN:  [Student 2 SRN]
+- Name: SIDDU SANGANNA SHIRASAGI
+- SRN:  PES1UG25CS846
 ```
 
