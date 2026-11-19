@@ -1,12 +1,4 @@
--- ============================================================================
--- DBMS EXPERIENTIAL LEARNING LEVEL 3 PROJECT
--- PROJECT: Cybersecurity Incident Correlation & Response Intelligence System
--- PHASE 3: DATABASE OPERATIONS - COMPLEX ANALYTICAL SQL QUERIES
--- TARGET RDBMS: PostgreSQL 14+ / MySQL 8.0+
--- ============================================================================
--- Rubric Reference: Component 7 (Nested/Correlated/Recursive, Joins - 4 Marks)
--- Developer Handbook Reference: Section 16 (DML and Complex Query Plan: Q01-Q12)
--- ============================================================================
+
 -- Coverage:
 --   - Multi-Table Inner, Left, and Self Joins
 --   - Aggregations: COUNT, AVG, SUM, MIN, MAX
@@ -14,7 +6,6 @@
 --   - Subqueries: Scalar, Table, and Correlated Subqueries
 --   - Conditional Aggregation (CASE WHEN)
 --   - Recursive Common Table Expressions (WITH RECURSIVE)
--- ============================================================================
 
 \c cybersecurity_db;
 

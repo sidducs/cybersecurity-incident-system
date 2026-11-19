@@ -1,19 +1,10 @@
--- ============================================================================
--- DBMS EXPERIENTIAL LEARNING LEVEL 3 PROJECT
--- PROJECT: Cybersecurity Incident Correlation & Response Intelligence System
--- PHASE 2: SQL DDL IMPLEMENTATION - SCRIPT 05: REPORTING & ANALYTICAL VIEWS
--- TARGET RDBMS: PostgreSQL 14+ (ANSI SQL Standard)
--- ============================================================================
 -- Purpose:
 -- Implements the three core reporting views mandated by Section 21 of the
 -- Developer Handbook plus an asset vulnerability exposure view for dashboards.
--- ============================================================================
 
--- ----------------------------------------------------------------------------
 -- 1. VIEW: v_high_priority_incidents
 -- Handbook Section 21: Shows incident, severity, asset, analyst, risk score and status.
 -- Serves the SOC real-time critical triage queue on the Next.js /dashboard.
--- ----------------------------------------------------------------------------
 CREATE OR REPLACE VIEW v_high_priority_incidents AS
 SELECT 
     i.incident_id,
@@ -115,7 +106,3 @@ FROM assets a
 LEFT JOIN incidents i ON a.asset_id = i.asset_id
 GROUP BY a.asset_id, a.asset_name, a.asset_type, a.criticality, a.department, a.ip_address;
 
--- ============================================================================
--- VERIFICATION QUERY FOR VIVA DEMONSTRATION:
--- SELECT table_name, view_definition FROM information_schema.views WHERE table_schema = 'public';
--- ============================================================================

@@ -1,17 +1,9 @@
-﻿-- ============================================================================
--- DBMS EXPERIENTIAL LEARNING LEVEL 3 PROJECT
--- PROJECT: Cybersecurity Incident Correlation & Response Intelligence System
--- PHASE 2: SQL DDL IMPLEMENTATION - SCRIPT 01: CREATE TABLES & CONSTRAINTS
--- TARGET RDBMS: PostgreSQL (Relational SQL + pgvector extension)
--- ============================================================================
-
+﻿
 -- Enable pgvector extension for dense semantic incident similarity search
 CREATE EXTENSION IF NOT EXISTS vector;
 
--- ----------------------------------------------------------------------------
 -- 1. TABLE: roles
 -- Defines system access permissions (Administrator, Security Analyst)
--- ----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS roles (
     role_id     SERIAL PRIMARY KEY,
     role_name   VARCHAR(50) NOT NULL UNIQUE,

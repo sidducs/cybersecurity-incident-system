@@ -1,12 +1,3 @@
--- ============================================================================
--- DBMS EXPERIENTIAL LEARNING LEVEL 3 PROJECT
--- PROJECT: Cybersecurity Incident Correlation & Response Intelligence System
--- PHASE 3: ADVANCED DBMS FEATURES - STORED FUNCTION (RISK SCORING ENGINE)
--- TARGET RDBMS: PostgreSQL 14+ (PL/pgSQL)
--- ============================================================================
--- Rubric Reference: Component 8 (Advanced SQL Concepts - 6 Marks)
--- Developer Handbook Reference: Section 20 (Stored Function Design)
--- ============================================================================
 
 -- Connect to project database
 \c cybersecurity_db;
@@ -161,15 +152,4 @@ BEGIN
     RETURN QUERY SELECT p_incident_id, v_computed_score, v_level;
 END;
 $$;
-
--- ============================================================================
--- VERIFICATION QUERIES FOR VIVA EVALUATION:
--- ============================================================================
--- Test 1: Calculate risk for Critical Ransomware on Critical Database with 90% impact:
--- SELECT calculate_incident_risk('Critical', 'Critical', 90.00);  -- Expected: (40 + 35 + 22.5) = 97.50
--- SELECT get_risk_level(97.50);                                    -- Expected: 'Critical'
-
--- Test 2: Calculate risk for Low severity SQL probe on Low asset with 20% impact:
--- SELECT calculate_incident_risk('Low', 'Low', 20.00);            -- Expected: (10 + 8.75 + 5.0) = 23.75
--- SELECT get_risk_level(23.75);                                    -- Expected: 'Low'
 

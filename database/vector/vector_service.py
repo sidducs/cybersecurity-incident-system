@@ -1,19 +1,10 @@
 """
-============================================================================
-DBMS EXPERIENTIAL LEARNING LEVEL 3 PROJECT
-PROJECT: Cybersecurity Incident Correlation & Response Intelligence System
-PHASE 4: VECTOR DATABASE & SEMANTIC SEARCH ENGINE (pgvector)
-============================================================================
-Rubric Reference: Component 9 (NoSQL/Vector feature, CRUD - 7 Marks)
-Developer Handbook Reference: Section 23 & Section 25
-============================================================================
-Architecture:
+
   - Extension: PostgreSQL pgvector 0.8.6
   - Embeddings Model: Hugging Face all-MiniLM-L6-v2 (384 dimensions)
   - Distance Metric: Cosine Distance (<=>)
   - Semantic Similarity Formula: Cosine Similarity = 1 - (embedding <=> query_vec)
   - Indexing: Hierarchical Navigable Small World (HNSW) graph index
-============================================================================
 """
 
 import psycopg2

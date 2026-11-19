@@ -1,8 +1,3 @@
--- ============================================================================
--- PES UNIVERSITY - DBMS EXPERIENTIAL LEARNING LEVEL 3 (TOTAL: 50 MARKS)
--- EVALUATION RUBRIC STEP-BY-STEP COMMANDS CHEATSHEET
--- Database: cybersecurity_db (User: postgres, Port: 5432)
--- ============================================================================
 
 -- ============================================================================
 -- RUBRIC 1 & 2: ER Diagram (2 Marks) & Relational Schema (3 Marks)

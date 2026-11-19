@@ -1,12 +1,4 @@
--- ============================================================================
--- DBMS EXPERIENTIAL LEARNING LEVEL 3 PROJECT
--- PROJECT: Cybersecurity Incident Correlation & Response Intelligence System
--- COMPLETE MYSQL 8.0+ MASTER SETUP & SEED DATA SCRIPT
--- ============================================================================
--- Instructions:
--- In MySQL Command Line Client, simply execute:
---     source D:/DBMS Mini Project/database/setup_mysql_complete.sql;
--- ============================================================================
+
 
 -- ----------------------------------------------------------------------------
 -- STEP 1: CREATE & INITIALIZE DATABASE

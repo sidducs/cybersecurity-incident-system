@@ -1,12 +1,3 @@
--- ============================================================================
--- DBMS EXPERIENTIAL LEARNING LEVEL 3 PROJECT
--- PROJECT: Cybersecurity Incident Correlation & Response Intelligence System
--- PHASE 3: ADVANCED DBMS FEATURES - DATABASE TRIGGER (LIFECYCLE AUDIT TRAIL)
--- TARGET RDBMS: PostgreSQL 14+ (PL/pgSQL Trigger Engine)
--- ============================================================================
--- Rubric Reference: Component 8 (Advanced SQL Concepts - 6 Marks)
--- Developer Handbook Reference: Section 19 (Trigger Design)
--- ============================================================================
 
 \c cybersecurity_db;
 
@@ -85,19 +76,4 @@ CREATE TRIGGER trg_incident_status_change
 BEFORE UPDATE OF status ON incidents
 FOR EACH ROW
 EXECUTE FUNCTION trg_fn_log_incident_status_change();
-
--- ============================================================================
--- VERIFICATION QUERY FOR VIVA DEMONSTRATION:
--- ============================================================================
--- Step A: Note initial status & counts
--- SELECT incident_id, status, updated_at, resolved_at FROM incidents WHERE incident_id = 1;
--- SELECT COUNT(*) FROM incident_status_history WHERE incident_id = 1;
-
--- Step B: Update incident status
--- UPDATE incidents SET status = 'Resolved' WHERE incident_id = 1;
-
--- Step C: Confirm trigger fired automatically:
--- SELECT incident_id, status, resolved_at FROM incidents WHERE incident_id = 1;
--- SELECT * FROM incident_status_history WHERE incident_id = 1 ORDER BY history_id DESC LIMIT 1;
--- SELECT * FROM audit_logs WHERE incident_id = 1 ORDER BY audit_id DESC LIMIT 1;
 
